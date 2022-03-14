@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name "3006")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/footprints/3006.2100")(options "")(descr ""))
+  (lib (name "Gerbers")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/GitHub/MQTT_Keypad/board/ESP32-POE-ISO-master/ESP32-POE-ISO-master/HARDWARE/ESP32-PoE-ISO-Rev.H/Gerbers")(options "")(descr ""))
+  (lib (name "ESP32-PoE-ISO-Rev")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/GitHub/MQTT_Keypad/board/ESP32-POE-ISO-master/ESP32-POE-ISO-master/HARDWARE/ESP32-PoE-ISO-Rev.H")(options "")(descr ""))
+  (lib (name "connecteur")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/footprints/connecteur")(options "")(descr ""))
+)
