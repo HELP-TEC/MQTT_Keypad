@@ -1,2 +1,1 @@
-# MQTT_Keypad
-Keypad board using MQTT to transmit its signals
+# MQTT_KeypadKeypad board using MQTT to transmit its signalsKiCAD  6.0.2 (version CERN Windows)
