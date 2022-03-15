@@ -1735,7 +1735,7 @@
     (effects (font (size 1 1)) (justify left bottom))
     (uuid ce7c60c2-a019-4da0-814f-994280c4ccb6)
   )
-  (text "RC Filter\nfc ~160Hz" (at 243.84 55.88 0)
+  (text "RC Filter\nfc ~160Hz" (at 241.3 55.88 0)
     (effects (font (size 1.5 1.5) (thickness 0.3) bold italic) (justify left bottom))
     (uuid e8c3b8c2-5d32-4420-b5e5-849af02c7dff)
   )
