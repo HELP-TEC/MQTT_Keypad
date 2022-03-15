@@ -1235,7 +1235,6 @@
     )
   )
 
-
   (junction (at 227.584 31.877) (diameter 0) (color 0 0 0 0)
     (uuid 16006b32-f044-4815-9372-a1e3653cb054)
   )
@@ -1263,8 +1262,8 @@
   (no_connect (at 110.49 43.942) (uuid 33a98504-8aa0-4c07-a96a-e34bfc976df4))
   (no_connect (at 110.49 51.562) (uuid 38aa3c94-d5eb-4d40-8101-afee844eb749))
   (no_connect (at 211.074 84.582) (uuid 52fceab0-95ce-41aa-a6e2-619de24504f3))
-  (no_connect (at 211.074 79.502) (uuid 52fceab0-95ce-41aa-a6e2-619de24504f3))
-  (no_connect (at 226.314 82.042) (uuid 52fceab0-95ce-41aa-a6e2-619de24504f3))
+  (no_connect (at 211.074 79.502) (uuid 52fceab0-95ce-41aa-a6e2-619de24504f4))
+  (no_connect (at 226.314 82.042) (uuid 52fceab0-95ce-41aa-a6e2-619de24504f5))
   (no_connect (at 81.534 54.102) (uuid 78e17a01-26e3-468c-86a7-6890ed9e73c4))
   (no_connect (at 81.534 66.802) (uuid 9d8b82e2-c3ee-480f-970b-e89efd8b1362))
   (no_connect (at 81.534 59.182) (uuid b0c31a29-6c84-46fe-85a1-b34de5aa94e8))
@@ -1736,7 +1735,7 @@
     (effects (font (size 1 1)) (justify left bottom))
     (uuid ce7c60c2-a019-4da0-814f-994280c4ccb6)
   )
-  (text "RC Filter" (at 243.459 54.102 0)
+  (text "RC Filter\nfc ~160Hz" (at 243.84 55.88 0)
     (effects (font (size 1.5 1.5) (thickness 0.3) bold italic) (justify left bottom))
     (uuid e8c3b8c2-5d32-4420-b5e5-849af02c7dff)
   )
@@ -1966,8 +1965,8 @@
   (symbol (lib_id "Device:R") (at 202.184 56.642 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 1aa5a763-bcca-4c6a-a02c-fa18c5b433a2)
-    (property "Reference" "R11" (id 0) (at 202.184 50.292 90))
-    (property "Value" "150Ohm" (id 1) (at 202.184 52.832 90))
+    (property "Reference" "R12" (id 0) (at 202.184 50.8 90))
+    (property "Value" "150Ohm" (id 1) (at 202.184 53.34 90))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (id 2) (at 202.184 58.42 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2343,8 +2342,8 @@
   (symbol (lib_id "Device:R") (at 235.839 59.182 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid abe955ed-02be-49ba-b797-c5f3c376f3ac)
-    (property "Reference" "R12" (id 0) (at 235.839 52.832 90))
-    (property "Value" "10KOhm" (id 1) (at 235.839 55.372 90))
+    (property "Reference" "R11" (id 0) (at 235.839 53.34 90))
+    (property "Value" "10KOhm" (id 1) (at 235.839 55.88 90))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (id 2) (at 235.839 60.96 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2813,11 +2812,11 @@
     (path "/ab403385-27da-4374-b480-627792beaf3f"
       (reference "EXT2") (unit 1) (value "NS(HN1x10)") (footprint "connecteur:HN1x10")
     )
-    (path "/1aa5a763-bcca-4c6a-a02c-fa18c5b433a2"
-      (reference "R11") (unit 1) (value "150Ohm") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
     (path "/abe955ed-02be-49ba-b797-c5f3c376f3ac"
-      (reference "R12") (unit 1) (value "10KOhm") (footprint "Resistor_SMD:R_0603_1608Metric")
+      (reference "R11") (unit 1) (value "10KOhm") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/1aa5a763-bcca-4c6a-a02c-fa18c5b433a2"
+      (reference "R12") (unit 1) (value "150Ohm") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/a1b97586-5ccb-4d4b-808f-ce5452376c86"
       (reference "R14") (unit 1) (value "680Ohm") (footprint "Resistor_SMD:R_0603_1608Metric")
