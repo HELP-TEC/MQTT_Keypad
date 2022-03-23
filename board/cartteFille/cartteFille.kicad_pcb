@@ -3109,13 +3109,13 @@
 
   (gr_rect locked (start 0 0) (end 60 100) (layer "Edge.Cuts") (width 0.5) (fill none) (tstamp 92adc2a7-705f-4e7b-90a7-1c91d9f5977d))
 
-  (segment (start 8.68 36.772) (end 5.092 40.36) (width 0.25) (layer "F.Cu") (net 1) (tstamp 1eccb674-58c5-4559-87a4-389008425090))
-  (segment (start 15.59 13.32) (end 14.38 14.53) (width 0.25) (layer "F.Cu") (net 1) (tstamp 340fa065-5a8a-4516-9d8a-08e809f87595))
-  (segment (start 8.68 16.67) (end 8.68 36.772) (width 0.25) (layer "F.Cu") (net 1) (tstamp 400b1fee-57b5-429b-ac4a-f8fc001d18bc))
   (segment (start 15.59 13.32) (end 19.56 13.32) (width 0.25) (layer "F.Cu") (net 1) (tstamp 4396628c-3340-489f-9b24-ea91d30691c9))
+  (segment (start 8.68 36.772) (end 5.092 40.36) (width 0.25) (layer "F.Cu") (net 1) (tstamp 4d44b129-c661-445a-acd1-16280b0de7da))
+  (segment (start 10.2 14.53) (end 8.68 16.05) (width 0.25) (layer "F.Cu") (net 1) (tstamp 5351e629-ee47-4afd-b6e5-171421799e39))
+  (segment (start 14.38 14.53) (end 10.2 14.53) (width 0.25) (layer "F.Cu") (net 1) (tstamp 5a1ce9b7-22a6-4b53-b971-3e729d539c8a))
+  (segment (start 15.59 13.32) (end 14.38 14.53) (width 0.25) (layer "F.Cu") (net 1) (tstamp 81ee098e-cdb0-4a5b-b358-35fb3f1d56ba))
   (segment (start 19.56 13.32) (end 19.6 13.28) (width 0.25) (layer "F.Cu") (net 1) (tstamp a787de0b-7ccc-4147-b23c-b19cab72577e))
-  (segment (start 14.38 14.53) (end 10.82 14.53) (width 0.25) (layer "F.Cu") (net 1) (tstamp cddcfcd8-1879-48e6-8709-8dd4ef1a763c))
-  (segment (start 10.82 14.53) (end 8.68 16.67) (width 0.25) (layer "F.Cu") (net 1) (tstamp dd9dd789-8eee-4ebd-a8db-1e0a87681969))
+  (segment (start 8.68 16.05) (end 8.68 36.772) (width 0.25) (layer "F.Cu") (net 1) (tstamp fe2c9782-2ff0-473c-98b0-ea9a985143fb))
   (segment (start 27.725 92.72) (end 26.75 92.72) (width 0.25) (layer "F.Cu") (net 2) (tstamp 0024464c-7c76-4b79-b391-cbd0136f68e3))
   (segment (start 20.82 7.615) (end 20.82 8.885) (width 0.25) (layer "F.Cu") (net 2) (tstamp 033ef335-54da-4790-9039-18c7d3e6a1a4))
   (segment (start 35.99 60.97) (end 36 60.98) (width 0.25) (layer "F.Cu") (net 2) (tstamp 1216ced4-9b71-4dcc-9180-d9a8d2903b45))
