@@ -1,0 +1,9 @@
+(sym_lib_table
+  (lib (name "MCP23S18T-E_MJ")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/MCP23S18T-E_MJ/MCP23S18T-E_MJ.lib")(options "")(descr ""))
+  (lib (name "PCW1J-R24-BAB103L")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/PCW1J-R24-BAB103L/PCW1J-R24-BAB103L.lib")(options "")(descr ""))
+  (lib (name "MAX4040EUKT")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/MAX4040EUKT/MAX4040EUKT.lib")(options "")(descr ""))
+  (lib (name "MCP23018-E_SS")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/MCP23018-E_SS/MCP23018-E_SS.lib")(options "")(descr ""))
+  (lib (name "SN74LVC2G14DBVTG4")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/SN74LVC2G14DBVTG4/SN74LVC2G14DBVTG4.lib")(options "")(descr ""))
+  (lib (name "ESP32-PoE-ISO_Rev_H")(type "Legacy")(uri "D:/TM/board/ESP32-POE-ISO-master/ESP32-POE-ISO-master/HARDWARE/ESP32-PoE-ISO-Rev.H/ESP32-PoE-ISO_Rev_H.lib")(options "")(descr ""))
+  (lib (name "PCA8574")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/PCA8574D_518/PCA8574D_518.lib")(options "")(descr ""))
+)
