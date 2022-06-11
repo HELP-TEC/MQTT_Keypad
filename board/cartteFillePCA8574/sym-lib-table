@@ -6,4 +6,5 @@
   (lib (name "SN74LVC2G14DBVTG4")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/SN74LVC2G14DBVTG4/SN74LVC2G14DBVTG4.lib")(options "")(descr ""))
   (lib (name "ESP32-PoE-ISO_Rev_H")(type "Legacy")(uri "D:/TM/board/ESP32-POE-ISO-master/ESP32-POE-ISO-master/HARDWARE/ESP32-PoE-ISO-Rev.H/ESP32-PoE-ISO_Rev_H.lib")(options "")(descr ""))
   (lib (name "PCA8574")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/PCA8574D_518/PCA8574D_518.lib")(options "")(descr ""))
+  (lib (name "PCA8575PW_118")(type "Legacy")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/PCA8575PW_118/PCA8575PW_118.lib")(options "")(descr ""))
 )

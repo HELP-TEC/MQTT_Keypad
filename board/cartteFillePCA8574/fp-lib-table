@@ -4,4 +4,6 @@
   (lib (name "ESP32-PoE-ISO-Rev")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/GitHub/MQTT_Keypad/board/ESP32-POE-ISO-master/ESP32-POE-ISO-master/HARDWARE/ESP32-PoE-ISO-Rev.H")(options "")(descr ""))
   (lib (name "connecteur")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/footprints/connecteur")(options "")(descr ""))
   (lib (name "PCA8574D_518")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/footprints/PCA8574D_518")(options "")(descr ""))
+  (lib (name "PCA8575PW_118")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/symbols/PCA8575PW_118")(options "")(descr ""))
+  (lib (name "SOP65P640X110-16N")(type "KiCad")(uri "C:/Users/Thibault Sampiemon/Documents/KiCad/6.0/footprints/SOP65P640X110-16N")(options "")(descr ""))
 )
