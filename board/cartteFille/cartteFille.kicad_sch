@@ -1764,7 +1764,7 @@
     (uuid fd70fd78-f2f6-4657-97d4-f7ce3185c2b3)
   )
 
-  (label "ADC_CH0-U11RP1" (at 267.97 59.182 180)
+  (label "ADC_CH6-U11RP1" (at 267.97 59.182 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 092d0cb1-3813-437d-93b8-dd4faf3b83a1)
   )
@@ -1804,7 +1804,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 41ff63a6-090f-4dad-8cea-d63d39ccc10c)
   )
-  (label "ADC_CH0-U11RP1" (at 129.286 49.022 180)
+  (label "ADC_CH6-U11RP1" (at 129.286 49.022 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 4a1b3603-50c2-4a45-9fe7-7bff01f02f7a)
   )
