@@ -1,0 +1,281 @@
+[31-May-22 09:06:36] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 09:06:36] Logging: Normal
+[31-May-22 09:06:36] CreateEvent opened an existing Event
+Server May already be Running
+[31-May-22 09:06:36] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 09:06:36] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 09:06:36] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 09:06:36] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 09:06:36] Default Lease: 36000 (sec)
+[31-May-22 09:06:36] Server Name: TIC18-SAMPIEMOT
+[31-May-22 09:06:36] Detecting Static Interfaces..
+[31-May-22 09:06:36] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 09:06:36] Listening On: 192.168.5.150
+[31-May-22 09:12:02] Network changed, re-detecting Static Interfaces..
+[31-May-22 09:12:17] No Static Interface ready, Waiting...
+[31-May-22 10:53:49] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 10:53:49] Logging: Normal
+[31-May-22 10:53:49] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 10:53:49] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 10:53:49] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 10:53:49] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 10:53:49] Detecting Static Interfaces..
+[31-May-22 10:53:49] Default Lease: 36000 (sec)
+[31-May-22 10:53:49] Server Name: TIC18-SAMPIEMOT
+[31-May-22 10:53:49] CreateEvent opened an existing Event
+Server May already be Running
+[31-May-22 10:53:49] No Static Interface ready, Waiting...
+[31-May-22 13:03:24] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 13:03:24] Logging: Normal
+[31-May-22 13:03:24] CreateEvent opened an existing Event
+Server May already be Running
+[31-May-22 13:03:24] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 13:03:24] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 13:03:24] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 13:03:24] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 13:03:24] Default Lease: 36000 (sec)
+[31-May-22 13:03:24] Server Name: TIC18-SAMPIEMOT
+[31-May-22 13:03:24] Detecting Static Interfaces..
+[31-May-22 13:03:24] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 13:03:24] Listening On: 192.168.5.10
+[31-May-22 13:09:15] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 13:09:15] Logging: Normal
+[31-May-22 13:09:16] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 13:09:16] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 13:09:16] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 13:09:16] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 13:09:16] Default Lease: 36000 (sec)
+[31-May-22 13:09:16] Server Name: TIC18-SAMPIEMOT
+[31-May-22 13:09:16] Detecting Static Interfaces..
+[31-May-22 13:09:16] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 13:09:16] Listening On: 192.168.5.10
+[31-May-22 13:09:21] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:09:21] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:09:21] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:09:22] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:09:23] HTTP Client 127.0.0.1, Message Receive failed
+[31-May-22 13:27:41] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:27:42] HTTP Client 127.0.0.1, Message Receive failed
+[31-May-22 13:27:43] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:27:43] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:27:44] HTTP Client 127.0.0.1, Message Receive failed
+[31-May-22 13:27:48] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:27:48] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 13:27:48] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[31-May-22 14:58:29] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 14:58:29] Logging: Normal
+[31-May-22 14:58:29] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 14:58:29] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 14:58:29] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 14:58:29] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 14:58:29] Default Lease: 36000 (sec)
+[31-May-22 14:58:29] Server Name: TIC18-SAMPIEMOT
+[31-May-22 14:58:29] Detecting Static Interfaces..
+[31-May-22 14:58:29] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 14:58:29] Listening On: 192.168.5.10
+[31-May-22 15:00:14] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:00:14] Logging: Normal
+[31-May-22 15:00:14] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:00:14] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:00:14] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:00:14] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:00:14] Default Lease: 36000 (sec)
+[31-May-22 15:00:14] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:00:14] Detecting Static Interfaces..
+[31-May-22 15:00:14] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:00:14] Listening On: 192.168.5.10
+[31-May-22 15:00:14] CreateEvent opened an existing Event
+Server May already be Running
+[31-May-22 15:08:53] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:08:53] Logging: Normal
+[31-May-22 15:08:53] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:08:53] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:08:53] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:08:53] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:08:53] Default Lease: 36000 (sec)
+[31-May-22 15:08:53] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:08:53] Detecting Static Interfaces..
+[31-May-22 15:08:53] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:08:53] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:08:53] No Static Interface ready, Waiting...
+[31-May-22 15:09:13] Retrying failed Listening Interfaces..
+[31-May-22 15:09:13] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:09:13] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:09:13] No Static Interface ready, Waiting...
+[31-May-22 15:09:53] Retrying failed Listening Interfaces..
+[31-May-22 15:09:53] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:09:53] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:09:53] No Static Interface ready, Waiting...
+[31-May-22 15:10:33] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:10:33] Logging: Normal
+[31-May-22 15:10:33] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:10:33] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:10:33] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:10:33] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:10:33] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:10:33] Default Lease: 36000 (sec)
+[31-May-22 15:10:33] Detecting Static Interfaces..
+[31-May-22 15:10:33] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:10:33] Listening On: 192.168.5.10
+[31-May-22 15:10:33] CreateEvent opened an existing Event
+Server May already be Running
+[31-May-22 15:11:13] Retrying failed Listening Interfaces..
+[31-May-22 15:11:14] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:11:14] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:11:14] No Static Interface ready, Waiting...
+[31-May-22 15:12:17] Open DHCP Server Stopped !
+
+[31-May-22 15:12:17] Closing Network Connections...
+[31-May-22 15:12:59] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:12:59] Logging: Normal
+[31-May-22 15:13:00] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:13:00] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:13:00] Default Lease: 36000 (sec)
+[31-May-22 15:13:00] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:13:00] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:13:00] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:13:00] Detecting Static Interfaces..
+[31-May-22 15:13:00] Listening On: 192.168.5.10
+[31-May-22 15:13:00] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:13:02] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:13:22] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:13:22] Listening On: 192.168.5.10
+[31-May-22 15:14:57] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:15:04] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:15:04] Listening On: 192.168.5.10
+[31-May-22 15:15:12] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:15:26] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:15:26] Listening On: 192.168.5.10
+[31-May-22 15:16:28] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:16:28] Logging: Normal
+[31-May-22 15:16:28] CreateEvent opened an existing Event
+Server May already be Running
+[31-May-22 15:16:28] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:16:28] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:16:28] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:16:28] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:16:28] Default Lease: 36000 (sec)
+[31-May-22 15:16:28] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:16:28] Detecting Static Interfaces..
+[31-May-22 15:16:29] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:16:29] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:16:29] No Static Interface ready, Waiting...
+[31-May-22 15:16:49] Retrying failed Listening Interfaces..
+[31-May-22 15:16:49] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:16:49] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:16:49] No Static Interface ready, Waiting...
+[31-May-22 15:17:29] Retrying failed Listening Interfaces..
+[31-May-22 15:17:29] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:17:29] Http Interface 127.0.0.1 TCP Port 6789 not available
+[31-May-22 15:17:29] No Static Interface ready, Waiting...
+[31-May-22 15:28:50] Host 18:db:f2:1d:c9:6b (TIC18-SAMPIEMOT) allotted 192.168.5.100 for 36000 seconds
+[31-May-22 15:28:52] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:28:56] No Static Interface ready, Waiting...
+[31-May-22 15:31:18] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:31:18] Warning: 192.168.5.10 UDP Port 67 already in use
+[31-May-22 15:31:18] No Static Interface ready, Waiting...
+[31-May-22 15:31:32] Closing Network Connections...
+[31-May-22 15:31:32] Open DHCP Server Stopped !
+
+[31-May-22 15:31:37] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:31:37] Logging: Normal
+[31-May-22 15:31:37] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:31:37] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:31:37] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:31:37] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:31:37] Default Lease: 36000 (sec)
+[31-May-22 15:31:37] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:31:37] Detecting Static Interfaces..
+[31-May-22 15:31:37] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:31:37] Listening On: 192.168.5.10
+[31-May-22 15:31:39] HTTP Client 127.0.0.1, Message Receive failed
+[31-May-22 15:32:29] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:32:36] Closing Network Connections...
+[31-May-22 15:32:36] Open DHCP Server Stopped !
+
+[31-May-22 15:33:27] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 15:33:27] Logging: Normal
+[31-May-22 15:33:28] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 15:33:28] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 15:33:28] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 15:33:28] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 15:33:28] Server Name: TIC18-SAMPIEMOT
+[31-May-22 15:33:28] Detecting Static Interfaces..
+[31-May-22 15:33:28] Default Lease: 36000 (sec)
+[31-May-22 15:33:28] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:33:28] Listening On: 192.168.5.10
+[31-May-22 15:33:30] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:33:50] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:33:50] Listening On: 192.168.5.10
+[31-May-22 15:33:52] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:34:12] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:34:12] Listening On: 192.168.5.10
+[31-May-22 15:35:25] Network changed, re-detecting Static Interfaces..
+[31-May-22 15:35:34] Lease Status URL: http://127.0.0.1:6789
+[31-May-22 15:35:34] Listening On: 192.168.5.10
+[31-May-22 15:49:01] Network changed, re-detecting Static Interfaces..
+[31-May-22 16:32:05] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 16:32:05] Logging: Normal
+[31-May-22 16:32:06] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 16:32:06] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 16:32:06] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 16:32:06] Detecting Static Interfaces..
+[31-May-22 16:32:06] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 16:32:06] Default Lease: 36000 (sec)
+[31-May-22 16:32:06] Server Name: TIC18-SAMPIEMOT
+[31-May-22 16:32:06] No Static Interface ready, Waiting...
+[31-May-22 16:32:08] Network changed, re-detecting Static Interfaces..
+[31-May-22 16:32:08] No Static Interface ready, Waiting...
+[31-May-22 16:32:11] Network changed, re-detecting Static Interfaces..
+[31-May-22 16:32:11] No Static Interface ready, Waiting...
+[31-May-22 16:32:15] Network changed, re-detecting Static Interfaces..
+[31-May-22 16:32:15] No Static Interface ready, Waiting...
+[31-May-22 16:34:04] Network changed, re-detecting Static Interfaces..
+[31-May-22 16:34:04] No Static Interface ready, Waiting...
+[31-May-22 16:58:48] Closing Network Connections...
+[31-May-22 16:58:48] Open DHCP Server Stopped !
+
+[31-May-22 17:13:09] Logging: Normal
+[31-May-22 17:13:09] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 17:13:09] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 17:13:09] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 17:13:09] Detecting Static Interfaces..
+[31-May-22 17:13:10] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 17:13:10] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 17:13:10] Default Lease: 36000 (sec)
+[31-May-22 17:13:10] Server Name: TIC18-SAMPIEMOT
+[31-May-22 17:13:10] No Static Interface ready, Waiting...
+[31-May-22 17:13:12] Network changed, re-detecting Static Interfaces..
+[31-May-22 17:13:12] No Static Interface ready, Waiting...
+[31-May-22 17:13:15] Network changed, re-detecting Static Interfaces..
+[31-May-22 17:13:15] No Static Interface ready, Waiting...
+[31-May-22 17:13:21] No Static Interface ready, Waiting...
+[31-May-22 17:13:21] Network changed, re-detecting Static Interfaces..
+[31-May-22 17:15:07] Network changed, re-detecting Static Interfaces..
+[31-May-22 17:15:07] No Static Interface ready, Waiting...
+[31-May-22 17:43:24] Closing Network Connections...
+[31-May-22 17:43:24] Open DHCP Server Stopped !
+
+[31-May-22 18:54:48] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[31-May-22 18:54:48] Logging: Normal
+[31-May-22 18:54:48] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[31-May-22 18:54:48] Server Name: TIC18-SAMPIEMOT
+[31-May-22 18:54:48] Detecting Static Interfaces..
+[31-May-22 18:54:48] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[31-May-22 18:54:48] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[31-May-22 18:54:48] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[31-May-22 18:54:48] Default Lease: 36000 (sec)
+[31-May-22 18:54:49] No Static Interface ready, Waiting...
+[31-May-22 18:54:50] Network changed, re-detecting Static Interfaces..
+[31-May-22 18:54:50] No Static Interface ready, Waiting...
+[31-May-22 18:54:53] Network changed, re-detecting Static Interfaces..
+[31-May-22 18:54:53] No Static Interface ready, Waiting...
+[31-May-22 18:54:57] Network changed, re-detecting Static Interfaces..
+[31-May-22 18:54:57] No Static Interface ready, Waiting...
+[31-May-22 18:55:00] Network changed, re-detecting Static Interfaces..
+[31-May-22 18:55:00] No Static Interface ready, Waiting...
+[31-May-22 18:56:46] Network changed, re-detecting Static Interfaces..
+[31-May-22 18:56:46] No Static Interface ready, Waiting...
+[31-May-22 18:57:10] Network changed, re-detecting Static Interfaces..
+[31-May-22 18:57:10] No Static Interface ready, Waiting...
+Logging Continued on file C:\OpenDHCPServer\log\OpenDHCPServer20220601.log

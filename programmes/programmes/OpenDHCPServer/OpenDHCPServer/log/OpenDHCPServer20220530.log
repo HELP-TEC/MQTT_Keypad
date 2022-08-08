@@ -1,0 +1,45 @@
+[30-May-22 11:51:01] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[30-May-22 11:51:01] Logging: Normal
+[30-May-22 11:51:01] CreateEvent opened an existing Event
+Server May already be Running
+[30-May-22 11:51:01] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[30-May-22 11:51:01] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[30-May-22 11:51:01] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[30-May-22 11:51:01] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[30-May-22 11:51:01] Default Lease: 36000 (sec)
+[30-May-22 11:51:01] Server Name: TIC18-SAMPIEMOT
+[30-May-22 11:51:01] Detecting Static Interfaces..
+[30-May-22 11:51:01] Lease Status URL: http://127.0.0.1:6789
+[30-May-22 11:51:01] Listening On: 192.168.5.150
+[30-May-22 11:52:51] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[30-May-22 11:52:52] HTTP Client 127.0.0.1, Message Receive failed
+[30-May-22 11:52:52] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[30-May-22 11:52:52] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[30-May-22 11:52:57] HTTP Client 127.0.0.1, Message Receive failed, WSAError 0
+[30-May-22 11:52:58] HTTP Client 127.0.0.1, Message Receive failed
+[30-May-22 11:52:59] HTTP Client 127.0.0.1, Message Receive failed
+[30-May-22 11:54:56] Network changed, re-detecting Static Interfaces..
+[30-May-22 11:55:01] No Static Interface ready, Waiting...
+[30-May-22 11:55:09] Network changed, re-detecting Static Interfaces..
+[30-May-22 11:55:09] Lease Status URL: http://127.0.0.1:6789
+[30-May-22 11:55:09] Listening On: 192.168.5.150
+[30-May-22 11:55:14] Network changed, re-detecting Static Interfaces..
+[30-May-22 11:55:32] Lease Status URL: http://127.0.0.1:6789
+[30-May-22 11:55:32] Listening On: 192.168.5.150
+[30-May-22 11:56:40] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[30-May-22 11:56:40] Logging: Normal
+[30-May-22 11:56:40] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[30-May-22 11:56:40] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[30-May-22 11:56:40] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[30-May-22 11:56:40] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[30-May-22 11:56:40] Default Lease: 36000 (sec)
+[30-May-22 11:56:40] Server Name: TIC18-SAMPIEMOT
+[30-May-22 11:56:40] Detecting Static Interfaces..
+[30-May-22 11:56:40] Lease Status URL: http://127.0.0.1:6789
+[30-May-22 11:56:40] Listening On: 192.168.5.150
+[30-May-22 11:56:53] Network changed, re-detecting Static Interfaces..
+[30-May-22 11:57:03] Lease Status URL: http://127.0.0.1:6789
+[30-May-22 11:57:03] Listening On: 192.168.5.150
+[30-May-22 11:58:54] Network changed, re-detecting Static Interfaces..
+[30-May-22 11:59:05] Lease Status URL: http://127.0.0.1:6789
+[30-May-22 11:59:05] Listening On: 192.168.5.150

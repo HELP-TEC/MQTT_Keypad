@@ -1,0 +1,172 @@
+Open DHCP Server Version 1.81 Windows Build 1055
+
+[03-Jul-22 00:28:24] Closing Network Connections...
+[03-Jul-22 00:28:24] Open DHCP Server Stopped !
+
+[03-Jul-22 10:15:52] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[03-Jul-22 10:15:52] Logging: Normal
+[03-Jul-22 10:15:52] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[03-Jul-22 10:15:52] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[03-Jul-22 10:15:52] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[03-Jul-22 10:15:52] Default Lease: 36000 (sec)
+[03-Jul-22 10:15:52] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[03-Jul-22 10:15:52] Server Name: TIC18-SAMPIEMOT
+[03-Jul-22 10:15:52] Detecting Static Interfaces..
+[03-Jul-22 10:15:53] No Static Interface ready, Waiting...
+[03-Jul-22 10:15:54] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:15:54] No Static Interface ready, Waiting...
+[03-Jul-22 10:15:57] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:15:57] No Static Interface ready, Waiting...
+[03-Jul-22 10:16:01] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:16:01] No Static Interface ready, Waiting...
+[03-Jul-22 10:16:03] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:16:03] No Static Interface ready, Waiting...
+[03-Jul-22 10:17:50] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:17:50] No Static Interface ready, Waiting...
+[03-Jul-22 10:19:08] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:19:08] No Static Interface ready, Waiting...
+[03-Jul-22 10:21:48] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:21:48] No Static Interface ready, Waiting...
+[03-Jul-22 10:24:48] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:24:48] No Static Interface ready, Waiting...
+[03-Jul-22 10:27:57] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:27:57] No Static Interface ready, Waiting...
+[03-Jul-22 10:30:58] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:30:58] No Static Interface ready, Waiting...
+[03-Jul-22 10:33:59] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:33:59] No Static Interface ready, Waiting...
+[03-Jul-22 10:37:02] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:37:02] No Static Interface ready, Waiting...
+[03-Jul-22 10:45:18] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 10:45:18] No Static Interface ready, Waiting...
+[03-Jul-22 13:02:50] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 13:02:50] No Static Interface ready, Waiting...
+[03-Jul-22 13:06:00] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 13:06:00] No Static Interface ready, Waiting...
+[03-Jul-22 16:42:44] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 16:42:44] Lease Status URL: http://127.0.0.1:6789
+[03-Jul-22 16:42:44] Listening On: 192.168.5.10
+[03-Jul-22 16:48:57] HTTP Client 127.0.0.1, Message Receive failed
+[03-Jul-22 16:55:26] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 16:59:49] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 17:38:57] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 17:39:48] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 18:21:57] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 18:45:17] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 18:50:26] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 18:50:44] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:09:34] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:10:31] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:10:38] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:12:29] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:12:39] Lease Status URL: http://127.0.0.1:6789
+[03-Jul-22 19:12:39] Listening On: 192.168.5.10
+[03-Jul-22 19:12:41] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:13:01] Lease Status URL: http://127.0.0.1:6789
+[03-Jul-22 19:13:01] Listening On: 192.168.5.10
+[03-Jul-22 19:13:21] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:13:24] No Static Interface ready, Waiting...
+[03-Jul-22 19:13:52] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:13:52] Lease Status URL: http://127.0.0.1:6789
+[03-Jul-22 19:13:52] Listening On: 192.168.5.10
+[03-Jul-22 19:13:53] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:14:10] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:14:53] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:15:11] No Static Interface ready, Waiting...
+[03-Jul-22 19:15:36] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:15:36] Lease Status URL: http://127.0.0.1:6789
+[03-Jul-22 19:15:36] Listening On: 192.168.5.10
+[03-Jul-22 19:15:43] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:39:17] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:39:24] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:39:31] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:39:38] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:39:45] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:39:52] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:00] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:07] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:14] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:21] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:28] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:35] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:42] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:50] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:40:57] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:41:04] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:41:11] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:41:18] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:13] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:21] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:28] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:35] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:42] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:49] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:42:56] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:04] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:11] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:18] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:25] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:32] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:39] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:46] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:43:53] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:01] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:08] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:15] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:22] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:29] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:36] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:44] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:51] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:44:58] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:05] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:12] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:19] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:26] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:33] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:41] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:45:48] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:46:18] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:46:36] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:48:01] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:49:48] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:50:06] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:50:30] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:50:45] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:54:49] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:54:56] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:55:03] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:55:10] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:55:17] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[03-Jul-22 19:55:33] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 19:55:39] No Static Interface ready, Waiting...
+[03-Jul-22 20:30:20] Closing Network Connections...
+[03-Jul-22 20:30:20] Open DHCP Server Stopped !
+
+[03-Jul-22 20:30:22] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 20:30:22] No Static Interface ready, Waiting...
+[03-Jul-22 21:28:37] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[03-Jul-22 21:28:37] Logging: Normal
+[03-Jul-22 21:28:37] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[03-Jul-22 21:28:37] Server Name: TIC18-SAMPIEMOT
+[03-Jul-22 21:28:37] Detecting Static Interfaces..
+[03-Jul-22 21:28:37] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[03-Jul-22 21:28:37] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[03-Jul-22 21:28:37] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[03-Jul-22 21:28:37] Default Lease: 36000 (sec)
+[03-Jul-22 21:28:38] No Static Interface ready, Waiting...
+[03-Jul-22 21:28:40] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:28:40] No Static Interface ready, Waiting...
+[03-Jul-22 21:28:43] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:28:43] No Static Interface ready, Waiting...
+[03-Jul-22 21:28:46] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:28:46] No Static Interface ready, Waiting...
+[03-Jul-22 21:28:48] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:28:48] No Static Interface ready, Waiting...
+[03-Jul-22 21:30:11] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:30:11] No Static Interface ready, Waiting...
+[03-Jul-22 21:30:35] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:30:35] No Static Interface ready, Waiting...
+[03-Jul-22 21:33:20] Network changed, re-detecting Static Interfaces..
+[03-Jul-22 21:33:20] No Static Interface ready, Waiting...
+Logging Continued on file C:\OpenDHCPServer\log\OpenDHCPServer20220704.log

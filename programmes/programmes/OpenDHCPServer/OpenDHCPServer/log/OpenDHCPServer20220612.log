@@ -1,0 +1,119 @@
+Open DHCP Server Version 1.81 Windows Build 1055
+
+[12-Jun-22 00:32:09] Closing Network Connections...
+[12-Jun-22 00:32:11] Open DHCP Server Stopped !
+
+[12-Jun-22 08:55:11] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[12-Jun-22 08:55:11] Logging: Normal
+[12-Jun-22 08:55:11] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[12-Jun-22 08:55:11] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[12-Jun-22 08:55:11] Detecting Static Interfaces..
+[12-Jun-22 08:55:11] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[12-Jun-22 08:55:11] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[12-Jun-22 08:55:11] Default Lease: 36000 (sec)
+[12-Jun-22 08:55:11] Server Name: TIC18-SAMPIEMOT
+[12-Jun-22 08:55:11] No Static Interface ready, Waiting...
+[12-Jun-22 08:55:13] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 08:55:13] No Static Interface ready, Waiting...
+[12-Jun-22 08:55:16] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 08:55:16] No Static Interface ready, Waiting...
+[12-Jun-22 08:55:19] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 08:55:19] No Static Interface ready, Waiting...
+[12-Jun-22 08:55:22] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 08:55:22] No Static Interface ready, Waiting...
+[12-Jun-22 08:57:08] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 08:57:08] No Static Interface ready, Waiting...
+[12-Jun-22 12:07:20] Closing Network Connections...
+[12-Jun-22 12:07:20] Open DHCP Server Stopped !
+
+[12-Jun-22 15:52:22] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[12-Jun-22 15:52:22] Logging: Normal
+[12-Jun-22 15:52:22] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[12-Jun-22 15:52:22] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[12-Jun-22 15:52:22] Detecting Static Interfaces..
+[12-Jun-22 15:52:22] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[12-Jun-22 15:52:22] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[12-Jun-22 15:52:22] Default Lease: 36000 (sec)
+[12-Jun-22 15:52:22] Server Name: TIC18-SAMPIEMOT
+[12-Jun-22 15:52:22] No Static Interface ready, Waiting...
+[12-Jun-22 15:52:24] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 15:52:24] No Static Interface ready, Waiting...
+[12-Jun-22 15:52:27] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 15:52:27] No Static Interface ready, Waiting...
+[12-Jun-22 15:52:33] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 15:52:33] No Static Interface ready, Waiting...
+[12-Jun-22 15:54:20] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 15:54:20] No Static Interface ready, Waiting...
+[12-Jun-22 15:58:51] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 15:58:51] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 15:58:51] Listening On: 192.168.5.10
+[12-Jun-22 15:58:55] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 15:59:13] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 15:59:13] Listening On: 192.168.5.10
+[12-Jun-22 16:07:55] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 16:08:15] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 16:08:15] Listening On: 192.168.5.10
+[12-Jun-22 16:25:00] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 16:27:55] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 16:29:15] Closing Network Connections...
+[12-Jun-22 16:29:15] Open DHCP Server Stopped !
+
+[12-Jun-22 16:29:21] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[12-Jun-22 16:29:21] Logging: Normal
+[12-Jun-22 16:29:21] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[12-Jun-22 16:29:21] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[12-Jun-22 16:29:21] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[12-Jun-22 16:29:21] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[12-Jun-22 16:29:21] Default Lease: 36000 (sec)
+[12-Jun-22 16:29:21] Server Name: TIC18-SAMPIEMOT
+[12-Jun-22 16:29:21] Detecting Static Interfaces..
+[12-Jun-22 16:29:21] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 16:29:21] Listening On: 192.168.5.10
+[12-Jun-22 16:29:30] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 17:23:39] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 17:37:01] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:02:40] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:02:44] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:02:54] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:03:18] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:08:17] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:08:21] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:09:02] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:09:05] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:09:08] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:09:11] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:10:06] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:10:46] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:11:11] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:13:05] IP Address 192.168.5.102 released by Host 8c:4b:14:c2:63:27 ()
+[12-Jun-22 18:13:05] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:13:22] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:13:30] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[12-Jun-22 18:28:10] Closing Network Connections...
+[12-Jun-22 18:28:10] Open DHCP Server Stopped !
+
+[12-Jun-22 18:28:12] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 19:54:08] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[12-Jun-22 19:54:08] Logging: Normal
+[12-Jun-22 19:54:09] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[12-Jun-22 19:54:09] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[12-Jun-22 19:54:09] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[12-Jun-22 19:54:09] Default Lease: 36000 (sec)
+[12-Jun-22 19:54:09] Server Name: TIC18-SAMPIEMOT
+[12-Jun-22 19:54:09] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[12-Jun-22 19:54:09] Detecting Static Interfaces..
+[12-Jun-22 19:54:09] Listening On: 192.168.5.10
+[12-Jun-22 19:54:09] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 19:54:10] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 19:54:30] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 19:54:31] Listening On: 192.168.5.10
+[12-Jun-22 19:56:07] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 19:56:12] Lease Status URL: http://127.0.0.1:6789
+[12-Jun-22 19:56:12] Listening On: 192.168.5.10
+[12-Jun-22 19:58:45] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 19:58:54] No Static Interface ready, Waiting...
+[12-Jun-22 23:42:48] Closing Network Connections...
+[12-Jun-22 23:42:48] Open DHCP Server Stopped !
+
+[12-Jun-22 23:42:50] Network changed, re-detecting Static Interfaces..
+[12-Jun-22 23:42:50] No Static Interface ready, Waiting...

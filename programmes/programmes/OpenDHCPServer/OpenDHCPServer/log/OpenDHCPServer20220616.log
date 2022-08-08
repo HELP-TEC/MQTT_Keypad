@@ -1,0 +1,123 @@
+[16-Jun-22 13:21:38] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[16-Jun-22 13:21:38] Logging: Normal
+[16-Jun-22 13:21:38] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[16-Jun-22 13:21:38] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[16-Jun-22 13:21:38] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[16-Jun-22 13:21:38] Default Lease: 36000 (sec)
+[16-Jun-22 13:21:38] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[16-Jun-22 13:21:38] Server Name: TIC18-SAMPIEMOT
+[16-Jun-22 13:21:38] Detecting Static Interfaces..
+[16-Jun-22 13:21:38] No Static Interface ready, Waiting...
+[16-Jun-22 13:21:40] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 13:21:40] No Static Interface ready, Waiting...
+[16-Jun-22 13:21:43] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 13:21:43] No Static Interface ready, Waiting...
+[16-Jun-22 13:21:47] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 13:21:47] No Static Interface ready, Waiting...
+[16-Jun-22 13:21:50] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 13:21:50] No Static Interface ready, Waiting...
+[16-Jun-22 13:23:36] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 13:23:36] No Static Interface ready, Waiting...
+[16-Jun-22 14:18:55] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 14:18:55] Lease Status URL: http://127.0.0.1:6789
+[16-Jun-22 14:18:55] Listening On: 192.168.5.10
+[16-Jun-22 14:21:11] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 14:21:17] No Static Interface ready, Waiting...
+[16-Jun-22 14:30:32] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 14:30:32] Lease Status URL: http://127.0.0.1:6789
+[16-Jun-22 14:30:32] Listening On: 192.168.5.10
+[16-Jun-22 14:38:30] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 14:47:39] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 14:55:01] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 15:07:58] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 15:08:51] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 15:09:47] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 15:10:46] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 15:16:56] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 15:17:08] No Static Interface ready, Waiting...
+[16-Jun-22 16:08:23] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 16:08:23] Lease Status URL: http://127.0.0.1:6789
+[16-Jun-22 16:08:23] Listening On: 192.168.5.10
+[16-Jun-22 16:08:38] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:09:02] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:11:54] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:12:06] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:12:16] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:17:50] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:21:31] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:28:00] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:28:18] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:30:01] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:30:14] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:30:21] Host 8c:4b:14:c2:63:27 (espressif) allotted 192.168.5.102 for 36000 seconds
+[16-Jun-22 16:47:13] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 19:09:15] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[16-Jun-22 19:09:15] Logging: Normal
+[16-Jun-22 19:09:15] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[16-Jun-22 19:09:15] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[16-Jun-22 19:09:15] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[16-Jun-22 19:09:15] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[16-Jun-22 19:09:15] Server Name: TIC18-SAMPIEMOT
+[16-Jun-22 19:09:15] Detecting Static Interfaces..
+[16-Jun-22 19:09:15] Default Lease: 36000 (sec)
+[16-Jun-22 19:09:15] No Static Interface ready, Waiting...
+[16-Jun-22 19:09:18] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 19:09:18] No Static Interface ready, Waiting...
+[16-Jun-22 19:09:21] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 19:09:21] No Static Interface ready, Waiting...
+[16-Jun-22 19:09:24] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 19:09:24] No Static Interface ready, Waiting...
+[16-Jun-22 19:09:27] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 19:09:27] No Static Interface ready, Waiting...
+[16-Jun-22 19:11:13] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 19:11:13] No Static Interface ready, Waiting...
+[16-Jun-22 20:01:12] Closing Network Connections...
+[16-Jun-22 20:01:12] Open DHCP Server Stopped !
+
+[16-Jun-22 20:09:18] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[16-Jun-22 20:09:18] Logging: Normal
+[16-Jun-22 20:09:18] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[16-Jun-22 20:09:18] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[16-Jun-22 20:09:18] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[16-Jun-22 20:09:18] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[16-Jun-22 20:09:18] Default Lease: 36000 (sec)
+[16-Jun-22 20:09:18] Server Name: TIC18-SAMPIEMOT
+[16-Jun-22 20:09:18] Detecting Static Interfaces..
+[16-Jun-22 20:09:18] No Static Interface ready, Waiting...
+[16-Jun-22 20:09:20] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 20:09:20] No Static Interface ready, Waiting...
+[16-Jun-22 20:09:23] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 20:09:23] No Static Interface ready, Waiting...
+[16-Jun-22 20:09:26] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 20:09:26] No Static Interface ready, Waiting...
+[16-Jun-22 20:09:29] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 20:09:29] No Static Interface ready, Waiting...
+[16-Jun-22 20:11:15] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 20:11:15] No Static Interface ready, Waiting...
+[16-Jun-22 20:34:27] Closing Network Connections...
+[16-Jun-22 20:34:27] Open DHCP Server Stopped !
+
+[16-Jun-22 20:34:29] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:25:10] Open DHCP Server Version 1.81 Windows Build 1055 (64bit) Starting...
+[16-Jun-22 21:25:10] Logging: Normal
+[16-Jun-22 21:25:10] Warning: No IP Address for DHCP Static Host 00:ff:a4:0e:ef:99 specified
+[16-Jun-22 21:25:10] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:03 specified
+[16-Jun-22 21:25:10] Detecting Static Interfaces..
+[16-Jun-22 21:25:10] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:01 specified
+[16-Jun-22 21:25:10] Warning: No IP Address for DHCP Static Host ff:00:27:78:7b:02 specified
+[16-Jun-22 21:25:10] Default Lease: 36000 (sec)
+[16-Jun-22 21:25:10] Server Name: TIC18-SAMPIEMOT
+[16-Jun-22 21:25:10] No Static Interface ready, Waiting...
+[16-Jun-22 21:25:14] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:25:14] No Static Interface ready, Waiting...
+[16-Jun-22 21:25:16] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:25:16] No Static Interface ready, Waiting...
+[16-Jun-22 21:25:17] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:25:17] No Static Interface ready, Waiting...
+[16-Jun-22 21:25:19] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:25:19] No Static Interface ready, Waiting...
+[16-Jun-22 21:25:21] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:25:21] No Static Interface ready, Waiting...
+[16-Jun-22 21:27:08] Network changed, re-detecting Static Interfaces..
+[16-Jun-22 21:27:08] No Static Interface ready, Waiting...
+Logging Continued on file C:\OpenDHCPServer\log\OpenDHCPServer20220617.log
