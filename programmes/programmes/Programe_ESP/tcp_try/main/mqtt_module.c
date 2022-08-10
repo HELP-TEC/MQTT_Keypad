@@ -32,7 +32,11 @@
 
 #include "esp_log.h"
 #include "mqtt_client.h"
+
+
 #include "mqtt_module.h"
+#include "config.h"
+
 #include <stdbool.h>
 
 #define DEBUG 0
@@ -52,6 +56,19 @@
 #define ERROR_FLAG 			0b01000000
 #define OTHER_FLAG 			0b10000000
 
+/*---------------------------------------------------------
+ * default config of the communication
+ -----------------------------------------------------------*/
+#if USE_CONFIGURATIONFILE != 1
+
+#define TOPIC_POTENTIOMETER "topic/potentiometer"
+#define TOPIC_BUTTON "topic/buttons"
+#define TOPIC_LED "topic/leds"
+
+#define USER "pannel1"
+#define PASS "itisnotagoodpasswordbutwhocarehaha1"
+
+#endif
 
 
 static EventGroupHandle_t xMQTTRecieveEventBits;
@@ -226,7 +243,7 @@ static void mqtt_app_start(void)
     esp_mqtt_client_config_t mqtt_cfg = {
             //.uri = CONFIG_BROKER_URL,
         		.username ="pannel1",
-    			.password="itisnotagoodpasswordbutwhocarehaha1",
+    			.password= PASS,
     			.port=1883,
     			.transport=MQTT_TRANSPORT_OVER_TCP,
     			.host="192.168.5.10"
@@ -282,7 +299,7 @@ void MQTT_Task(void *arg)
  * Suscribe to the led topic in the init
  *-----------------------------------------------------------------------------------------------------------------------------------*/
     do{
-		int msg_id = esp_mqtt_client_subscribe(client, "topic/leds", 2);
+		int msg_id = esp_mqtt_client_subscribe(client, TOPIC_LED, 2);
 #if DEBUG
 		ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
 #endif
@@ -314,7 +331,7 @@ void MQTT_Task(void *arg)
         		{
         		com_flags2=0;
         		    do{
-        				int msg_id = esp_mqtt_client_subscribe(client, "topic/leds", 2);
+        				int msg_id = esp_mqtt_client_subscribe(client, TOPIC_LED, 2);
         		#if DEBUG
         				ESP_LOGI(TAG, "sent resubscribe successful, msg_id=%d", msg_id);
         		#endif
@@ -341,7 +358,7 @@ void MQTT_Task(void *arg)
 							do{
 								com_flags3=0;
 								sprintf(str, "%d", i);
-								esp_mqtt_client_publish(client, "topic/buttons", str, 0, 1, 0);
+								esp_mqtt_client_publish(client, TOPIC_BUTTON , str, 0, 1, 0);
 #if DEBUG
 								ESP_LOGI(TAG, "publisch data");
 #endif
@@ -361,7 +378,7 @@ void MQTT_Task(void *arg)
 							do{
 								com_flags3=0;
 								sprintf(str, "%d", i);
-								esp_mqtt_client_publish(client, "topic/potentiometer", str, 0, 1, 0);
+								esp_mqtt_client_publish(client, TOPIC_POTENTIOMETER , str, 0, 1, 0);
 #if DEBUG
 								ESP_LOGI(TAG, "publisch data");
 #endif

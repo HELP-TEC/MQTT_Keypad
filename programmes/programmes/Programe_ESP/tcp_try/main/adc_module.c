@@ -89,6 +89,8 @@ static const adc_unit_t unit = ADC_UNIT_1;				//esp32 dont suport othe options m
  *
  * task that read the value of the potentiometer (with the esp adc) by pooling, process it, filter it, and then if the converted value that will be send further have changed will send it further (if not dont send anything)
  *
+ * @param arg FreeRTOS standard argument of a task
+ *
  *
  */
 void potentiometer_task(void *arg)

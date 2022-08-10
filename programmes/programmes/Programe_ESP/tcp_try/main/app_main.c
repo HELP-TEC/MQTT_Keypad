@@ -8,11 +8,20 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <stdbool.h>
+
+#include "config.h"
 #include "mqtt_module.h"
 #include "adc_module.h"
 #include "button_module.h"
 
 
+
+
+#if USE_CONFIGURATIONFILE != 1
+
+#define CONFIG_WITHOUT_POTENTIOMETER 0 //! config must be =1 if the pcb has no potentiometer connected
+
+#endif
 
 /*Tasks parameters*/
 #define GPIOIntPC_TASK_PRIO      4
@@ -49,8 +58,10 @@ void app_main(void)
     xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO, NULL, tskNO_AFFINITY);
     xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL, GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
     xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL, GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
-    xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL, POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
 
+#if    CONFIG_WITHOUT_POTENTIOMETER != 1
+    xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL, POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
+#endif
 
 
         while (1) {

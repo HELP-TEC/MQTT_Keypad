@@ -299,6 +299,7 @@ static void max_current_LED_test()
  * Each time the interrupt occurs this task will read the state of the button and send it to the task that need it
  * (the communication task that will send it to the plc will need it)
  *
+ *@param arg FreeRTOS standard argument of a task
  *
  */
 void GPIOIntPC_task(void *arg)
@@ -467,6 +468,8 @@ static void IRAM_ATTR isrHandler(void* arg){
  * @brief function of configuration for the handling the interrupt from the GPIO chips
  *
  * Configuration of the pin that will be bind to the isr  and creation of the flag group to communicate from the handler
+ *
+ *@param arg FreeRTOS standard argument of a task
  *
  */
 void Button_isr_config()
