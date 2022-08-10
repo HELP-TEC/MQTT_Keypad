@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{99e7149d-46c6-4b14-ab9e-5054eff706fb}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Pannel_1 :FB_Pannel;
+	input : INT;
+	output : INT;
+	potentiometre : INT;
+	
+	Pannel_2 :FB_Pannel;
+	input2 : INT;
+	output2 : INT;
+	potentiometre2 : INT;
+	
+	Pannel_3 :FB_Pannel;
+	input3 : INT;
+	output3 : INT;
+	potentiometre3 : INT;
+	
+	Pannel_4 :FB_Pannel;
+	input4 : INT;
+	output4 : INT;
+	potentiometre4 : INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+Pannel_1.Button_from_broker:=input;
+Pannel_2.Button_from_broker:=input2;
+Pannel_3.Button_from_broker:=input3;
+Pannel_4.Button_from_broker:=input4;
+
+Pannel_1();
+Pannel_2();
+Pannel_3();
+Pannel_4();
+
+output:=Pannel_1.LEDs_to_broker;
+output2:=Pannel_2.LEDs_to_broker;
+output3:=Pannel_3.LEDs_to_broker;
+output4:=Pannel_4.LEDs_to_broker;]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="23" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="2" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="35" Count="2" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
