@@ -1,8 +1,9 @@
-/*
- * mqtt_module.c
- *MQTT (over TCP)
- *  Created on: 6 mai 2022
- *      Author: PRO
+/**
+ * @file mqtt_module.c
+ * MQTT (over TCP)
+ * @date 6.03.2022
+ * Created on: 6 mai 2022
+ * @author Thibault Sampiemon
  */
 
 
@@ -55,9 +56,20 @@
 
 static EventGroupHandle_t xMQTTRecieveEventBits;
 
-
-
 static const char *TAG = "MQTT_EXAMPLE";
+
+
+/**
+ *  @fn static void log_error_if_nonzero(const char *message, int error_code)
+ *
+ *  @brief function log
+ *
+ *  function used to send log trough the serial interface
+ *
+ *  @param message message to send trough the serial interface (generaly common to all massages of the module)
+ *  @param error_code error code (mainly from mqtt event )
+ */
+
 static void log_error_if_nonzero(const char *message, int error_code)
 {
     if (error_code != 0) {
@@ -70,7 +82,9 @@ static void log_error_if_nonzero(const char *message, int error_code)
 esp_mqtt_client_handle_t client=NULL;
 
 
-/*
+/**
+ * @fn static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
+ *
  * @brief Event handler registered to receive MQTT events
  *
  *  This function is called by the MQTT client event loop.
@@ -197,6 +211,16 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
     }
 }
 
+
+/**
+ * @fn static void mqtt_app_start(void)
+ *
+ * @brief mqtt comunucation start
+ *
+ *  initializes the communication between the panel and the plc
+ *
+ */
+
 static void mqtt_app_start(void)
 {
     esp_mqtt_client_config_t mqtt_cfg = {
@@ -216,7 +240,15 @@ static void mqtt_app_start(void)
 }
 
 
-
+/**
+ * @fn void MQTT_Task(void *arg)
+ *
+ * @brief Freertos task that handle mqtt communication
+ *
+ *  this task manage communication between the pannel and the plc
+ *
+ * @param arg FreeRTOS standard argument of a task
+ */
 void MQTT_Task(void *arg)
 {
     int i=0;
@@ -347,7 +379,14 @@ void MQTT_Task(void *arg)
 
 
 
-
+/**
+ * @fn void MQTT_init()
+ *
+ * @brief initialize mqtt
+ *
+ *  this function initialize all the freertos communication artifacts, driver and material needed for the communication
+ *
+ */
 void MQTT_init()
 {
 gpio_pad_select_gpio(PIN_PHY_POWER);

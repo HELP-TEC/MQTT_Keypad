@@ -1,10 +1,11 @@
-/*
- * adc_module.h
- *
- *  Created on: 1 avr. 2022
- *      Author: PRO
- */
 
+/**
+ * @file adc_module.h
+ * MQTT (over TCP)
+ * @date 6.03.2022
+ * Created on: 6 mai 2022
+ * @author Thibault Sampiemon
+ */
 #ifndef ADC_MODULE_H_
 #define ADC_MODULE_H_
 

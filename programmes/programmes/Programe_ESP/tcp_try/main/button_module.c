@@ -1,8 +1,9 @@
-/*
- * button_mdule.c
- *
- *  Created on: 21 avr. 2022
- *      Author: PRO
+/**
+ * @file button_mdule.c
+ * MQTT (over TCP)
+ * @date 6.03.2022
+ * Created on: 6 mai 2022
+ * @author Thibault Sampiemon
  */
 
 
@@ -25,13 +26,13 @@
 //GPIOIntPC
 #define GPIOIntPC_INTERRUPT_0_BIT		( 1 << 0 )
 
-
+/*to activate debug function*/
 #define INTERNAL_LED_BUTTON_STATE_SYNCHRONISATION_TEST 0
 #define INTERNAL_LED_SNAKE_TEST 0
 #define INTERNAL_LED_CURRENT_TEST 0
-
-
 #define DEBUG 0
+
+
 
 /*i2c config*/
 #define I2C_MASTER_SCL_IO           GPIO_NUM_16      /*!< GPIO number used for I2C master clock */
@@ -41,11 +42,10 @@
 #define I2C_MASTER_TX_BUF_DISABLE   0                          /*!< I2C master doesn't need buffer */
 #define I2C_MASTER_RX_BUF_DISABLE   0                          /*!< I2C master doesn't need buffer */
 #define I2C_MASTER_TIMEOUT_MS       1000
+#define GPIO1_ADDR                 	0x20        /*!< Slave address of the GPIO BUTTON 1 add 0x20 (a0a1a2 = 000 pour le 1 et 100 pour le 2)*/
+#define GPIO2_ADDR          		0x21        /*!< Slave address of the GPIO BUTTON 2  add 0x21 (a0a1a2 = 001 pour le 1 et 100 pour le 2)*/
 
-#define GPIO1_ADDR                 0x20        /*!< Slave address of the GPIO BUTTON 1 add 0x20 (a0a1a2 = 000 pour le 1 et 100 pour le 2)*/
-#define GPIO2_ADDR          0x21        /*!< Slave address of the GPIO BUTTON 2  add 0x21 (a0a1a2 = 001 pour le 1 et 100 pour le 2)*/
-
-
+/*button position list electrical logic (button 1 on electrical schematic = BUTTON1)*/
 #define BUTTON5 0b11111101
 #define BUTTON6 0b11111011
 #define BUTTON8 0b10111111
@@ -55,6 +55,7 @@
 #define BUTTON3 0b11101111
 #define BUTTON4 0b11011111
 
+/*led position list electrical logic (led 1 on electrical schematic = LED1)*/
 #define LED8 0b01111111
 #define LED7 0b11101111
 #define LED6 0b11110111
@@ -66,14 +67,18 @@
 #define LED_CLEAR 0b11111111
 
 
-
+/**
+ * @struct typedef struct GPIOIntPC
+ *
+ * @brief used to communicate button activity from interupt
+ * */
 typedef struct GPIOIntPC {
-  uint8_t PIN;
-  uint32_t numberKeyPresses;
-  bool pressed;
+  uint8_t PIN;						/*!< pin number that take the interrupt*/
+  uint32_t numberKeyPresses;		/*!< number of activation */
+  bool pressed;						/*!< actual state of the input interupt (used to notify that the interrupt have been processed)*/
 }GPIOIntPC;
 
-static GPIOIntPC GPIOIntPC1 = {GPIO_NUM_32, 0, 0};
+static GPIOIntPC GPIOIntPC1 = {GPIO_NUM_32, 0, 0}; //var used for the communication as an init
 
 /* Use an event group to synchronise GPIOIntPC task and interrupt.  It is assumed this event
 group has already been created elsewhere. */
@@ -84,15 +89,35 @@ static EventGroupHandle_t xGPIO_LED_Button_Internal_synk;
 
 
 /**
+ *
+ * @fn static esp_err_t GPIO_register_read( uint8_t reg_addr, uint8_t *data, size_t len)
+ *
  * @brief Read a sequence of bytes from a GPIO BUTTON registers
+ *
+ * @param uint8_t reg_addr the address of the GPIO register that must be read
+ *
+ * @param uint8_t *data The variable to store the current value of this register
+ *
+ * @param number of byte that to read
+ *
  */
 static esp_err_t GPIO_register_read( uint8_t reg_addr, uint8_t *data, size_t len)
 {
     return i2c_master_read_from_device(I2C_MASTER_NUM, reg_addr, data, len, I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
 }
 
+
+
 /**
+ *
+ * @fn static esp_err_t GPIO_register_write_byte(uint8_t reg_addr, uint8_t data)
+ *
  * @brief Write a byte to a GPIO BUTTON register
+ *
+ * @param uint8_t reg_addr the address of the GPIO register that must be modified
+ *
+ * @param uint8_t *data The value to flash in this register
+ *
  */
 static esp_err_t GPIO_register_write_byte(uint8_t reg_addr, uint8_t data)
 {
@@ -105,6 +130,17 @@ static esp_err_t GPIO_register_write_byte(uint8_t reg_addr, uint8_t data)
 }
 
 #if DEBUG
+/**
+ *
+ * @fn static void debug_button_GPIO1(int val)
+ *
+ * @brief function for debugging
+ *
+ * it will send the button state trough the serial interface
+ *
+ * @param int val value tha comme from reading the GPIO1 registers
+ *
+ */
 static void debug_button_GPIO1(int val)
 {
 	//printf("%d",val);
@@ -121,7 +157,17 @@ static void debug_button_GPIO1(int val)
 }
 #endif
 
-
+/**
+ *
+ * @fn static uint8_t convert_button_GPIO1(int val)
+ *
+ * @brief function for converting values comming from GPIO1 into electrical logic values
+ *
+ * it will transform the value of the GPIOs input in an understable (electrical logic) value
+ *
+ * @param int val value tha comme from reading the GPIO1 registers
+ *
+ */
 static uint8_t convert_button_GPIO1(int val)
 {
 	//printf("%d",val);
@@ -141,6 +187,17 @@ static uint8_t convert_button_GPIO1(int val)
 }
 
 #if DEBUG
+/**
+ *
+ * @fn static void debug_button_GPIO2(int val)
+ *
+ * @brief function for debugging
+ *
+ * it will send the button state trough the serial interface
+ *
+ * @param int val value tha comme from reading the GPIO2 registers
+ *
+ */
 static void debug_button_GPIO2(int val)
 {
 
@@ -157,6 +214,18 @@ static void debug_button_GPIO2(int val)
 }
 #endif
 
+
+/**
+ *
+ * @fn static uint8_t convert_button_GPIO2(int val)
+ *
+ * @brief function for converting values comming from GPIO2 into electrical logic values
+ *
+ * it will transform the value of the GPIOs input in an understable (electrical logic) value
+ *
+ * @param int val value tha comme from reading the GPIO1 registers
+ *
+ */
 static uint8_t convert_button_GPIO2(int val)
 {
 
@@ -172,6 +241,16 @@ static uint8_t convert_button_GPIO2(int val)
 		r_value =0x0;
 	return r_value;
 }
+
+/**
+ *
+ * @fn static void debug_LED()
+ *
+ * @brief function for debugging led
+ *
+ * make a snake animation by lightning each led one after another
+ *
+ */
 static void debug_LED()
 {
 	vTaskDelay(pdMS_TO_TICKS(1000));
@@ -194,6 +273,15 @@ static void debug_LED()
 	ESP_ERROR_CHECK(GPIO_register_write_byte(GPIO2_ADDR ,LED2));
 }
 
+/**
+ *
+ * @fn static void max_current_LED_test()
+ *
+ * @brief to test the max current win a normal use of the panel
+ *
+ * light all the LED up (the probability that all the leds are lightened at the same time is very low
+ *
+ */
 static void max_current_LED_test()
 {
 	ESP_ERROR_CHECK(GPIO_register_write_byte(GPIO1_ADDR ,LED5 & LED6 &LED7 & LED8));
@@ -203,8 +291,16 @@ static void max_current_LED_test()
 
 
 /**
-*@brief GPIO reading task. Each time the interrupt occurse this task will read the state of the button
-*/
+ *
+ * @fn void GPIOIntPC_task(void *arg)
+ *
+ * @brief GPIO reading task.
+ *
+ * Each time the interrupt occurs this task will read the state of the button and send it to the task that need it
+ * (the communication task that will send it to the plc will need it)
+ *
+ *
+ */
 void GPIOIntPC_task(void *arg)
 {
 	int i=0;
@@ -260,7 +356,17 @@ void GPIOIntPC_task(void *arg)
     }
 }
 
-
+/**
+ *
+ * @fn void GPIOwrite_task(void *arg)
+ *
+ * @brief GPIO writing task.
+ *
+ * This task will wait a message that ask to change the state of the leds and will change it accordingly
+ * (the communication task that will send it to the plc will send change to do on the led state)
+ *
+ *
+ */
 void GPIOwrite_task(void *arg)
 {
 	EventBits_t Button_State=0;
@@ -325,6 +431,18 @@ void GPIOwrite_task(void *arg)
 	}
 }
 
+
+/**
+ *
+ * @fn static void IRAM_ATTR isrHandler(void* arg)
+ *
+ * @brief handler of the interrupt that will be generated by the GPIO
+ *
+ * each time one of the gpio will activate the interrupt this function will send a flag and update the state on the struct
+ *
+ * @param int val value tha comme from reading the GPIO1 registers
+ *
+ */
 static void IRAM_ATTR isrHandler(void* arg){
   GPIOIntPC1.numberKeyPresses += 1;
   GPIOIntPC1.pressed = 1;
@@ -342,6 +460,15 @@ static void IRAM_ATTR isrHandler(void* arg){
 
 }
 
+/**
+ *
+ * @fn void Button_isr_config()
+ *
+ * @brief function of configuration for the handling the interrupt from the GPIO chips
+ *
+ * Configuration of the pin that will be bind to the isr  and creation of the flag group to communicate from the handler
+ *
+ */
 void Button_isr_config()
 {
 
@@ -370,8 +497,16 @@ void Button_isr_config()
 
 }
 
+
+
 /**
+ *
+ * @fn static esp_err_t i2c_master_init(void)
+ *
  * @brief i2c master initialization
+ *
+ * will initialize all the i2c communications with the GPIOs
+ *
  */
 static esp_err_t i2c_master_init(void)
 {
@@ -391,11 +526,29 @@ static esp_err_t i2c_master_init(void)
     return i2c_driver_install(i2c_master_port, conf.mode, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0);
 }
 
+/**
+ *
+ * @fn void Button_i2c_config()
+ *
+ * @brief i2c master configuration
+ *
+ * will configure the i2c communication for the esp to be the master
+ *
+ */
 void Button_i2c_config()
 {
     ESP_ERROR_CHECK(i2c_master_init());
 }
 
+/**
+ *
+ * @fn void Button_i2c_delte()
+ *
+ * @brief i2c driver erasing
+ *
+ * will delete the i2c driver
+ *
+ */
 void Button_i2c_delte()
 {
 ESP_ERROR_CHECK(i2c_driver_delete(I2C_MASTER_NUM));

@@ -1,8 +1,11 @@
-/*
- * button_module.h
- *
- *  Created on: 21 avr. 2022
- *      Author: PRO
+
+
+/**
+ * @file button_module.h
+ * MQTT (over TCP)
+ * @date 6.03.2022
+ * Created on: 6 mai 2022
+ * @author Thibault Sampiemon
  */
 
 #ifndef MAIN_BUTTON_MODULE_H_

@@ -1,8 +1,10 @@
-/*
- * adc_module.c
- *
- *  Created on: 21 avr. 2022
- *      Author: PRO
+
+/**
+ * @file adc_module.c
+ * MQTT (over TCP)
+ * @date 6.03.2022
+ * Created on: 6 mai 2022
+ * @author Thibault Sampiemon
  */
 
 #include <stdio.h>
@@ -77,6 +79,18 @@ static const adc_atten_t atten = ADC_ATTEN_DB_11;       //input voltage of ADC w
 static const adc_unit_t unit = ADC_UNIT_1;				//esp32 dont suport othe options must be ADC_UNIT_1
 
 
+
+/**
+ *
+ * @fn void potentiometer_task(void *arg)
+ *
+ * @brief potentiometer value reading task
+ *
+ *
+ * task that read the value of the potentiometer (with the esp adc) by pooling, process it, filter it, and then if the converted value that will be send further have changed will send it further (if not dont send anything)
+ *
+ *
+ */
 void potentiometer_task(void *arg)
 {
 	 //Characterize ADC
@@ -145,6 +159,16 @@ void potentiometer_task(void *arg)
 	    }
 
 }
+
+/**
+ *  @fn void potentiometer_config()
+ *
+ *  @brief potentiometer configuration
+ *
+ *  configure the adc for the potentiometer reading
+ *
+ *
+ */
 
 void potentiometer_config()
 {
