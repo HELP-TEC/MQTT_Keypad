@@ -11,20 +11,20 @@
 /*-----------------------------------------------------------------------
  * config file options
  * --------------------------------------------------------------------*/
-#define USE_CONFIGURATIONFILE 1 //! use the config file instead of the default config
+#define USE_CONFIGURATIONFILE 1 //!< use the config file instead of the default config
 
 
 
 /*-----------------------------------------------------------------------
  * MQTT communication options
  * --------------------------------------------------------------------*/
-#define TOPIC_POTENTIOMETER "topic/potentiometer"  //! topic where the embedded module will publish the potentiometer value ex:"topic/potentiometer4"
-#define TOPIC_BUTTON "topic/buttons"  //! topic where the embedded module will publish the buttons value ex:"topic/buttons4"
-#define TOPIC_LED "topic/leds"  //! topic that embedded module will subscribe to receive the LEDs value ex:"topic/leds4"
+#define TOPIC_POTENTIOMETER "topic/potentiometer"  //!< topic where the embedded module will publish the potentiometer value ex:"topic/potentiometer4"
+#define TOPIC_BUTTON "topic/buttons"  //!< topic where the embedded module will publish the buttons value ex:"topic/buttons4"
+#define TOPIC_LED "topic/leds"  //!< topic that embedded module will subscribe to receive the LEDs value ex:"topic/leds4"
 
 
-#define USER "pannel1" //! username for the connection to the broker
-#define PASS "itisnotagoodpasswordbutwhocarehaha1" //! password for the connection to the broker
+#define USER "pannel1" //!< username for the connection to the broker
+#define PASS "itisnotagoodpasswordbutwhocarehaha1" //!< password for the connection to the broker
 
 /*-----------------------------------------------------------------------
  * PCB options
