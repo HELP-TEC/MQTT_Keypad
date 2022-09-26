@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_Pannel" Id="{85367e3c-9e6b-464c-bebc-b3f9f0ff2101}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Pannel
+VAR_INPUT
+	Button_from_broker : INT;
+	Potentiometre_from_broker : INT;
+END_VAR
+VAR_OUTPUT
+	LEDs_to_broker : INT;
+	Potentiometer :INT;
+	Button: ARRAY [1..8] OF BOOL;
+END_VAR
+VAR
+	I: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[LEDs_to_broker:=Button_from_broker;
+Potentiometer:=Potentiometre_from_broker;
+FOR I:=0 TO 7 DO
+	IF (SHL(1, I) AND Button_from_broker) = SHL(1, I) THEN
+		Button[I+1]:= TRUE ;
+	END_IF
+END_FOR
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Pannel">
+      <LineId Id="9" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="28" Count="1" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="23" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
