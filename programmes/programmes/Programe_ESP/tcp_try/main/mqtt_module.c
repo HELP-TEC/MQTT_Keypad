@@ -36,7 +36,7 @@
 
 #include <stdbool.h>
 
-#define DEBUG 0
+#define DEBUG 1
 
 #define	PIN_PHY_POWER	GPIO_NUM_12 //!< pin to power on the phy..mac controller of the olimex board
 
@@ -228,7 +228,7 @@ static void mqtt_app_start(void) {
 	esp_mqtt_client_config_t mqtt_cfg = {
 	//.uri = CONFIG_BROKER_URL,
 			.username = "pannel1", .password = PASS, .port = 1883, .transport =
-					MQTT_TRANSPORT_OVER_TCP, .host = "192.168.5.10" };
+					MQTT_TRANSPORT_OVER_TCP, .host = "192.168.90.192" }; // TODO : config
 
 	client = esp_mqtt_client_init(&mqtt_cfg);
 	/* The last argument may be used to pass data to the event handler, in this example mqtt_event_handler */
@@ -263,7 +263,7 @@ void MQTT_Task(void *arg) {
 	com_flags2 = xEventGroupWaitBits(xMQTTRecieveEventBits, CONECTED_FLAG,
 			pdFALSE, pdFALSE, pdMS_TO_TICKS(4000));
 	while ((com_flags2 & CONECTED_FLAG) != CONECTED_FLAG) {
-		MQTT_init();
+		//MQTT_init();
 		com_flags2 = xEventGroupWaitBits(xMQTTRecieveEventBits, CONECTED_FLAG,
 				pdFALSE, pdFALSE, pdMS_TO_TICKS(4000));
 	}
@@ -297,7 +297,7 @@ void MQTT_Task(void *arg) {
 			ERROR_FLAG); /* The bits being reset. */
 			com_flags2 = 0;
 			do {
-				MQTT_init();
+				//MQTT_init();
 				com_flags = xEventGroupWaitBits(xMQTTRecieveEventBits,
 						CONECTED_FLAG, pdFALSE, pdFALSE, pdMS_TO_TICKS(4000));
 			} while ((com_flags2 & CONECTED_FLAG) != CONECTED_FLAG);

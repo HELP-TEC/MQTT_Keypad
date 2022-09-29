@@ -13,6 +13,7 @@
 #include "mqtt_module.h"
 #include "adc_module.h"
 #include "button_module.h"
+#include "storage_module.h"
 
 #if USE_CONFIGURATIONFILE != 1
 
@@ -39,23 +40,25 @@ void app_main(void) {
 	vTaskDelay(pdMS_TO_TICKS(100));
 
 	//config peripherals
-	potentiometer_config();
-	Button_isr_config();
-	Button_i2c_config();
-	MQTT_init();
+	printf("début");
+	Storage_init();
+// 	potentiometer_config();
+// 	Button_isr_config();
+// 	Button_i2c_config();
+// 	MQTT_init();
 
-	//Task creation
-	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
-			NULL, tskNO_AFFINITY);
-	xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL,
-			GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
-	xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL,
-			GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
+// 	//Task creation
+// 	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
+// 			NULL, tskNO_AFFINITY);
+// 	xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL,
+// 			GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
+// 	xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL,
+// 			GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
 
-#if    CONFIG_WITHOUT_POTENTIOMETER != 1
-	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
-			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
-#endif
+// #if    CONFIG_WITHOUT_POTENTIOMETER != 1
+// 	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
+// 			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
+// #endif
 
 	while (1) {
 		vTaskDelay(pdMS_TO_TICKS(1000));

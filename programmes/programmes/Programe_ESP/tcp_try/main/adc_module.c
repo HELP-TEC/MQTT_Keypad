@@ -157,7 +157,7 @@ void potentiometer_task(void *arg) {
 			}
 		}
 		//--------------------------------------------------------------------------------------
-
+		
 		vTaskDelay(pdMS_TO_TICKS(c_SAMPLING_TIME_CONST));
 	}
 

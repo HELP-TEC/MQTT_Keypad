@@ -34,7 +34,8 @@ def on_message(client, userdata, message):
         plc.write_by_name(var_button_plc,int(a))#int.from_bytes(a,"little"))
     #si c'est la valeur du potentiomètre réécrire sur le plc sur output
     if (message.topic == topic_potentiometer):
-        plc.write_by_name(var_potentiometer_plc,int(a))
+        plc.write_by_name(var_potentiometer_plc,int(a)) 
+    
 
 #prévien lors d'une déconexion
 def on_disconnect(client, userdata, rc):
