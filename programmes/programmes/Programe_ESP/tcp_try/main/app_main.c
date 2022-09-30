@@ -22,6 +22,7 @@
 #endif
 
 /*Tasks parameters*/
+#define NVS_CONFIG_TASK_PRIO 5		//!< the priority of the task that configure the storage with the json file
 #define GPIOIntPC_TASK_PRIO 4 		//!< the priority of the task that interpret the values from the gpio
 #define POTENTIOMETER_TASK_PRIO 3	//!< the priority of the task that sample the value coming from the potentiometer with the adc
 #define GPIOWRITE_TASK_PRIO 2		//!< the priority of the task that update the LEDs
@@ -40,8 +41,7 @@ void app_main(void) {
 	vTaskDelay(pdMS_TO_TICKS(100));
 
 	//config peripherals
-	printf("début");
-	Storage_init();
+
 // 	potentiometer_config();
 // 	Button_isr_config();
 // 	Button_i2c_config();
@@ -59,6 +59,8 @@ void app_main(void) {
 // 	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
 // 			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
 // #endif
+	xTaskCreatePinnedToCore(NVS_config_task, "NVS_config_task", 2048, NULL, 
+			NVS_CONFIG_TASK_PRIO, NULL, tskNO_AFFINITY);
 
 	while (1) {
 		vTaskDelay(pdMS_TO_TICKS(1000));

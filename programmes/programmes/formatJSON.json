@@ -4,7 +4,7 @@
 		"MQTT_username":"DefaultName",
 		"Password":"DefaultPassword",
 		"IP":"192.168.90.192",
-		"Broker port":"1883",
+		"Broker_port":"1883",
 		"Topic1":"DefaultTopic"
 	}
 }

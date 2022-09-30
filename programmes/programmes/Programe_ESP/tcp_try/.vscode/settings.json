@@ -9,7 +9,10 @@
     "files.associations": {
         "stdio.h": "c",
         "storage_module.h": "c",
-        "config.h": "c"
+        "config.h": "c",
+        "stdbool.h": "c",
+        "mqtt_module.h": "c"
     },
-    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled"
 }
