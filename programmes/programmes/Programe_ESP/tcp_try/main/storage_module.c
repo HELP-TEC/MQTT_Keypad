@@ -7,15 +7,18 @@
  */
 #include "config.h"
 //#include "storage_module.h"
-/**
- * @fn void storage_init()
- *
- * @brief initialize NVS
- *
- *  initialize NVS with a json file for the MQTT configuration parameters
- *
- */
 
+#define DEBUG 1
+
+/**
+ * @fn void NVS_config_task(void *arg)
+ *
+ * @brief Freertos task that configure MQTT parameters
+ *
+ *  this task allow the MQTT configuration from a software through uart
+ *
+ * @param arg FreeRTOS standard argument of a task
+ */
 static const char *TAG = "STORAGE TEST";
 void NVS_config_task(void *arg)
 {
@@ -40,32 +43,60 @@ void NVS_config_task(void *arg)
     ESP_ERROR_CHECK(uart_set_pin(CONFIG_UART_PORT_NUM, CONFIG_TEST_TXD, CONFIG_TEST_RXD, CONFIG_TEST_RTS, CONFIG_TEST_CTS));
 
     // Configure a temporary buffer for the incoming data
-    uint8_t *data = (uint8_t *) malloc(BUF_SIZE);
+    uint8_t *data;
+    uint8_t *header = (uint8_t *) malloc(3);
     uint16_t size;
+    nvs_handle_t my_handle;
+    esp_err_t err;
+     cJSON *root, *pnl_cfg_args;
+	 root = cJSON_CreateObject();
+	//cJSON_Delete(root);
     while (1) {
         // Read data from the UART
-        int len = uart_read_bytes(CONFIG_UART_PORT_NUM, data, (BUF_SIZE - 1), 20 / portTICK_PERIOD_MS);
-        //uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, len);
-
+        int len =uart_read_bytes(CONFIG_UART_PORT_NUM, header, (3), 20 / portTICK_PERIOD_MS);
         if(len)
         {
-            uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) &data[0], 1);
-            uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) &data[1], 1);
-            size = (data[1]<<8) + data[2];
-            if(data[0]==WRITE_COMMAND)
+            size = (header[1]<<8)+(header[2]);
+            data= (uint8_t *) malloc(size);
+            if(header[0]==WRITE_COMMAND)
             {
-                size = (data[2]<<8)+data[1];
-                for(int k=1;k<size;k++)
-                {
-                    uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) &data[2+k], 1);
-                }
+                uart_read_bytes(CONFIG_UART_PORT_NUM, data, size, 20 / portTICK_PERIOD_MS);
+                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
+                err = nvs_set_u16(my_handle, "MQTTsize",&size);
+                err = nvs_set_str(my_handle, "MQTTstr",(const char *)data);
+                err = nvs_commit(my_handle);
+                nvs_close(my_handle);
+                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size);
             }
             else
             {
-
+                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
+                err = nvs_get_u16(my_handle, "MQTTsize", &size);
+                err = nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
+                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, strlen((const char *) data));
+                nvs_close(my_handle);
             }
         }
-        // Write data back to the UART
-        
     }
+}
+
+/**
+ * @fn void storage_init()
+ *
+ * @brief initialize NVS
+ *
+ *  initialize NVS with for the json file for the MQTT configuration parameters
+ *
+ */
+void storage_init(void)
+{
+    // Initialize NVS
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        // NVS partition was truncated and needs to be erased
+        // Retry nvs_flash_init
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK( err );
 }

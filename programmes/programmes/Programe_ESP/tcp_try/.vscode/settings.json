@@ -11,7 +11,8 @@
         "storage_module.h": "c",
         "config.h": "c",
         "stdbool.h": "c",
-        "mqtt_module.h": "c"
+        "mqtt_module.h": "c",
+        "type_traits": "c"
     },
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "C_Cpp.errorSquiggles": "Disabled"

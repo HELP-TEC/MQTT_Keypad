@@ -15,7 +15,7 @@ import json
 
 # root_config window
 root_config = tk.Tk()
-root_config.geometry("500x300")
+root_config.geometry("400x300")
 root_config.resizable(False, False)
 root_config.title('Pannel configuration')
 
@@ -119,27 +119,38 @@ def Com_port_read():
     ser = serial.Serial(port= serial_name, baudrate=115200,timeout=1) 
     ser.close()
     ser.open()
+    ser.write(chr(1).encode('latin_1'))
+    print(ser.read(1024))
     ser.close()
-    print(1)
 
 def Com_port_write(usr,pswd,pannel_ip,port,MQTT_topic):
     ser = serial.Serial(port= serial_name, baudrate=115200,timeout=1)
     ser.close()
     ser.open()
-    payloadsize = len(usr)+len(pswd)+len(pannel_ip)+len(port)+1*len(MQTT_topic)
-    print(payloadsize)
+    dic_to_write = {'pannel_config_args': {'MQTT_username': usr,
+                                           'Password': pswd,
+                                           'IP': pannel_ip,
+                                           'Broker_port':port,
+                                           'Topic1':MQTT_topic}}
+    data_to_write = json.dumps(dic_to_write,indent=4, 
+                      separators=(',', ': '),
+                      ensure_ascii=True)
+    payloadsize = len(data_to_write)
     if(payloadsize>255):
         [p1,p2] = int_to_bytes(payloadsize)
         print('p1 , p2',p1,p2)
-        globalstr = chr(0).encode('latin_1')+chr(p1).encode('latin_1')+chr(p2).encode('latin_1')+usr.encode('latin_1')+pswd.encode('latin_1')+pannel_ip.encode('latin_1')+port.encode('latin_1')+MQTT_topic.encode()
+        globalstr = chr(0).encode('latin_1')+chr(p1).encode('latin_1')+chr(p2).encode('latin_1')+data_to_write.encode('latin_1')
     else:
-        globalstr = chr(0).encode('latin_1')+chr(0).encode('latin_1')+chr(payloadsize).encode('latin_1')+usr.encode('latin_1')+pswd.encode('latin_1')+pannel_ip.encode('latin_1')+port.encode('latin_1')+MQTT_topic.encode()
+        globalstr = chr(0).encode('latin_1')+chr(0).encode('latin_1')+chr(payloadsize).encode('latin_1')+data_to_write.encode('latin_1')
+    print(payloadsize)
+    print('-------------------------')
+    print(data_to_write)
+    print('-------------------------')
     print(globalstr)
     print('-------------------------')
     ser.write(globalstr)
-    print(ser.read(payloadsize+2))
+    print(ser.read(payloadsize))
     ser.close()
-
 # frame
 interface_config = ttk.Frame(root_config)
 interface_config.pack(padx=10, pady=10, fill='x', expand=False)
@@ -190,13 +201,19 @@ config_button = ttk.Button(interface_config, text="Configuration", command=start
 config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
 
 # Entry with the COM port detected
-texte = tk.Entry(interface_config)
+texte = tk.Entry(interface_config,width=10)
 texte.insert(0,serial_name)
 texte.config(state=DISABLED)
 texte.pack(side=RIGHT)
 
+# Read button 
+Path_button = ttk.Button(interface_config, text="Read Config", command=Com_port_read)
+Path_button.pack(side = RIGHT)
+
 # Path button
 Path_button = ttk.Button(interface_config, text="...", command=open_window_file_path)
 Path_button.pack(side = RIGHT)
+
+
 
 root_config.mainloop()

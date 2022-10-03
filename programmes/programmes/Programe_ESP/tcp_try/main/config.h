@@ -40,6 +40,12 @@
 #include "driver/gpio.h"
 #include "sdkconfig.h"
 #include "esp_log.h"
+#include "cJSON.h"
+#include <string.h>
+#include <stdio.h>
+#include "esp_system.h"
+#include "nvs_flash.h"
+#include "nvs.h"
 //----------------------------------------------------------
 // Defines
 //----------------------------------------------------------
@@ -63,5 +69,6 @@
 // Prototypes
 //----------------------------------------------------------
 void NVS_config_task(void *arg);
+void storage_init();
 
 #endif /* MAIN_CONFIG_H_ */

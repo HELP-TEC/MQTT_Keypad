@@ -46,6 +46,7 @@ void app_main(void) {
 // 	Button_isr_config();
 // 	Button_i2c_config();
 // 	MQTT_init();
+	storage_init();
 
 // 	//Task creation
 // 	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
