@@ -68,7 +68,7 @@
 //----------------------------------------------------------
 // Prototypes
 //----------------------------------------------------------
-void NVS_config_task(void *arg);
+void NVS_RW_task(void *arg);
 void storage_init();
 
 #endif /* MAIN_CONFIG_H_ */

@@ -22,7 +22,7 @@
 #endif
 
 /*Tasks parameters*/
-#define NVS_CONFIG_TASK_PRIO 5		//!< the priority of the task that configure the storage with the json file
+#define NVS_RW_TASK_PRIO 5		//!< the priority of the task that configure the storage with the json file
 #define GPIOIntPC_TASK_PRIO 4 		//!< the priority of the task that interpret the values from the gpio
 #define POTENTIOMETER_TASK_PRIO 3	//!< the priority of the task that sample the value coming from the potentiometer with the adc
 #define GPIOWRITE_TASK_PRIO 2		//!< the priority of the task that update the LEDs
@@ -42,26 +42,26 @@ void app_main(void) {
 
 	//config peripherals
 
-// 	potentiometer_config();
-// 	Button_isr_config();
-// 	Button_i2c_config();
-// 	MQTT_init();
+	potentiometer_config();
+	Button_isr_config();
+	Button_i2c_config();
+	MQTT_init();
 	storage_init();
 
-// 	//Task creation
-// 	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
-// 			NULL, tskNO_AFFINITY);
-// 	xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL,
-// 			GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
-// 	xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL,
-// 			GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
+	//Task creation
+	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
+			NULL, tskNO_AFFINITY);
+	xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL,
+			GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
+	xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL,
+			GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
 
-// #if    CONFIG_WITHOUT_POTENTIOMETER != 1
-// 	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
-// 			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
-// #endif
-	xTaskCreatePinnedToCore(NVS_config_task, "NVS_config_task", 2048, NULL, 
-			NVS_CONFIG_TASK_PRIO, NULL, tskNO_AFFINITY);
+#if    CONFIG_WITHOUT_POTENTIOMETER != 1
+	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
+			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
+#endif
+	xTaskCreatePinnedToCore(NVS_RW_task, "NVS_RW_task", 2048, NULL, 
+			NVS_RW_TASK_PRIO, NULL, tskNO_AFFINITY);
 
 	while (1) {
 		vTaskDelay(pdMS_TO_TICKS(1000));

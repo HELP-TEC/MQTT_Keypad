@@ -423,7 +423,6 @@ esp_log_level_set("OUTBOX", ESP_LOG_VERBOSE);
 	 * examples/protocols/README.md for more information about this function.
 	 */
 	ESP_ERROR_CHECK(example_connect());
-
 	mqtt_app_start();
 }
 

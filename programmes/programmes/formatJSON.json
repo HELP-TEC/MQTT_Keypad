@@ -2,9 +2,10 @@
     "pannel_config_args" : 
 	{
 		"MQTT_username":"DefaultName",
-		"Password":"DefaultPassword",
-		"IP":"192.168.90.192",
-		"Broker_port":"1883",
-		"Topic1":"DefaultTopic"
+		"password":"DefaultPassword",
+		"ip":"192.168.90.192",
+		"broker_port":"1883",
+		"topic0":"DefaultTopic1",
+		"topic1":"DefaultTopic2"
 	}
 }

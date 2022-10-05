@@ -11,7 +11,7 @@
 #define DEBUG 1
 
 /**
- * @fn void NVS_config_task(void *arg)
+ * @fn void NVS_RW_task(void *arg)
  *
  * @brief Freertos task that configure MQTT parameters
  *
@@ -20,7 +20,7 @@
  * @param arg FreeRTOS standard argument of a task
  */
 static const char *TAG = "STORAGE TEST";
-void NVS_config_task(void *arg)
+void NVS_RW_task(void *arg)
 {
     /* Configure parameters of an UART driver,
      * communication pins and install the driver */
@@ -47,7 +47,6 @@ void NVS_config_task(void *arg)
     uint8_t *header = (uint8_t *) malloc(3);
     uint16_t size;
     nvs_handle_t my_handle;
-    esp_err_t err;
      cJSON *root, *pnl_cfg_args;
 	 root = cJSON_CreateObject();
 	//cJSON_Delete(root);
@@ -61,18 +60,17 @@ void NVS_config_task(void *arg)
             if(header[0]==WRITE_COMMAND)
             {
                 uart_read_bytes(CONFIG_UART_PORT_NUM, data, size, 20 / portTICK_PERIOD_MS);
-                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
-                err = nvs_set_u16(my_handle, "MQTTsize",&size);
-                err = nvs_set_str(my_handle, "MQTTstr",(const char *)data);
-                err = nvs_commit(my_handle);
+                nvs_open("nvs", NVS_READWRITE, &my_handle);
+                nvs_set_u16(my_handle, "MQTTsize",&size);
+                nvs_set_str(my_handle, "MQTTstr",(const char *)data);
+                nvs_commit(my_handle);
                 nvs_close(my_handle);
-                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size);
             }
             else
             {
-                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
-                err = nvs_get_u16(my_handle, "MQTTsize", &size);
-                err = nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
+                nvs_open("nvs", NVS_READWRITE, &my_handle);
+                nvs_get_u16(my_handle, "MQTTsize", &size);
+                nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
                 uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, strlen((const char *) data));
                 nvs_close(my_handle);
             }
