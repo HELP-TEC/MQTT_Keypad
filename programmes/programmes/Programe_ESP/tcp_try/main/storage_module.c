@@ -60,8 +60,8 @@ void NVS_RW_task(void *arg)
             if(header[0]==WRITE_COMMAND)
             {
                 uart_read_bytes(CONFIG_UART_PORT_NUM, data, size, 20 / portTICK_PERIOD_MS);
-                nvs_open("nvs", NVS_READWRITE, &my_handle);
-                nvs_set_u16(my_handle, "MQTTsize",&size);
+                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
+                nvs_set_u16(my_handle, "MQTTsize",size);
                 nvs_set_str(my_handle, "MQTTstr",(const char *)data);
                 nvs_commit(my_handle);
                 nvs_close(my_handle);
@@ -71,7 +71,7 @@ void NVS_RW_task(void *arg)
                 nvs_open("nvs", NVS_READWRITE, &my_handle);
                 nvs_get_u16(my_handle, "MQTTsize", &size);
                 nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
-                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, strlen((const char *) data));
+                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size);
                 nvs_close(my_handle);
             }
         }

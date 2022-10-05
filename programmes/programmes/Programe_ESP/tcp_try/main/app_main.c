@@ -42,24 +42,24 @@ void app_main(void) {
 
 	//config peripherals
 
-	potentiometer_config();
-	Button_isr_config();
-	Button_i2c_config();
-	MQTT_init();
+	// potentiometer_config();
+	// Button_isr_config();
+	// Button_i2c_config();
+	// MQTT_init();
 	storage_init();
 
 	//Task creation
-	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
-			NULL, tskNO_AFFINITY);
-	xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL,
-			GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
-	xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL,
-			GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
+// 	xTaskCreatePinnedToCore(MQTT_Task, "MQTT_Task", 2048, NULL, MQTT_TASK_PRIO,
+// 			NULL, tskNO_AFFINITY);
+// 	xTaskCreatePinnedToCore(GPIOIntPC_task, "GPIOIntPC_task", 2048, NULL,
+// 			GPIOIntPC_TASK_PRIO, NULL, tskNO_AFFINITY);
+// 	xTaskCreatePinnedToCore(GPIOwrite_task, "GPIOwrite_task", 2048, NULL,
+// 			GPIOWRITE_TASK_PRIO, NULL, tskNO_AFFINITY);
 
-#if    CONFIG_WITHOUT_POTENTIOMETER != 1
-	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
-			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
-#endif
+// #if    CONFIG_WITHOUT_POTENTIOMETER != 1
+// 	xTaskCreatePinnedToCore(potentiometer_task, "potar_task", 2048, NULL,
+// 			POTENTIOMETER_TASK_PRIO, NULL, tskNO_AFFINITY);
+// #endif
 	xTaskCreatePinnedToCore(NVS_RW_task, "NVS_RW_task", 2048, NULL, 
 			NVS_RW_TASK_PRIO, NULL, tskNO_AFFINITY);
 
