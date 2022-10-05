@@ -175,13 +175,15 @@ def Com_port_read():
         ser.close()
         ser.open()
         ser.write(chr(1).encode('latin_1'))
-        esp_config=ser.read(1024)#.decode('latin_1')
+        esp_config=ser.read(1024)
         print(esp_config)
-        esp_config=esp_config[0:len(esp_config)-1]
+        esp_config=esp_config.decode('latin_1')
+        print(esp_config)
+        esp_config=esp_config[0:len(esp_config)]
         current_config = open('current_config.json','w')
-        # jsondic = json.loads(esp_config)
-        # json.dump(jsondic,current_config,indent=4)
-        # write_values_to_entries(jsondic)
+        jsondic = json.loads(esp_config)
+        json.dump(jsondic,current_config,indent=4)
+        write_values_to_entries(jsondic)
         messagebox.showinfo("Config", "Read config done")
         ser.close()
     else:
@@ -200,15 +202,17 @@ def Com_port_write(usr,pswd,pannel_ip,port,topic_names):
     data_to_write = json.dumps(dic_to_write,indent=4, 
                       separators=(',', ': '),
                       ensure_ascii=True)
-    payloadsize = len(data_to_write)
+    payloadsize = len(data_to_write)+1
+    print(payloadsize)
     if(payloadsize>255):
         [p1,p2] = int_to_2bytes(payloadsize)
-        globalstr = chr(0).encode('latin_1')+chr(p1).encode('latin_1')+chr(p2).encode('latin_1')+data_to_write.encode('latin_1')
+        globalstr = chr(0).encode('latin_1')+chr(p1).encode('latin_1')+chr(p2).encode('latin_1')+data_to_write.encode('latin_1')+'\0'.encode('latin1')
     else:
-        globalstr = chr(0).encode('latin_1')+chr(0).encode('latin_1')+chr(payloadsize).encode('latin_1')+data_to_write.encode('latin_1')
+        globalstr = chr(0).encode('latin_1')+chr(0).encode('latin_1')+chr(payloadsize).encode('latin_1')+data_to_write.encode('latin_1')+'\0'.encode('latin1')
     print(globalstr)
     print('-------------------------')
     ser.write(globalstr)
+    print(ser.read(2000))
     ser.close()
     
 # frame

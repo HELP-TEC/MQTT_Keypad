@@ -43,10 +43,11 @@ void NVS_RW_task(void *arg)
     ESP_ERROR_CHECK(uart_set_pin(CONFIG_UART_PORT_NUM, CONFIG_TEST_TXD, CONFIG_TEST_RXD, CONFIG_TEST_RTS, CONFIG_TEST_CTS));
 
     // Configure a temporary buffer for the incoming data
-    uint8_t *data;
+    uint8_t *data=NULL;
     uint8_t *header = (uint8_t *) malloc(3);
     uint16_t size;
     nvs_handle_t my_handle;
+    esp_err_t err;
      cJSON *root, *pnl_cfg_args;
 	 root = cJSON_CreateObject();
 	//cJSON_Delete(root);
@@ -55,12 +56,13 @@ void NVS_RW_task(void *arg)
         int len =uart_read_bytes(CONFIG_UART_PORT_NUM, header, (3), 20 / portTICK_PERIOD_MS);
         if(len)
         {
-            size = (header[1]<<8)+(header[2]);
-            data= (uint8_t *) malloc(size);
             if(header[0]==WRITE_COMMAND)
             {
-                uart_read_bytes(CONFIG_UART_PORT_NUM, data, size, 20 / portTICK_PERIOD_MS);
-                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
+                size = (header[1]<<8)+(header[2]);
+                free(data);
+                data= (uint8_t *) malloc(size);
+                len = uart_read_bytes(CONFIG_UART_PORT_NUM, data, size, 20 / portTICK_PERIOD_MS);
+                nvs_open("nvs", NVS_READWRITE, &my_handle);
                 nvs_set_u16(my_handle, "MQTTsize",size);
                 nvs_set_str(my_handle, "MQTTstr",(const char *)data);
                 nvs_commit(my_handle);
@@ -68,11 +70,13 @@ void NVS_RW_task(void *arg)
             }
             else
             {
-                nvs_open("nvs", NVS_READWRITE, &my_handle);
-                nvs_get_u16(my_handle, "MQTTsize", &size);
-                nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
-                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size);
+                free(data);
+                err = nvs_open("nvs", NVS_READWRITE, &my_handle);
+                err = nvs_get_u16(my_handle, "MQTTsize", &size);
+                data= (uint8_t *) malloc(size);
+                err = nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
                 nvs_close(my_handle);
+                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size-1);
             }
         }
     }
