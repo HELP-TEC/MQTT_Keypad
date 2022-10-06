@@ -4,7 +4,8 @@
         "password": "itisnotagoodpasswordbutwhocarehaha1",
         "ip": "192.168.90.192",
         "broker_port": "1883",
-        "topic0": "DefaultTopic1",
-        "topic1": "DefaultTopic2"
+        "topic0": "topic/buttons",
+        "topic1": "topic/leds",
+		"topic2":"topic/potentiometer"
     }
 }

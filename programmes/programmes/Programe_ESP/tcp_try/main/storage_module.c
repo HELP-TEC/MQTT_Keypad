@@ -8,8 +8,7 @@
 #include "config.h"
 //#include "storage_module.h"
 
-#define DEBUG 1
-
+static const char *TAG = "STORAGE TEST";
 /**
  * @fn void NVS_RW_task(void *arg)
  *
@@ -19,7 +18,6 @@
  *
  * @param arg FreeRTOS standard argument of a task
  */
-static const char *TAG = "STORAGE TEST";
 void NVS_RW_task(void *arg)
 {
     uart_init_config();
@@ -123,7 +121,7 @@ void uart_init_config(void)
  * @param topic_del, data pointer for the led topic value
  * 
  */
-void read_json_config(char ** MQTT_username,char ** password,char ** ip,int *port,char ** topic_bp,char ** topic_del)
+void read_json_config(char ** MQTT_username,char ** password,char ** ip,int *port,char ** topic_bp,char ** topic_del,char ** topic_pot)
 {
     nvs_handle_t my_handle;
     uint8_t *data=NULL;
@@ -153,6 +151,7 @@ void read_json_config(char ** MQTT_username,char ** password,char ** ip,int *por
             *port = cJSON_GetObjectItem(cfng,"broker_port")->valueint;
             *topic_bp = cJSON_GetObjectItem(cfng,"topic0")->valuestring;
             *topic_del = cJSON_GetObjectItem(cfng,"topic1")->valuestring;
+            *topic_pot = cJSON_GetObjectItem(cfng,"topic2")->valuestring;
         }
     }
     else

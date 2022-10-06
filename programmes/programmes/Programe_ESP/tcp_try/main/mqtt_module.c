@@ -65,6 +65,10 @@
 #endif
 
 static EventGroupHandle_t xMQTTRecieveEventBits;
+static char * TOPIC_BUTTON="";
+static char * TOPIC_LED="";
+static char * TOPIC_POTENTIOMETER="";
+// static char * TOPIC_POTENTIOMETER;
 
 static const char *TAG = "MQTT_EXAMPLE";
 
@@ -228,10 +232,8 @@ static void mqtt_app_start(void) {
 	char* MQTT_usr="";
     char* pswd="";
     char* ip="";
-    char* topic0="";
-    char* topic1="";
     int brocker_port=0;
-	read_json_config(&MQTT_usr,&pswd,&ip,&brocker_port,&topic0,&topic1);
+	read_json_config(&MQTT_usr,&pswd,&ip,&brocker_port,&TOPIC_BUTTON,&TOPIC_LED,&TOPIC_POTENTIOMETER);
 	esp_mqtt_client_config_t mqtt_cfg = {
 	//.uri = CONFIG_BROKER_URL,
 			.username = MQTT_usr, .password = pswd, .port = brocker_port, .transport =
