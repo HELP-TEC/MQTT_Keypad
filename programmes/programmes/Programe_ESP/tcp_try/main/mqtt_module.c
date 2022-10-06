@@ -307,11 +307,10 @@ void MQTT_Task(void *arg) {
 			com_flags2 = 0;
 			do {
 				//MQTT_init();
-				com_flags = xEventGroupWaitBits(xMQTTRecieveEventBits,
+				com_flags2 = xEventGroupWaitBits(xMQTTRecieveEventBits,
 						CONECTED_FLAG, pdFALSE, pdFALSE, pdMS_TO_TICKS(4000));
 			} while ((com_flags2 & CONECTED_FLAG) != CONECTED_FLAG);
 		}
-
 		/*---------------------------------------------------------------------------------------------------------------------------------
 		 * Resuscribe to the led topic in the init
 		 *-----------------------------------------------------------------------------------------------------------------------------------*/
