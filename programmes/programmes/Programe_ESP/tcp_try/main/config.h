@@ -58,17 +58,20 @@
 #define CONFIG_UART_PORT_NUM      (0)
 #define CONFIG_UART_BAUD_RATE     (115200)
 #define CONFIG_TASK_STACK_SIZE    (2048)
+#define BUF_SIZE 1024
 // Frame format  [HEADER][PAYLOAD][STOP_CMD] (Header) = [R/W SIZE SIZE]
 #define WRITE_COMMAND 0x00
 #define READ_COMMAND 0x01
-#define STOP_COMMAND 0xF0
-#define BYTE_FOR_SIZE 0x02
-// Inutile ?
-#define BUF_SIZE (1024)
+// Json objects
+#define JSON_STRING 0
+#define JSON_INT 1
 //----------------------------------------------------------
 // Prototypes
 //----------------------------------------------------------
 void NVS_RW_task(void *arg);
-void storage_init();
+void storage_init(void);
+void uart_init_config(void);
+void read_json_config(char **,char **,char **,int *,char ** ,char **);
+
 
 #endif /* MAIN_CONFIG_H_ */

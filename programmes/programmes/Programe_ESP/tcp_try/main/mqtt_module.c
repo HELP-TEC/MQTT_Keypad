@@ -225,10 +225,17 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base,
  */
 
 static void mqtt_app_start(void) {
+	char* MQTT_usr="";
+    char* pswd="";
+    char* ip="";
+    char* topic0="";
+    char* topic1="";
+    int brocker_port=0;
+	read_json_config(&MQTT_usr,&pswd,&ip,&brocker_port,&topic0,&topic1);
 	esp_mqtt_client_config_t mqtt_cfg = {
 	//.uri = CONFIG_BROKER_URL,
-			.username = "pannel1", .password = PASS, .port = 1883, .transport =
-					MQTT_TRANSPORT_OVER_TCP, .host = "192.168.90.192" }; // TODO : config
+			.username = MQTT_usr, .password = pswd, .port = brocker_port, .transport =
+					MQTT_TRANSPORT_OVER_TCP, .host = ip }; // TODO : config
 
 	client = esp_mqtt_client_init(&mqtt_cfg);
 	/* The last argument may be used to pass data to the event handler, in this example mqtt_event_handler */

@@ -176,9 +176,7 @@ def Com_port_read():
         ser.open()
         ser.write(chr(1).encode('latin_1'))
         esp_config=ser.read(1024)
-        print(esp_config)
         esp_config=esp_config.decode('latin_1')
-        print(esp_config)
         esp_config=esp_config[0:len(esp_config)]
         current_config = open('current_config.json','w')
         jsondic = json.loads(esp_config)
@@ -263,9 +261,6 @@ com_port_cb.pack(side=RIGHT)
 config_button = ttk.Button(interface_config, text="Configuration", command=start_transfert_config)
 config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
 
-# Entry with the COM port detected
-# texte = tk.Entry(interface_config,width=10)
-# texte.pack(side=RIGHT, fill='x', expand=True, pady=10)
 
 # Path button
 path_button = ttk.Button(interface_config, text="...", command=open_window_file_path,width=10)
