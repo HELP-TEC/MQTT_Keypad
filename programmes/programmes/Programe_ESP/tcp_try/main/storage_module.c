@@ -8,7 +8,7 @@
 #include "config.h"
 //#include "storage_module.h"
 
-static const char *TAG = "STORAGE TEST";
+static const char *TAG = "STORAGE EXAMPLE";
 /**
  * @fn void NVS_RW_task(void *arg)
  *
@@ -26,9 +26,6 @@ void NVS_RW_task(void *arg)
     uint8_t *header = (uint8_t *) malloc(3);
     uint16_t size;
     nvs_handle_t my_handle;
-     cJSON *root, *pnl_cfg_args;
-	 root = cJSON_CreateObject();
-	//cJSON_Delete(root);
     while (1) {
         // Read data from the UART
         int len =uart_read_bytes(CONFIG_UART_PORT_NUM, header, (3), 20 / portTICK_PERIOD_MS);
@@ -52,10 +49,18 @@ void NVS_RW_task(void *arg)
                 free(data);
                 nvs_open("nvs", NVS_READWRITE, &my_handle);
                 nvs_get_u16(my_handle, "MQTTsize", &size);
-                data= (uint8_t *) malloc(size);
-                nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
-                nvs_close(my_handle);
-                uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size-1);
+                esp_err_t err = nvs_get_u16(my_handle, "MQTTsize", &size);
+                if(err == ESP_OK)
+                {
+                    data= (uint8_t *) malloc(size);
+                    nvs_get_str(my_handle, "MQTTstr",(char *) data, (size_t *)&size);
+                    nvs_close(my_handle);
+                    uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size-1);
+                }
+                else
+                {
+                    nvs_close(my_handle);
+                }
             }
         }
     }
@@ -121,8 +126,9 @@ void uart_init_config(void)
  * @param topic_del, data pointer for the led topic value
  * 
  */
-void read_json_config(char ** MQTT_username,char ** password,char ** ip,int *port,char ** topic_bp,char ** topic_del,char ** topic_pot)
+void read_json_config(JsonConfig * ConfigStruct)
 {
+    ESP_LOGI(TAG,"TEST config enter");
     nvs_handle_t my_handle;
     uint8_t *data=NULL;
     uint16_t size=0;
@@ -131,7 +137,7 @@ void read_json_config(char ** MQTT_username,char ** password,char ** ip,int *por
     if(err == ESP_OK)
     {
         data= (uint8_t *) malloc(size);
-        nvs_get_str(my_handle, "MQTTstr",(const char *) data, &size);
+        nvs_get_str(my_handle, "MQTTstr",(char *) data, (size_t *)&size);
         nvs_close(my_handle);
         cJSON *config_json = cJSON_Parse((const char *)data);
         if (config_json == NULL)
@@ -145,14 +151,21 @@ void read_json_config(char ** MQTT_username,char ** password,char ** ip,int *por
         else
         {
             cJSON *cfng = cJSON_GetObjectItem(config_json,"pannel_config_args");
-            *MQTT_username = cJSON_GetObjectItem(cfng,"MQTT_username")->valuestring;
-            *password = cJSON_GetObjectItem(cfng,"password")->valuestring;
-            *ip = cJSON_GetObjectItem(cfng,"ip")->valuestring;
-            *port = cJSON_GetObjectItem(cfng,"broker_port")->valueint;
-            *topic_bp = cJSON_GetObjectItem(cfng,"topic0")->valuestring;
-            *topic_del = cJSON_GetObjectItem(cfng,"topic1")->valuestring;
-            *topic_pot = cJSON_GetObjectItem(cfng,"topic2")->valuestring;
+            ConfigStruct->MQTT_username=(char *)malloc(strlen(cJSON_GetObjectItem(cfng,"MQTT_username")->valuestring));
+            strcpy(ConfigStruct->MQTT_username,cJSON_GetObjectItem(cfng,"MQTT_username")->valuestring);
+            ConfigStruct->password=(char *)malloc(strlen(cJSON_GetObjectItem(cfng,"password")->valuestring));
+            strcpy(ConfigStruct->password,cJSON_GetObjectItem(cfng,"password")->valuestring);
+            ConfigStruct->ip=(char *)malloc(strlen(cJSON_GetObjectItem(cfng,"ip")->valuestring));
+            strcpy(ConfigStruct->ip,cJSON_GetObjectItem(cfng,"ip")->valuestring);
+            ConfigStruct->port = cJSON_GetObjectItem(cfng,"broker_port")->valueint;
+            ConfigStruct->topic_bp=(char *)malloc(strlen(cJSON_GetObjectItem(cfng,"topic0")->valuestring));
+            strcpy(ConfigStruct->topic_bp,cJSON_GetObjectItem(cfng,"topic0")->valuestring);
+            ConfigStruct->topic_del=(char *)malloc(strlen(cJSON_GetObjectItem(cfng,"topic1")->valuestring));
+            strcpy(ConfigStruct->topic_del,cJSON_GetObjectItem(cfng,"topic1")->valuestring);
+            ConfigStruct->topic_pot=(char *)malloc(strlen(cJSON_GetObjectItem(cfng,"topic2")->valuestring));
+            strcpy(ConfigStruct->topic_pot,cJSON_GetObjectItem(cfng,"topic2")->valuestring);
         }
+        cJSON_Delete(config_json);
     }
     else
     {

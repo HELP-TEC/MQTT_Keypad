@@ -69,10 +69,10 @@ def update_topic_entries():
                 topic_label[i].pack(fill='x', expand=True)
                 topic_entry.append(ttk.Entry(interface_config, textvariable=topic_vars[i],width = 20))
                 topic_entry[i].pack(fill='x', expand=True)
-            config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
-            path_button.pack(side = LEFT, fill='x', expand=True, pady=10)
-            com_port_cb.pack(side=RIGHT, fill='x', expand=True, pady=10)
-            read_button.pack(side = LEFT, fill='x', expand=True, pady=10)
+            config_button.pack(side = "left", fill='x', expand=True, pady=10)
+            path_button.pack(side = "left", fill='x', expand=True, pady=10)
+            com_port_cb.pack(side="right", fill='x', expand=True, pady=10)
+            read_button.pack(side = "left", fill='x', expand=True, pady=10)
         time.sleep(0.05)
     
         
@@ -91,17 +91,17 @@ def int_to_2bytes(val):
     return retByte1,retByte2
 
 def write_values_to_entries(jsondic):
-        username_entry.delete(0,END)
-        password_entry.delete(0,END)
-        ipadr_entry.delete(0,END)
-        broker_port_entry.delete(0,END)
+        username_entry.delete(0,"end")
+        password_entry.delete(0,"end")
+        ipadr_entry.delete(0,"end")
+        broker_port_entry.delete(0,"end")
         username_entry.insert(0,jsondic['pannel_config_args'].get('MQTT_username'))
         password_entry.insert(0,jsondic['pannel_config_args'].get('password'))
         ipadr_entry.insert(0,jsondic['pannel_config_args'].get('ip'))
         broker_port_entry.insert(0,jsondic['pannel_config_args'].get('broker_port'))
         for i in range(len(topic_entry)):
             if (('topic'+str(i)) in jsondic['pannel_config_args']):
-                topic_entry[i].delete(0,END)
+                topic_entry[i].delete(0,"end")
                 topic_entry[i].insert(0,jsondic['pannel_config_args'].get(('topic'+str(i))))
                 
         
@@ -126,8 +126,6 @@ def fill_config_entry(root_to_close,filepath):
     
 
 def start_transfert_config():
-    """ callback when the config button clicked
-    """
     usr = username.get()
     pswd = password.get()
     pannel_ip = ipadr.get()
@@ -157,14 +155,14 @@ def open_window_file_path():
 
     # Path 
     path = ttk.Label(interface_path, text="Path:")
-    path.pack(side = LEFT,fill='x', expand=False)
+    path.pack(side = "left",fill='x', expand=False)
     
     file = ttk.Entry(interface_path, textvariable=filepath)
-    file.pack(side = LEFT,fill='x', expand=True)
+    file.pack(side = "left",fill='x', expand=True)
     
     # Ok button
     ok_button = ttk.Button(interface_path, text="OK", command=lambda:fill_config_entry(root_config_fpath,filepath))
-    ok_button.pack(side = RIGHT)
+    ok_button.pack(side = "right")
     
     root_config_fpath.mainloop()
 
@@ -177,12 +175,15 @@ def Com_port_read():
         ser.write(chr(1).encode('latin_1'))
         esp_config=ser.read(1024)
         esp_config=esp_config.decode('latin_1')
-        esp_config=esp_config[0:len(esp_config)]
-        current_config = open('current_config.json','w')
-        jsondic = json.loads(esp_config)
-        json.dump(jsondic,current_config,indent=4)
-        write_values_to_entries(jsondic)
-        messagebox.showinfo("Config", "Read config done")
+        if(esp_config!=''):
+            esp_config=esp_config[0:len(esp_config)]
+            current_config = open('current_config.json','w')
+            jsondic = json.loads(esp_config)
+            json.dump(jsondic,current_config,indent=4)
+            write_values_to_entries(jsondic)
+            messagebox.showinfo("Config", "Read config done")
+        else:
+            messagebox.showerror("Config", "Configuration empty")
         ser.close()
     else:
         messagebox.showerror("ERROR", "COM PORT isn't detected")
@@ -201,17 +202,14 @@ def Com_port_write(usr,pswd,pannel_ip,port,topic_names):
                       separators=(',', ': '),
                       ensure_ascii=True)
     payloadsize = len(data_to_write)+1
-    print(payloadsize)
     if(payloadsize>255):
         [p1,p2] = int_to_2bytes(payloadsize)
         globalstr = chr(0).encode('latin_1')+chr(p1).encode('latin_1')+chr(p2).encode('latin_1')+data_to_write.encode('latin_1')+'\0'.encode('latin1')
     else:
         globalstr = chr(0).encode('latin_1')+chr(0).encode('latin_1')+chr(payloadsize).encode('latin_1')+data_to_write.encode('latin_1')+'\0'.encode('latin1')
-    print(globalstr)
-    print('-------------------------')
     ser.write(globalstr)
-    print(ser.read(2000))
     ser.close()
+    messagebox.showinfo("Config", "Write config done")
     
 # frame
 interface_config = ttk.Frame(root_config)
@@ -250,25 +248,25 @@ spinbox_label = ttk.Label(interface_config, text="Number of topics:",width = 10)
 spinbox_label.pack(fill='x', expand=True)
 
 sp = tk.Spinbox(interface_config, from_=0, to=5,width = 20)
-sp.pack(side=TOP)
+sp.pack(side="top")
 
 # combo box to select com port
 com_port = tk.StringVar()
 com_port_cb = ttk.Combobox(interface_config, textvariable=com_port,width=8,state="readonly")
-com_port_cb.pack(side=RIGHT)
+com_port_cb.pack(side="right")
 
 # Config button
 config_button = ttk.Button(interface_config, text="Configuration", command=start_transfert_config)
-config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
+config_button.pack(side = "left", fill='x', expand=True, pady=10)
 
 
 # Path button
 path_button = ttk.Button(interface_config, text="...", command=open_window_file_path,width=10)
-path_button.pack(side = LEFT, pady=10)
+path_button.pack(side = "left", pady=10)
 
 # Read button 
 read_button = ttk.Button(interface_config, text="Read Config", command=Com_port_read,width=15)
-read_button.pack(side = RIGHT, pady=10)
+read_button.pack(side = "right", pady=10)
 
 # Threads
 topic_thread = threading.Thread(target=update_topic_entries, daemon=True)

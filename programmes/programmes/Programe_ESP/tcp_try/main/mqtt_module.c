@@ -68,7 +68,6 @@ static EventGroupHandle_t xMQTTRecieveEventBits;
 static char * TOPIC_BUTTON="";
 static char * TOPIC_LED="";
 static char * TOPIC_POTENTIOMETER="";
-// static char * TOPIC_POTENTIOMETER;
 
 static const char *TAG = "MQTT_EXAMPLE";
 
@@ -229,16 +228,17 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base,
  */
 
 static void mqtt_app_start(void) {
-	char* MQTT_usr="";
-    char* pswd="";
-    char* ip="";
-    int brocker_port=0;
-	read_json_config(&MQTT_usr,&pswd,&ip,&brocker_port,&TOPIC_BUTTON,&TOPIC_LED,&TOPIC_POTENTIOMETER);
+	ESP_LOGI(TAG,"TEST config enter");
+	JsonConfig  Jsoncfng = {"","","",0,"","",""}; 
+	read_json_config(&Jsoncfng);
+	TOPIC_BUTTON=Jsoncfng.topic_bp;
+	TOPIC_LED=Jsoncfng.topic_del;
+	TOPIC_POTENTIOMETER=Jsoncfng.topic_pot;
+	ESP_LOGI(TAG,"TEST config : %s ",Jsoncfng.MQTT_username);
 	esp_mqtt_client_config_t mqtt_cfg = {
 	//.uri = CONFIG_BROKER_URL,
-			.username = MQTT_usr, .password = pswd, .port = brocker_port, .transport =
-					MQTT_TRANSPORT_OVER_TCP, .host = ip }; // TODO : config
-
+			.username = Jsoncfng.MQTT_username, .password = Jsoncfng.password, .port = Jsoncfng.port, .transport =
+					MQTT_TRANSPORT_OVER_TCP, .host = Jsoncfng.ip };
 	client = esp_mqtt_client_init(&mqtt_cfg);
 	/* The last argument may be used to pass data to the event handler, in this example mqtt_event_handler */
 	esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler,
