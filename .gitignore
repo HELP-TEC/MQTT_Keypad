@@ -30,3 +30,4 @@ fp-info-cache
 
 #build 
 programmes/programmes/Programe_ESP/tcp_try/build/*
+*.ico

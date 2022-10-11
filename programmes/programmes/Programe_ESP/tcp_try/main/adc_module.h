@@ -8,10 +8,6 @@
  */
 #ifndef ADC_MODULE_H_
 #define ADC_MODULE_H_
-
-
-
 void potentiometer_task(void *arg);
 void potentiometer_config(void);
-
 #endif /* ADC_MODULE_H_ */

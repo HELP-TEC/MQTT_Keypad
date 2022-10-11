@@ -11,6 +11,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import pathlib
 import os
+import sys
 import json
 import threading 
 import time
@@ -20,6 +21,12 @@ root_config = tk.Tk()
 root_config.geometry("400x270")
 root_config.resizable(False, False)
 root_config.title('Pannel configuration')
+try:
+    base_path = sys._MEIPASS
+    logo_path = os.path.join(base_path, 'logo.ico')
+    root_config.wm_iconbitmap(logo_path)
+except:
+    root_config.wm_iconbitmap('logo.ico')
 # Data to store
 username = tk.StringVar()
 password = tk.StringVar()
@@ -28,8 +35,8 @@ broker_port = tk.StringVar()
 topic_vars = []
 topic_label = []
 topic_entry = []
-kill_threads = 0
 OptionList = []
+kill_threads = 0
 def check_com_port():
     while(1):
         global kill_threads,texte,OptionList
@@ -76,7 +83,7 @@ def update_topic_entries():
         time.sleep(0.05)
     
         
-def int_to_2bytes(val):
+def int_to_2bytes(val:int):
     retHex1=0
     retByte1=0
     retByte2=0
@@ -106,7 +113,7 @@ def write_values_to_entries(jsondic):
                 
         
 
-def fill_config_entry(root_to_close,filepath):
+def fill_config_entry(root_to_close,filepath): 
     fpath=pathlib.Path(filepath.get())
     found_file=os.path.exists(fpath)
     if(found_file&(fpath.suffix=='.json')):
@@ -172,7 +179,7 @@ def Com_port_read():
         ser = serial.Serial(port= com_port_cb.get(), baudrate=115200,timeout=1) 
         ser.close()
         ser.open()
-        ser.write(chr(1).encode('latin_1'))
+        ser.write(chr(1).encode('latin_1')+chr(0).encode('latin_1')+chr(0).encode('latin_1'))
         esp_config=ser.read(1024)
         esp_config=esp_config.decode('latin_1')
         if(esp_config!=''):
