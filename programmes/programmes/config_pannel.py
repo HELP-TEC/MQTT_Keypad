@@ -8,6 +8,7 @@ import serial.tools.list_ports
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter import filedialog
 import pathlib
 import os
 import sys
@@ -117,24 +118,15 @@ def write_values_to_entries(jsondic):
                 topic_entry[i].insert(0,jsondic['pannel_config_args'].get(('topic'+str(i))))
                 
         
-
-def fill_config_entry(root_to_close,filepath): 
-    fpath=pathlib.Path(filepath.get())
-    found_file=os.path.exists(fpath)
-    if(found_file&(fpath.suffix=='.json')):
+def fill_config_entry(filepath):
+    fpath=pathlib.Path(filepath)
+    if((fpath.suffix=='.json')):
         json_file = open(fpath, "r")
         jsondic = json.loads(json_file.read())
         write_values_to_entries(jsondic)
         messagebox.showinfo("Config", "Configuration is loaded")
     else:
-        if((fpath.suffix!='.json')&(found_file==0)):
-            messagebox.showerror("Config", "Configuration file isn't a json file\nConfiguration isn't loaded file not found")
-        else:
-            if(found_file==0):
-                messagebox.showerror("Config", "Configuration isn't loaded file not found")
-            else:
-                messagebox.showerror("Config", "Configuration file isn't a json file")
-    root_to_close.destroy()
+        messagebox.showerror("Config", "Configuration file isn't a json file")
     
 
 def start_transfert_config():
@@ -157,27 +149,11 @@ def start_transfert_config():
     
 def open_window_file_path():
     
-    root_config_fpath = tk.Toplevel(root_config)
-    root_config_fpath.geometry("500x50")
-    root_config_fpath.resizable(False, False)
-    root_config_fpath.title('Path file')
-    filepath = tk.StringVar()
-    # frame
-    interface_path = ttk.Frame(root_config_fpath)
-    interface_path.pack(padx=10, pady=10, fill='x', expand=False)
-
-    # Path 
-    path = ttk.Label(interface_path, text="Path:")
-    path.pack(side = "left",fill='x', expand=False)
-    
-    file = ttk.Entry(interface_path, textvariable=filepath)
-    file.pack(side = "left",fill='x', expand=True)
-    
-    # Ok button
-    ok_button = ttk.Button(interface_path, text="OK", command=lambda:fill_config_entry(root_config_fpath,filepath))
-    ok_button.pack(side = "right")
-    
-    root_config_fpath.mainloop()
+    filepath = filedialog.askopenfilename(initialdir = os.getcwd(),title = "Select a File",
+                                          filetypes = (("Json files","*.json*"),
+                                                       ("All files", "*.*")))
+    if(filepath!=''):
+        fill_config_entry(filepath)
 
 
 def Com_port_read():
