@@ -32,6 +32,13 @@
 #include "sdkconfig.h"
 #include <stdio.h>
 #include <string.h>
+// ETHERNET
+#include "esp_eth.h"
+#include "esp_event.h"
+#include "esp_netif.h"
+#include "esp_wifi.h"
+#include "freertos/event_groups.h"
+#include <netdb.h>
 //----------------------------------------------------------
 // Defines
 //----------------------------------------------------------
@@ -56,7 +63,8 @@
 #define JSON_ARGS "pannel_config_args"
 #define JSON_USERNAME "MQTT_username"
 #define JSON_PASSWORD "password"
-#define JSON_IP "ip"
+#define JSON_BROKER_IP "broker_ip"
+#define JSON_CLIENT_IP "client_ip"
 #define JSON_PORT "broker_port"
 #define JSON_TOPIC_BUTTON "topic0"
 #define JSON_TOPIC_LED "topic1"
@@ -65,18 +73,20 @@
 #define STORAGE_PARTITION "nvs"
 #define SIZE_ITEM "MQTTsize"
 #define MQTT_CONFIG_STR_ITEM "MQTTstr"
+// ETHERNET
+#define PIN_PHY_POWER GPIO_NUM_12
 //----------------------------------------------------------
 // Structure
 //----------------------------------------------------------
 typedef struct MQTT_config_t
 {
-  char MQTT_username[MAX_STR_SIZE];
-  char password[MAX_STR_SIZE];
-  char ip[MAX_STR_SIZE];
-  uint16_t port; /*!< pin number that take the interrupt*/
-  char *topic_bp;
-  char *topic_del;
-  char *topic_pot;
+    char MQTT_username[MAX_STR_SIZE];
+    char password[MAX_STR_SIZE];
+    char ip[MAX_STR_SIZE];
+    uint16_t port; /*!< pin number that take the interrupt*/
+    char *topic_bp;
+    char *topic_del;
+    char *topic_pot;
 } MQTT_config_t;
 //----------------------------------------------------------
 // Prototypes
@@ -84,5 +94,8 @@ typedef struct MQTT_config_t
 void NVS_RW_task(void *arg);
 void storage_init(void);
 void uart_init_config(void);
-void read_json_config(MQTT_config_t *);
+void read_MQTT_config(MQTT_config_t *);
+void read_IP_value(char *);
+void set_static_ip(esp_netif_t *);
+void ethernet_init();
 #endif /* MAIN_CONFIG_H_ */

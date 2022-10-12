@@ -20,7 +20,7 @@ static const char *TAG = "STORAGE EXAMPLE";
 void NVS_RW_task(void *arg)
 {
     uint8_t *data = NULL;
-    uint32_t remaining_size = 0;
+    uint16_t remaining_size = 0;
     uint8_t header[3] = {0};
     uint16_t size = 0;
     nvs_handle_t my_handle;
@@ -121,7 +121,7 @@ void uart_init_config(void)
         uart_set_pin(CONFIG_UART_PORT_NUM, CONFIG_TEST_TXD, CONFIG_TEST_RXD, CONFIG_TEST_RTS, CONFIG_TEST_CTS));
 }
 /**
- * @fn void read_json_object()
+ * @fn void read_MQTT_config()
  *
  * @brief read json file objects to give the value of the researched item
  *
@@ -134,7 +134,7 @@ void uart_init_config(void)
  * @param topic_del, data pointer for the led topic value
  *
  */
-void read_json_config(MQTT_config_t *ConfigStruct) // TODO: redéfinir la structure
+void read_MQTT_config(MQTT_config_t *ConfigStruct)
 {
     nvs_handle_t my_handle;
     uint8_t *data = NULL;
@@ -168,10 +168,10 @@ void read_json_config(MQTT_config_t *ConfigStruct) // TODO: redéfinir la struct
                 strncpy(ConfigStruct->password, cJSON_GetObjectItem(cfng, JSON_PASSWORD)->valuestring,
                         strlen(cJSON_GetObjectItem(cfng, JSON_PASSWORD)->valuestring));
             }
-            if(strlen(cJSON_GetObjectItem(cfng, JSON_IP)->valuestring) < MAX_STR_SIZE)
+            if(strlen(cJSON_GetObjectItem(cfng, JSON_BROKER_IP)->valuestring) < MAX_STR_SIZE)
             {
-                strncpy(ConfigStruct->ip, cJSON_GetObjectItem(cfng, JSON_IP)->valuestring,
-                        strlen(cJSON_GetObjectItem(cfng, JSON_IP)->valuestring));
+                strncpy(ConfigStruct->ip, cJSON_GetObjectItem(cfng, JSON_BROKER_IP)->valuestring,
+                        strlen(cJSON_GetObjectItem(cfng, JSON_BROKER_IP)->valuestring));
             }
             ConfigStruct->port = cJSON_GetObjectItem(cfng, JSON_PORT)->valueint;
             if(strlen(cJSON_GetObjectItem(cfng, JSON_TOPIC_BUTTON)->valuestring) < MAX_STR_SIZE)
@@ -194,6 +194,8 @@ void read_json_config(MQTT_config_t *ConfigStruct) // TODO: redéfinir la struct
     }
     else
     {
+        nvs_close(my_handle);
+    }
         nvs_close(my_handle);
     }
 }

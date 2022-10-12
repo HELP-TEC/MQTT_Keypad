@@ -25,7 +25,6 @@
 // #define CONFIG_TEST_RXD (3)
 // #define CONFIG_TEST_RTS (UART_PIN_NO_CHANGE)
 // #define CONFIG_TEST_CTS (UART_PIN_NO_CHANGE)
-
 // #define CONFIG_UART_PORT_NUM      (0)
 // #define CONFIG_UART_BAUD_RATE     (115200)
 // #define CONFIG_TASK_STACK_SIZE    (2048)
@@ -39,5 +38,5 @@
 // //----------------------------------------------------------
 // // Prototypes
 // //----------------------------------------------------------
-//void NVS_config_task(void *arg);
+// void NVS_config_task(void *arg);
 #endif /* MAIN_STORAGE_MODULE_H_ */

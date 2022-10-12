@@ -1,6 +1,6 @@
 {
     "idf.adapterTargetName": "esp32",
-    "idf.portWin": "COM7",
+    "idf.portWin": "COM6",
     "idf.openOcdConfigs": [
         "interface/ftdi/esp32_devkitj_v1.cfg",
         "target/esp32.cfg"
@@ -12,7 +12,10 @@
         "config.h": "c",
         "stdbool.h": "c",
         "mqtt_module.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "string.h": "c",
+        "stdint.h": "c",
+        "sdkconfig.h": "c"
     },
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "C_Cpp.errorSquiggles": "Disabled",

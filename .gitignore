@@ -31,3 +31,5 @@ fp-info-cache
 #build 
 programmes/programmes/Programe_ESP/tcp_try/build/*
 *.ico
+programmes/programmes/current_config.json
+programmes/programmes/Programe_ESP/tcp_try/sdkconfig.old
