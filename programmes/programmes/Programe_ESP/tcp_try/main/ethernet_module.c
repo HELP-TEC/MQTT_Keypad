@@ -16,6 +16,8 @@ static const char *TAG = "ETHERNET EXAMPLE";
  */
 void set_static_ip(esp_netif_t *eth_netif)
 {
+    char static_ip[MAX_IP_SIZE] = "";
+    read_IP_value(static_ip);
     if(esp_netif_dhcpc_stop(eth_netif) != ESP_OK)
     {
         ESP_LOGE(TAG, "Failed to stop dhcp client");
@@ -23,9 +25,9 @@ void set_static_ip(esp_netif_t *eth_netif)
     }
     esp_netif_ip_info_t ip;
     memset(&ip, 0, sizeof(esp_netif_ip_info_t));
-    ip.ip.addr = ipaddr_addr("169.254.36.197");
-    ip.netmask.addr = ipaddr_addr("255.255.255.00");
-    ip.gw.addr = ipaddr_addr("169.254.36.196");
+    ip.ip.addr = ipaddr_addr(static_ip);
+    ip.netmask.addr = ipaddr_addr(ETHERNET_MASK_ADDR);
+    ip.gw.addr = ipaddr_addr(ETHERNET_GW_ADDR);
     if(esp_netif_set_ip_info(eth_netif, &ip) != ESP_OK)
     {
         ESP_LOGE(TAG, "Failed to set ip info");

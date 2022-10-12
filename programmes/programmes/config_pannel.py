@@ -6,7 +6,6 @@ Created on Wed Sep 28 14:35:29 2022
 """
 import serial.tools.list_ports
 import tkinter as tk
-from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import pathlib
@@ -16,9 +15,12 @@ import json
 import threading 
 import time
 
+# DEFINE
+JSON_ARGS = 'pannel_config_args'
+
 # root_config window
 root_config = tk.Tk()
-root_config.geometry("400x270")
+root_config.geometry("400x310")
 root_config.resizable(False, False)
 root_config.title('Pannel configuration')
 try:
@@ -30,7 +32,8 @@ except:
 # Data to store
 username = tk.StringVar()
 password = tk.StringVar()
-ipadr = tk.StringVar()
+broker_ipadr = tk.StringVar()
+client_ipadr = tk.StringVar()
 broker_port = tk.StringVar()
 topic_vars = []
 topic_label = []
@@ -58,7 +61,7 @@ def update_topic_entries():
         num = int(sp.get())
         if(num!=len(topic_entry)):
             topic_vars.clear()
-            resize = 270+40*num
+            resize = 310+40*num
             root_config.geometry("400x"+str(resize))
             config_button.forget()
             path_button.forget()
@@ -100,11 +103,13 @@ def int_to_2bytes(val:int):
 def write_values_to_entries(jsondic):
         username_entry.delete(0,"end")
         password_entry.delete(0,"end")
-        ipadr_entry.delete(0,"end")
+        broker_ipadr_entry.delete(0,"end")
+        client_ipadr_entry.delete(0,"end")
         broker_port_entry.delete(0,"end")
         username_entry.insert(0,jsondic['pannel_config_args'].get('MQTT_username'))
         password_entry.insert(0,jsondic['pannel_config_args'].get('password'))
-        ipadr_entry.insert(0,jsondic['pannel_config_args'].get('ip'))
+        broker_ipadr_entry.insert(0,jsondic['pannel_config_args'].get('broker_ip'))
+        client_ipadr_entry.insert(0,jsondic['pannel_config_args'].get('client_ip'))
         broker_port_entry.insert(0,jsondic['pannel_config_args'].get('broker_port'))
         for i in range(len(topic_entry)):
             if (('topic'+str(i)) in jsondic['pannel_config_args']):
@@ -135,7 +140,8 @@ def fill_config_entry(root_to_close,filepath):
 def start_transfert_config():
     usr = username.get()
     pswd = password.get()
-    pannel_ip = ipadr.get()
+    bk_ip = broker_ipadr.get()
+    clt_ip = client_ipadr.get()
     port =  broker_port.get()
     topic_names = []
     for i in topic_vars:
@@ -143,10 +149,10 @@ def start_transfert_config():
     if (com_port_cb.get()==""):
         messagebox.showerror("ERROR", "COM PORT isn't detected")
     else:
-        if((usr=='')|(pswd=='')|(pannel_ip=='')|(port=='')|('' in topic_names)):
+        if((usr=='')|(pswd=='')|(clt_ip=='')|(bk_ip=='')|(port=='')|('' in topic_names)):
             messagebox.showerror("ERROR", "Current configuration have atleast one blank entry")
         else:  
-            Com_port_write(usr,pswd,pannel_ip,port,topic_names)
+            Com_port_write(usr,pswd,bk_ip,clt_ip,port,topic_names)
     
     
 def open_window_file_path():
@@ -195,13 +201,14 @@ def Com_port_read():
     else:
         messagebox.showerror("ERROR", "COM PORT isn't detected")
 
-def Com_port_write(usr,pswd,pannel_ip,port,topic_names):
+def Com_port_write(usr,pswd,bk_ip,clt_ip,port,topic_names):
     ser = serial.Serial(port= com_port_cb.get(), baudrate=115200,timeout=1)
     ser.close()
     ser.open()
     dic_to_write = {'pannel_config_args': {'MQTT_username': usr,
                                            'password': pswd,
-                                           'ip': pannel_ip,
+                                           'broker_ip': bk_ip,
+                                           'client_ip': clt_ip,
                                            'broker_port':port}}
     for i in range(len(topic_names)):
         dic_to_write['pannel_config_args']['topic'+str(i)]=topic_names[i]
@@ -236,12 +243,19 @@ MQTT_password_label.pack(fill='x', expand=True)
 password_entry = ttk.Entry(interface_config, textvariable=password, show="*",width = 20)
 password_entry.pack(fill='x', expand=True)
 
-# IP adress
-ip_label = ttk.Label(interface_config, text="IP:",width = 10)
+# Broker IP adress
+ip_label = ttk.Label(interface_config, text="Broker ip adress:",width = 10)
 ip_label.pack(fill='x', expand=True)
 
-ipadr_entry = ttk.Entry(interface_config, textvariable=ipadr,width = 20)
-ipadr_entry.pack(fill='x', expand=True)
+broker_ipadr_entry = ttk.Entry(interface_config, textvariable=broker_ipadr,width = 20)
+broker_ipadr_entry.pack(fill='x', expand=True)
+
+# Client IP adress
+ip_label = ttk.Label(interface_config, text="Client ip adress:",width = 10)
+ip_label.pack(fill='x', expand=True)
+
+client_ipadr_entry = ttk.Entry(interface_config, textvariable=client_ipadr,width = 20)
+client_ipadr_entry.pack(fill='x', expand=True)
 
 # Broker port
 broker_port_label = ttk.Label(interface_config, text="Broker port:",width = 10)

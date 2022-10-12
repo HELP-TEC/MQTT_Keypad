@@ -196,6 +196,47 @@ void read_MQTT_config(MQTT_config_t *ConfigStruct)
     {
         nvs_close(my_handle);
     }
+}
+/**
+ * @fn void read_IP_value()
+ *
+ * @brief read json file to get to ip
+ *
+ */
+void read_IP_value(char *static_ip)
+{
+    nvs_handle_t my_handle;
+    uint8_t *data = NULL;
+    uint16_t size = 0;
+    nvs_open(STORAGE_PARTITION, NVS_READWRITE, &my_handle);
+    esp_err_t err = nvs_get_u16(my_handle, SIZE_ITEM, &size);
+    if(err == ESP_OK)
+    {
+        data = (uint8_t *) malloc(size);
+        nvs_get_str(my_handle, MQTT_CONFIG_STR_ITEM, (char *) data, (size_t *) &size);
+        nvs_close(my_handle);
+        cJSON *config_json = cJSON_Parse((const char *) data);
+        if(config_json == NULL)
+        {
+            const char *error_ptr = cJSON_GetErrorPtr();
+            if(error_ptr != NULL)
+            {
+                ESP_LOGI(TAG, "Error before: %s\n", error_ptr);
+            }
+        }
+        else
+        {
+            cJSON *cfng = cJSON_GetObjectItem(config_json, JSON_ARGS);
+            if(strlen(cJSON_GetObjectItem(cfng, JSON_CLIENT_IP)->valuestring) < MAX_IP_SIZE)
+            {
+                strncpy(static_ip, cJSON_GetObjectItem(cfng, JSON_CLIENT_IP)->valuestring,
+                        strlen(cJSON_GetObjectItem(cfng, JSON_CLIENT_IP)->valuestring));
+            }
+        }
+        cJSON_Delete(config_json);
+    }
+    else
+    {
         nvs_close(my_handle);
     }
 }

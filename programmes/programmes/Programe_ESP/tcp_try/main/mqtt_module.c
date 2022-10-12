@@ -368,10 +368,6 @@ void MQTT_Task(void *arg)
  */
 void MQTT_init()
 {
-    // gpio_pad_select_gpio(PIN_PHY_POWER);
-    // gpio_set_direction(PIN_PHY_POWER, GPIO_MODE_OUTPUT);
-    // gpio_set_level(PIN_PHY_POWER, 1);
-    // vTaskDelay(pdMS_TO_TICKS(10));
 #if DEBUG
     ESP_LOGI(TAG, "[APP] Startup..");
     ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
@@ -391,11 +387,9 @@ void MQTT_init()
     xQueue_data_Potentimeter_COM = xQueueCreate(20, sizeof(uint8_t));
     ESP_ERROR_CHECK(nvs_flash_init());
     ESP_ERROR_CHECK(esp_netif_init());
-    // ESP_ERROR_CHECK(esp_event_loop_create_default());
     /* This helper function configures Wi-Fi or Ethernet, as selected in menuconfig.
      * Read "Establishing Wi-Fi or Ethernet Connection" section in
      * examples/protocols/README.md for more information about this function.
      */
-    // ESP_ERROR_CHECK(example_connect());
     mqtt_app_start();
 }

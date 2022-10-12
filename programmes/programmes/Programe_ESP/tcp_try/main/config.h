@@ -59,6 +59,7 @@
 #define JSON_INT 1
 // Max size for Json str item
 #define MAX_STR_SIZE 50
+#define MAX_IP_SIZE 16
 // Json TAG
 #define JSON_ARGS "pannel_config_args"
 #define JSON_USERNAME "MQTT_username"
@@ -75,6 +76,8 @@
 #define MQTT_CONFIG_STR_ITEM "MQTTstr"
 // ETHERNET
 #define PIN_PHY_POWER GPIO_NUM_12
+#define ETHERNET_MASK_ADDR "255.255.255.00"
+#define ETHERNET_GW_ADDR "169.254.36.196"
 //----------------------------------------------------------
 // Structure
 //----------------------------------------------------------
