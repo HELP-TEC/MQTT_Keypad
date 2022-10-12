@@ -18,11 +18,14 @@ import time
 
 # DEFINE
 JSON_ARGS = 'pannel_config_args'
+END = 'end'
+LEFT = "left"
+RIGTH = "right"
 
 # root_config window
 root_config = tk.Tk()
 root_config.geometry("400x310")
-root_config.resizable(False, False)
+root_config.resizable(True, True)
 root_config.title('Pannel configuration')
 try:
     base_path = sys._MEIPASS
@@ -55,36 +58,33 @@ def check_com_port():
         time.sleep(1)
 
 def update_topic_entries():
-    while(1):
-        global topic_name,topic_entry,topic_vars,kill_threads
-        if (kill_threads):
-            break
-        num = int(sp.get())
-        if(num!=len(topic_entry)):
-            topic_vars.clear()
-            resize = 310+40*num
-            root_config.geometry("400x"+str(resize))
-            config_button.forget()
-            path_button.forget()
-            read_button.forget()
-            com_port_cb.forget()
-            for i in range(len(topic_entry)):
-                topic_entry[i].forget()
-                topic_label[i].forget()
-            topic_entry.clear()
-            topic_label.clear()
-            for i in range(num):
+    num = int(sp.get())
+    if(num!=len(topic_entry)):
+        resize = 310+40*num
+        root_config.geometry("400x"+str(resize))
+        config_button.forget()
+        path_button.forget()
+        read_button.forget()
+        com_port_cb.forget()
+        if(num<len(topic_entry)):
+            for i in range(len(topic_entry)-num):
+                topic_entry[len(topic_entry)-1].forget()
+                topic_entry.pop(len(topic_entry)-1)
+                topic_label[len(topic_label)-1].forget()
+                topic_label.pop(len(topic_label)-1)
+                topic_vars.pop(len(topic_vars)-1)
+        else:
+            for i in range(num-len(topic_entry)):
                 # topics
                 topic_vars.append(tk.StringVar())
-                topic_label.append(ttk.Label(interface_config, text="Topic " +str(i+1)+ " :",width = 10))
-                topic_label[i].pack(fill='x', expand=True)
-                topic_entry.append(ttk.Entry(interface_config, textvariable=topic_vars[i],width = 20))
-                topic_entry[i].pack(fill='x', expand=True)
-            config_button.pack(side = "left", fill='x', expand=True, pady=10)
-            path_button.pack(side = "left", fill='x', expand=True, pady=10)
-            com_port_cb.pack(side="right", fill='x', expand=True, pady=10)
-            read_button.pack(side = "left", fill='x', expand=True, pady=10)
-        time.sleep(0.05)
+                topic_label.append(ttk.Label(interface_config, text="Topic " +str(len(topic_label))+ " :",width = 10))
+                topic_label[len(topic_label)-1].pack(fill='x', expand=True)
+                topic_entry.append(ttk.Entry(interface_config, textvariable=topic_vars[len(topic_vars)-1],width = 20))
+                topic_entry[len(topic_entry)-1].pack(fill='x', expand=True)
+        config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
+        path_button.pack(side = LEFT, fill='x', expand=True, pady=10)
+        com_port_cb.pack(side=RIGTH, fill='x', expand=True, pady=10)
+        read_button.pack(side = LEFT, fill='x', expand=True, pady=10)
     
         
 def int_to_2bytes(val:int):
@@ -102,21 +102,46 @@ def int_to_2bytes(val:int):
     return retByte1,retByte2
 
 def write_values_to_entries(jsondic):
-        username_entry.delete(0,"end")
-        password_entry.delete(0,"end")
-        broker_ipadr_entry.delete(0,"end")
-        client_ipadr_entry.delete(0,"end")
-        broker_port_entry.delete(0,"end")
-        username_entry.insert(0,jsondic['pannel_config_args'].get('MQTT_username'))
-        password_entry.insert(0,jsondic['pannel_config_args'].get('password'))
-        broker_ipadr_entry.insert(0,jsondic['pannel_config_args'].get('broker_ip'))
-        client_ipadr_entry.insert(0,jsondic['pannel_config_args'].get('client_ip'))
-        broker_port_entry.insert(0,jsondic['pannel_config_args'].get('broker_port'))
+        username_entry.delete(0,END)
+        password_entry.delete(0,END)
+        broker_ipadr_entry.delete(0,END)
+        client_ipadr_entry.delete(0,END)
+        broker_port_entry.delete(0,END)
+        username_entry.insert(0,jsondic[JSON_ARGS].get('MQTT_username'))
+        password_entry.insert(0,jsondic[JSON_ARGS].get('password'))
+        broker_ipadr_entry.insert(0,jsondic[JSON_ARGS].get('broker_ip'))
+        client_ipadr_entry.insert(0,jsondic[JSON_ARGS].get('client_ip'))
+        broker_port_entry.insert(0,jsondic[JSON_ARGS].get('broker_port'))
         for i in range(len(topic_entry)):
-            if (('topic'+str(i)) in jsondic['pannel_config_args']):
-                topic_entry[i].delete(0,"end")
-                topic_entry[i].insert(0,jsondic['pannel_config_args'].get(('topic'+str(i))))
-                
+            topic_entry[i].forget()
+            topic_label[i].forget()
+        topic_entry.clear()
+        topic_label.clear()
+        number_of_topic=0
+        while(('topic'+str(number_of_topic)) in jsondic[JSON_ARGS]):
+            number_of_topic=number_of_topic+1
+        if(number_of_topic!=len(topic_entry)):
+            topic_vars.clear()
+            resize = 310+40*number_of_topic
+            root_config.geometry("400x"+str(resize))
+            config_button.forget()
+            path_button.forget()
+            read_button.forget()
+            com_port_cb.forget()
+        for i in range(number_of_topic):
+            topic_vars.append(tk.StringVar())
+            topic_label.append(ttk.Label(interface_config, text="Topic " +str(i)+ " :",width = 10))
+            topic_label[i].pack(fill='x', expand=True)
+            topic_entry.append(ttk.Entry(interface_config, textvariable=topic_vars[i],width = 20))
+            topic_entry[i].pack(fill='x', expand=True)
+            topic_entry[i].delete(0,END)
+            topic_entry[i].insert(0,jsondic[JSON_ARGS].get(('topic'+str(i))))
+        sp.delete(0,END)
+        sp.insert(0,number_of_topic)
+        config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
+        path_button.pack(side = LEFT, fill='x', expand=True, pady=10)
+        com_port_cb.pack(side=RIGTH, fill='x', expand=True, pady=10)
+        read_button.pack(side = LEFT, fill='x', expand=True, pady=10)
         
 def fill_config_entry(filepath):
     fpath=pathlib.Path(filepath)
@@ -181,13 +206,13 @@ def Com_port_write(usr,pswd,bk_ip,clt_ip,port,topic_names):
     ser = serial.Serial(port= com_port_cb.get(), baudrate=115200,timeout=1)
     ser.close()
     ser.open()
-    dic_to_write = {'pannel_config_args': {'MQTT_username': usr,
+    dic_to_write = {JSON_ARGS: {'MQTT_username': usr,
                                            'password': pswd,
                                            'broker_ip': bk_ip,
                                            'client_ip': clt_ip,
                                            'broker_port':port}}
     for i in range(len(topic_names)):
-        dic_to_write['pannel_config_args']['topic'+str(i)]=topic_names[i]
+        dic_to_write[JSON_ARGS]['topic'+str(i)]=topic_names[i]
     data_to_write = json.dumps(dic_to_write,indent=4, 
                       separators=(',', ': '),
                       ensure_ascii=True)
@@ -244,30 +269,30 @@ broker_port_entry.pack(fill='x', expand=True)
 spinbox_label = ttk.Label(interface_config, text="Number of topics:",width = 10)
 spinbox_label.pack(fill='x', expand=True)
 
-sp = tk.Spinbox(interface_config, from_=0, to=5,width = 20)
+sp = tk.Spinbox(interface_config, from_=0, to=10,width = 20,command=update_topic_entries,state="readonly")
 sp.pack(side="top")
 
 # combo box to select com port
 com_port = tk.StringVar()
 com_port_cb = ttk.Combobox(interface_config, textvariable=com_port,width=8,state="readonly")
-com_port_cb.pack(side="right")
+com_port_cb.pack(side=RIGTH)
 
 # Config button
 config_button = ttk.Button(interface_config, text="Configuration", command=start_transfert_config)
-config_button.pack(side = "left", fill='x', expand=True, pady=10)
+config_button.pack(side = LEFT, fill='x', expand=True, pady=10)
 
 
 # Path button
 path_button = ttk.Button(interface_config, text="...", command=open_window_file_path,width=10)
-path_button.pack(side = "left", pady=10)
+path_button.pack(side = LEFT, pady=10)
 
 # Read button 
 read_button = ttk.Button(interface_config, text="Read Config", command=Com_port_read,width=15)
-read_button.pack(side = "right", pady=10)
+read_button.pack(side = RIGTH, pady=10)
 
 # Threads
-topic_thread = threading.Thread(target=update_topic_entries, daemon=True)
-topic_thread.start()
+# topic_thread = threading.Thread(target=update_topic_entries, daemon=True)
+# topic_thread.start()
 com_thread = threading.Thread(target=check_com_port, daemon=True)
 com_thread.start()
 #main loop for tk window
