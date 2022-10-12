@@ -22,47 +22,47 @@
  * ADC Variables
  * */
 //-----------Generic adc
-//const----------------------------------------------------------------------------------------------------------
+// const----------------------------------------------------------------------------------------------------------
 //:: Disclaymer this time is not exact and depand of the sceduling
 // if problemetic chek that the priority of the tasck is the highest and the interuptions are quick and their data
 // processed in a task
 //!< MUST:MEAN_NO_OF_SAMPLES*MEAN_TIME_INTERVAL << SAMPLING_PERIOD !!
 #define SAMPLING_PERIOD 25 //!< sampling period in [ms]
 //------------Multisampling MEAN FILTER
-//Constant-------------------------------------------------------------------------------------- This mean filter is a
+// Constant-------------------------------------------------------------------------------------- This mean filter is a
 // fixed windows filter each T period it makes a mean of N sample and and make a mean of it the result is the real
 // sample that we take each T constant period
 #define MEAN_NO_OF_SAMPLES                                                                                             \
-  5 //!< MUST:MEAN_NO_OF_SAMPLES*MEAN_TIME_INTERVAL << SAMPLING_PERIOD !! Number of sample in the first mean
+    5 //!< MUST:MEAN_NO_OF_SAMPLES*MEAN_TIME_INTERVAL << SAMPLING_PERIOD !! Number of sample in the first mean
 #define MEAN_TIME_INTERVAL 1 //!< In [ms] Time between 2 simples of the mean
 //----------Low pass (pseudo expodentialy ponderated
-//mean)--------------------------------------------------------------------------------
+// mean)--------------------------------------------------------------------------------
 //!< MUST:L_P_PRESENT_NOMINATOR+L_P_PAST_NOMINATOR=L_P_PROPORTION_DENOMINATOR !!!!
 #define L_P_PRESENT_NOMINATOR 1.0
 //!< MUST:L_P_PRESENT_NOMINATOR+L_P_PAST_NOMINATOR=L_P_PROPORTION_DENOMINATOR !!!!
 #define L_P_PAST_NOMINATOR 9.0
 //----------Output limit (minimum and maximum of desired
-//out)--------------------------------------------------------------------------------
+// out)--------------------------------------------------------------------------------
 #define OUT_MIN 0   //!< minimum value that you can send to the broker the value will NEVER be lower
 #define OUT_MAX 100 //!< maximum value that you can send to the broker the value will NEVER be higher
 //----------Input limit (minimum and maximum of in for desired mechanical
-//range)--------------------------------------------------------------
+// range)--------------------------------------------------------------
 #define IN_MIN                                                                                                         \
-  300 //!< minimum value coming from adc (you can calibrate it to use the full range of the potentiometer (can variety a
-      //!< little bit because of the tolerancy of the electronicall component)
+    300 //!< minimum value coming from adc (you can calibrate it to use the full range of the potentiometer (can variety
+        //!< a little bit because of the tolerancy of the electronicall component)
 #define IN_MAX                                                                                                         \
-  2300 //!< maximum value coming from adc (you can calibrate it to use the full range of the potentiometer (can variety
-       //!< a little bit because of the tolerancy of the electronicall component)
+    2300 //!< maximum value coming from adc (you can calibrate it to use the full range of the potentiometer (can
+         //!< variety a little bit because of the tolerancy of the electronicall component)
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 //----------calculated Const--------------------------------------------------------------------------------------------
 //--GENERIC--
 //!< MUST:MEAN_NO_OF_SAMPLES*MEAN_TIME_INTERVAL << SAMPLING_PERIOD !!
 #define SAMPLING_TIME_CONST                                                                                            \
-  (SAMPLING_PERIOD - MEAN_NO_OF_SAMPLES * MEAN_TIME_INTERVAL) // time delay to reach the samppling period
+    (SAMPLING_PERIOD - MEAN_NO_OF_SAMPLES * MEAN_TIME_INTERVAL) // time delay to reach the samppling period
 //--LOW_PASS--
 //!< MUST:L_P_PRESENT_NOMINATOR+L_P_PAST_NOMINATOR=L_P_PROPORTION_DENOMINATOR
 #define L_P_PROPORTION_DENOMINATOR                                                                                     \
-  (L_P_PRESENT_NOMINATOR + L_P_PAST_NOMINATOR) //!< denominator of the past and present value proportion
+    (L_P_PRESENT_NOMINATOR + L_P_PAST_NOMINATOR) //!< denominator of the past and present value proportion
 #define L_P_PAST_PROP (L_P_PAST_NOMINATOR / L_P_PROPORTION_DENOMINATOR)
 #define L_P_PRESENT_PROP (L_P_PRESENT_NOMINATOR / L_P_PROPORTION_DENOMINATOR)
 //--Downscaling--
@@ -98,65 +98,65 @@ static const adc_unit_t unit = ADC_UNIT_1; //!< esp32 dont suport othe options m
  */
 void potentiometer_task(void *arg)
 {
-  // Characterize ADC
-  adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
-  esp_adc_cal_characterize(unit, atten, width, DEFAULT_VREF, adc_chars);
-  static uint32_t adc_reading_old = 0; // memory of mesurment at t-1
-  static int32_t adc_schmit = 0;       // last value out of schmitt trigger (output value)
-  uint32_t adc_reading = 0;            // current mesurment
-  int32_t adc_transformed = 0;         // val out of filteing and downscaling
-  uint32_t i = 0;                      // increment of the multisimpling for loop
-  // Continuously sample ADC1
-  while (1)
-  {
-    // reinitialisation of value that are recalculed at each (multi)sampling
-    adc_reading = 0;
-    adc_transformed = 0;
-    //-----------------Multisampling MEAN Filter-------------------
-    for (i = 0; i < MEAN_NO_OF_SAMPLES; i++)
+    // Characterize ADC
+    adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
+    esp_adc_cal_characterize(unit, atten, width, DEFAULT_VREF, adc_chars);
+    static uint32_t adc_reading_old = 0; // memory of mesurment at t-1
+    static int32_t adc_schmit = 0;       // last value out of schmitt trigger (output value)
+    uint32_t adc_reading = 0;            // current mesurment
+    int32_t adc_transformed = 0;         // val out of filteing and downscaling
+    uint32_t i = 0;                      // increment of the multisimpling for loop
+    // Continuously sample ADC1
+    while(1)
     {
-      adc_reading += adc1_get_raw((adc1_channel_t) channel);
-      vTaskDelay(pdMS_TO_TICKS(MEAN_TIME_INTERVAL));
-    }
-    adc_reading /= MEAN_NO_OF_SAMPLES;
-    //-------------------------------------------------------------
-    //----------Low pass (pseudo expodentialy ponderated mean)-----------
-    adc_reading = c_L_P_PAST_PROP * adc_reading_old + c_L_P_PRESENT_PROP * adc_reading;
-    adc_reading_old = adc_reading;
-    //---------------------------------------------------------------------
-    //-----------Convert adc_reading to voltage in mV--------------------
-    uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
-    //-----------------------------------------------------------------------
-    //------Down scaling of the resolution (down-quantisation)-----
-    //(supression of the bias to have a purly proportional value)
-    adc_transformed = ((adc_reading / c_PROPORTIONALITY_FACTOR) - c_BIAS);
-    //--------------------------------------------------------------
-    //--------------limit definition for the output value---------------
-    adc_transformed = (adc_transformed < OUT_MIN) ? OUT_MIN : adc_transformed;
-    adc_transformed = (adc_transformed > OUT_MAX) ? OUT_MAX : adc_transformed;
-    //------------------------------------------------------------------
-    //--------------------------------Schmitt trigger-----------------------------------------------
-    if (adc_schmit != adc_transformed)
-    {
-      if (((adc_reading < ((adc_schmit * c_PROPORTIONALITY_FACTOR) + c_BIAS * c_PROPORTIONALITY_FACTOR -
-                           (c_PROPORTIONALITY_FACTOR / 2))) &&
-           (adc_transformed < adc_schmit)) ||
-          ((adc_reading >
-            ((adc_schmit * c_PROPORTIONALITY_FACTOR) + c_PROPORTIONALITY_FACTOR + (c_PROPORTIONALITY_FACTOR / 2))) &&
-           (adc_transformed > adc_schmit)))
-      {
-        adc_schmit = adc_transformed;
+        // reinitialisation of value that are recalculed at each (multi)sampling
+        adc_reading = 0;
+        adc_transformed = 0;
+        //-----------------Multisampling MEAN Filter-------------------
+        for(i = 0; i < MEAN_NO_OF_SAMPLES; i++)
+        {
+            adc_reading += adc1_get_raw((adc1_channel_t) channel);
+            vTaskDelay(pdMS_TO_TICKS(MEAN_TIME_INTERVAL));
+        }
+        adc_reading /= MEAN_NO_OF_SAMPLES;
+        //-------------------------------------------------------------
+        //----------Low pass (pseudo expodentialy ponderated mean)-----------
+        adc_reading = c_L_P_PAST_PROP * adc_reading_old + c_L_P_PRESENT_PROP * adc_reading;
+        adc_reading_old = adc_reading;
+        //---------------------------------------------------------------------
+        //-----------Convert adc_reading to voltage in mV--------------------
+        uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
+        //-----------------------------------------------------------------------
+        //------Down scaling of the resolution (down-quantisation)-----
+        //(supression of the bias to have a purly proportional value)
+        adc_transformed = ((adc_reading / c_PROPORTIONALITY_FACTOR) - c_BIAS);
+        //--------------------------------------------------------------
+        //--------------limit definition for the output value---------------
+        adc_transformed = (adc_transformed < OUT_MIN) ? OUT_MIN : adc_transformed;
+        adc_transformed = (adc_transformed > OUT_MAX) ? OUT_MAX : adc_transformed;
+        //------------------------------------------------------------------
+        //--------------------------------Schmitt trigger-----------------------------------------------
+        if(adc_schmit != adc_transformed)
+        {
+            if(((adc_reading < ((adc_schmit * c_PROPORTIONALITY_FACTOR) + c_BIAS * c_PROPORTIONALITY_FACTOR -
+                                (c_PROPORTIONALITY_FACTOR / 2))) &&
+                (adc_transformed < adc_schmit)) ||
+               ((adc_reading > ((adc_schmit * c_PROPORTIONALITY_FACTOR) + c_PROPORTIONALITY_FACTOR +
+                                (c_PROPORTIONALITY_FACTOR / 2))) &&
+                (adc_transformed > adc_schmit)))
+            {
+                adc_schmit = adc_transformed;
 #if DEBUG
-        printf("Raw: %d\t Raw down res: %d\tVoltage: %dmV\n", adc_reading, adc_schmit, voltage);
+                printf("Raw: %d\t Raw down res: %d\tVoltage: %dmV\n", adc_reading, adc_schmit, voltage);
 #endif
-        xEventGroupSetBits(xEvent_data_COM,          /* The event group being updated. */
-                           SEND_POTENTIOMETRE_FLAG); /* The bits being set. */
-        xQueueSend(xQueue_data_Potentimeter_COM, &adc_schmit, pdFALSE);
-      }
+                xEventGroupSetBits(xEvent_data_COM,          /* The event group being updated. */
+                                   SEND_POTENTIOMETRE_FLAG); /* The bits being set. */
+                xQueueSend(xQueue_data_Potentimeter_COM, &adc_schmit, pdFALSE);
+            }
+        }
+        //--------------------------------------------------------------------------------------
+        vTaskDelay(pdMS_TO_TICKS(c_SAMPLING_TIME_CONST));
     }
-    //--------------------------------------------------------------------------------------
-    vTaskDelay(pdMS_TO_TICKS(c_SAMPLING_TIME_CONST));
-  }
 }
 /**
  *  @fn void potentiometer_config()
@@ -169,6 +169,6 @@ void potentiometer_task(void *arg)
  */
 void potentiometer_config()
 {
-  adc1_config_width(width);
-  adc1_config_channel_atten(channel, atten);
+    adc1_config_width(width);
+    adc1_config_channel_atten(channel, atten);
 }

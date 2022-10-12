@@ -13,10 +13,10 @@
 #include "freertos/task.h"
 #define RECEIVE_LED_FLAG 0b10000000 //!< flag that will activate when receiving a message from the broker
 #define SEND_BUTTON_FLAG                                                                                               \
-  0b00000001 //!< flag to ask to send the value of the buttons (received by a queue in the mqtt task) to the broker
+    0b00000001 //!< flag to ask to send the value of the buttons (received by a queue in the mqtt task) to the broker
 #define SEND_POTENTIOMETRE_FLAG                                                                                        \
-  0b00000010 //!< flag to ask to send the value of the potentiometer (received by a queue in the mqtt task) to the
-             //!< broker
+    0b00000010 //!< flag to ask to send the value of the potentiometer (received by a queue in the mqtt task) to the
+               //!< broker
 void MQTT_Task(void *arg);
 void MQTT_init();
 EventGroupHandle_t xEvent_data_COM;
