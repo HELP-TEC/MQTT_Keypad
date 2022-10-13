@@ -65,8 +65,6 @@ def check_com_port():
 def update_topic_entries():
     num = int(sp.get())
     if(num != len(topic_entry)):
-        # resize = 300+40*num
-        # root_config.geometry("370x"+str(resize))
         config_button.forget()
         path_button.forget()
         read_button.forget()
@@ -135,8 +133,6 @@ def write_values_to_entries(jsondic: dict, arg: str):
         number_of_topic = number_of_topic+1
     if(number_of_topic != len(topic_entry)):
         topic_vars.clear()
-        # resize = 300+40*number_of_topic
-        # root_config.geometry("370x"+str(resize))
         config_button.forget()
         path_button.forget()
         read_button.forget()
@@ -159,6 +155,9 @@ def write_values_to_entries(jsondic: dict, arg: str):
     path_button.pack(side=LEFT, fill='x', expand=True, pady=10)
     com_port_cb.pack(side=RIGHT, fill='x', expand=True, pady=10)
     read_button.pack(side=LEFT, fill='x', expand=True, pady=10)
+    canvas.update_idletasks()
+    canvas.configure(scrollregion=canvas.bbox('all'),
+                     yscrollcommand=scroll_y.set)
 
 
 def fill_config_entry(filepath: str):
@@ -268,9 +267,8 @@ def select_config(json_dict: dict):
     # frame
     interface_select = ttk.Frame(root_config_select)
     interface_select.pack(padx=10, pady=10, fill='x', expand=False)
-    # Path
-    path = ttk.Label(interface_select, text="Configuration:")
-    path.pack(side="left", fill='x', expand=False)
+    selection = ttk.Label(interface_select, text="Configuration:")
+    selection.pack(side="left", fill='x', expand=False)
     # combo box to select com port
     config = tk.StringVar()
     config_cb = ttk.Combobox(interface_select, textvariable=config, width=20, state="readonly")
