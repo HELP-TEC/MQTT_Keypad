@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
+from tkinter import Scrollbar
 import re
 import pathlib
 import os
@@ -21,12 +22,12 @@ import time
 JSON_ARGS = 'pannel_config_args'
 END = 'end'
 LEFT = "left"
-RIGTH = "right"
+RIGHT = "right"
 
 # root_config window
 root_config = tk.Tk()
-root_config.geometry("400x310")
-root_config.resizable(True, True)
+root_config.geometry("370x300")
+root_config.resizable(False, False)
 root_config.title('Pannel configuration')
 try:
     base_path = sys._MEIPASS
@@ -64,8 +65,8 @@ def check_com_port():
 def update_topic_entries():
     num = int(sp.get())
     if(num != len(topic_entry)):
-        resize = 310+40*num
-        root_config.geometry("400x"+str(resize))
+        # resize = 300+40*num
+        # root_config.geometry("370x"+str(resize))
         config_button.forget()
         path_button.forget()
         read_button.forget()
@@ -91,8 +92,11 @@ def update_topic_entries():
                 topic_entry[len(topic_entry)-1].pack(fill='x', expand=True)
         config_button.pack(side=LEFT, fill='x', expand=True, pady=10)
         path_button.pack(side=LEFT, fill='x', expand=True, pady=10)
-        com_port_cb.pack(side=RIGTH, fill='x', expand=True, pady=10)
+        com_port_cb.pack(side=RIGHT, fill='x', expand=True, pady=10)
         read_button.pack(side=LEFT, fill='x', expand=True, pady=10)
+        canvas.update_idletasks()
+        canvas.configure(scrollregion=canvas.bbox('all'),
+                         yscrollcommand=scroll_y.set)
 
 
 def int_to_2bytes(val: int):
@@ -131,8 +135,8 @@ def write_values_to_entries(jsondic: dict, arg: str):
         number_of_topic = number_of_topic+1
     if(number_of_topic != len(topic_entry)):
         topic_vars.clear()
-        resize = 310+40*number_of_topic
-        root_config.geometry("400x"+str(resize))
+        # resize = 300+40*number_of_topic
+        # root_config.geometry("370x"+str(resize))
         config_button.forget()
         path_button.forget()
         read_button.forget()
@@ -153,7 +157,7 @@ def write_values_to_entries(jsondic: dict, arg: str):
     sp.config(state="readonly")
     config_button.pack(side=LEFT, fill='x', expand=True, pady=10)
     path_button.pack(side=LEFT, fill='x', expand=True, pady=10)
-    com_port_cb.pack(side=RIGTH, fill='x', expand=True, pady=10)
+    com_port_cb.pack(side=RIGHT, fill='x', expand=True, pady=10)
     read_button.pack(side=LEFT, fill='x', expand=True, pady=10)
 
 
@@ -252,7 +256,7 @@ def Com_port_write(usr: str, pswd: str, bk_ip: str, clt_ip: str, port: str, topi
 
 def select_config(json_dict: dict):
     root_config_select = tk.Toplevel(root_config)
-    root_config_select.geometry("310x50")
+    root_config_select.geometry("300x50")
     root_config_select.resizable(False, False)
     root_config_select.title('Choose your configuration')
     try:
@@ -281,13 +285,21 @@ def select_config(json_dict: dict):
 
 
 def confirm_config(config: str, root_config_select: tk.Toplevel, json_dict: dict):
-    write_values_to_entries(json_dict, config)
+    if(config != ''):
+        write_values_to_entries(json_dict, config)
+        messagebox.showinfo("Config", "Configuration is loaded")
+    else:
+        messagebox.showerror("Config", "Blank configuration")
     root_config_select.destroy()
-    messagebox.showinfo("Config", "Configuration is loaded")
 
-    # frame
-interface_config = ttk.Frame(root_config)
-interface_config.pack(padx=10, pady=10, fill='x', expand=False)
+
+# frame
+canvas = tk.Canvas(root_config, bd=0, highlightthickness=0)
+scroll_y = tk.Scrollbar(root_config, orient="vertical", command=canvas.yview)
+scroll_y.pack(fill='y', side='right')
+interface_config = ttk.Frame(canvas)
+# interface_config.pack(padx=10, pady=10, fill='x', expand=False)
+
 
 # MQTT username
 MQTT_username_label = ttk.Label(interface_config, text="MQTT_username:", width=10)
@@ -328,14 +340,14 @@ broker_port_entry.pack(fill='x', expand=True)
 spinbox_label = ttk.Label(interface_config, text="Number of topics:", width=10)
 spinbox_label.pack(fill='x', expand=True)
 
-sp = tk.Spinbox(interface_config, from_=0, to=10, width=20,
+sp = tk.Spinbox(interface_config, from_=0, to=20, width=20,
                 command=update_topic_entries, state="readonly")
 sp.pack(side="top")
 
 # combo box to select com port
 com_port = tk.StringVar()
 com_port_cb = ttk.Combobox(interface_config, textvariable=com_port, width=8, state="readonly")
-com_port_cb.pack(side=RIGTH)
+com_port_cb.pack(side=RIGHT)
 
 # Config button
 config_button = ttk.Button(
@@ -349,7 +361,13 @@ path_button.pack(side=LEFT, pady=10)
 
 # Read button
 read_button = ttk.Button(interface_config, text="Read Config", command=Com_port_read, width=15)
-read_button.pack(side=RIGTH, pady=10)
+read_button.pack(side=RIGHT, pady=10)
+canvas.create_window(0, 0, anchor='nw', window=interface_config)
+canvas.update_idletasks()
+canvas.configure(scrollregion=canvas.bbox('all'),
+                 yscrollcommand=scroll_y.set)
+canvas.pack(side='left', padx=10, pady=10)
+
 
 com_thread = threading.Thread(target=check_com_port, daemon=True)
 com_thread.start()
