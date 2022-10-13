@@ -47,6 +47,7 @@ void NVS_RW_task(void *arg)
                     nvs_commit(my_handle);
                     nvs_close(my_handle);
                     free(data);
+                    esp_restart();
                     break;
                 case READ_COMMAND :
                     size = (header[1] << 8) + (header[2]);
