@@ -61,7 +61,7 @@
 #define MAX_STR_SIZE 50
 #define MAX_IP_SIZE 16
 // Json TAG
-#define JSON_ARGS "pannel_config_args"
+#define JSON_ARGS "pannel_config_args1"
 #define JSON_USERNAME "MQTT_username"
 #define JSON_PASSWORD "password"
 #define JSON_BROKER_IP "broker_ip"

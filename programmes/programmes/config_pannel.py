@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
+import re
 import pathlib
 import os
 import sys
@@ -109,24 +110,24 @@ def int_to_2bytes(val: int):
     return retByte1, retByte2
 
 
-def write_values_to_entries(jsondic: dict):
+def write_values_to_entries(jsondic: dict, arg: str):
     username_entry.delete(0, END)
     password_entry.delete(0, END)
     broker_ipadr_entry.delete(0, END)
     client_ipadr_entry.delete(0, END)
     broker_port_entry.delete(0, END)
-    username_entry.insert(0, jsondic[JSON_ARGS].get('MQTT_username'))
-    password_entry.insert(0, jsondic[JSON_ARGS].get('password'))
-    broker_ipadr_entry.insert(0, jsondic[JSON_ARGS].get('broker_ip'))
-    client_ipadr_entry.insert(0, jsondic[JSON_ARGS].get('client_ip'))
-    broker_port_entry.insert(0, jsondic[JSON_ARGS].get('broker_port'))
+    username_entry.insert(0, jsondic[arg].get('MQTT_username'))
+    password_entry.insert(0, jsondic[arg].get('password'))
+    broker_ipadr_entry.insert(0, jsondic[arg].get('broker_ip'))
+    client_ipadr_entry.insert(0, jsondic[arg].get('client_ip'))
+    broker_port_entry.insert(0, jsondic[arg].get('broker_port'))
     for i in range(len(topic_entry)):
         topic_entry[i].forget()
         topic_label[i].forget()
     topic_entry.clear()
     topic_label.clear()
     number_of_topic = 0
-    while(('topic'+str(number_of_topic)) in jsondic[JSON_ARGS]):
+    while(('topic'+str(number_of_topic)) in jsondic[arg]):
         number_of_topic = number_of_topic+1
     if(number_of_topic != len(topic_entry)):
         topic_vars.clear()
@@ -145,7 +146,7 @@ def write_values_to_entries(jsondic: dict):
             ttk.Entry(interface_config, textvariable=topic_vars[i], width=20))
         topic_entry[i].pack(fill='x', expand=True)
         topic_entry[i].delete(0, END)
-        topic_entry[i].insert(0, jsondic[JSON_ARGS].get(('topic'+str(i))))
+        topic_entry[i].insert(0, jsondic[arg].get(('topic'+str(i))))
     sp.config(state="normal")
     sp.delete(0, END)
     sp.insert(0, number_of_topic)
@@ -161,8 +162,12 @@ def fill_config_entry(filepath: str):
     if((fpath.suffix == '.json')):
         json_file = open(fpath, "r")
         jsondic = json.loads(json_file.read())
-        write_values_to_entries(jsondic)
-        messagebox.showinfo("Config", "Configuration is loaded")
+        Avaiable_config = re.findall(JSON_ARGS+r'[1-9]{1,2}', str(jsondic))
+        if(len(Avaiable_config) >= 2):
+            select_config(jsondic)
+        else:
+            write_values_to_entries(jsondic, JSON_ARGS+'1')
+            messagebox.showinfo("Config", "Configuration is loaded")
     else:
         messagebox.showerror("Config", "Configuration file isn't a json file")
 
@@ -189,7 +194,7 @@ def start_transfert_config():
 def open_window_file_path():
 
     filepath = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select a File",
-                                          filetypes=(("Json files", "*.json*"),
+                                          filetypes=(("Json files", "*.json"),
                                                      ("All files", "*.*")))
     if(filepath != ''):
         fill_config_entry(filepath)
@@ -221,13 +226,13 @@ def Com_port_write(usr: str, pswd: str, bk_ip: str, clt_ip: str, port: str, topi
     ser = serial.Serial(port=com_port_cb.get(), baudrate=115200, timeout=1)
     ser.close()
     ser.open()
-    dic_to_write = {JSON_ARGS: {'MQTT_username': usr,
-                                'password': pswd,
-                                'broker_ip': bk_ip,
-                                'client_ip': clt_ip,
-                                'broker_port': port}}
+    dic_to_write = {JSON_ARGS+'1': {'MQTT_username': usr,
+                                    'password': pswd,
+                                    'broker_ip': bk_ip,
+                                    'client_ip': clt_ip,
+                                    'broker_port': port}}
     for i in range(len(topic_names)):
-        dic_to_write[JSON_ARGS]['topic'+str(i)] = topic_names[i]
+        dic_to_write[JSON_ARGS+'1']['topic'+str(i)] = topic_names[i]
     data_to_write = json.dumps(dic_to_write, indent=4,
                                separators=(',', ': '),
                                ensure_ascii=True)
@@ -245,7 +250,42 @@ def Com_port_write(usr: str, pswd: str, bk_ip: str, clt_ip: str, port: str, topi
     messagebox.showinfo("Config", "Write config done")
 
 
-# frame
+def select_config(json_dict: dict):
+    root_config_select = tk.Toplevel(root_config)
+    root_config_select.geometry("310x50")
+    root_config_select.resizable(False, False)
+    root_config_select.title('Choose your configuration')
+    try:
+        base_path = sys._MEIPASS
+        logo_path = os.path.join(base_path, 'logo.ico')
+        root_config_select.wm_iconbitmap(logo_path)
+    except:
+        root_config_select.wm_iconbitmap('logo.ico')
+    # frame
+    interface_select = ttk.Frame(root_config_select)
+    interface_select.pack(padx=10, pady=10, fill='x', expand=False)
+    # Path
+    path = ttk.Label(interface_select, text="Configuration:")
+    path.pack(side="left", fill='x', expand=False)
+    # combo box to select com port
+    config = tk.StringVar()
+    config_cb = ttk.Combobox(interface_select, textvariable=config, width=20, state="readonly")
+    config_cb.pack(side=LEFT)
+    config_cb['values'] = list(json_dict.keys())
+    # Ok button
+    confirm_button = ttk.Button(interface_select, text="Confirm",
+                                command=lambda: confirm_config(config.get(), root_config_select,
+                                                               json_dict))
+    confirm_button.pack(side="right")
+    root_config_select.mainloop()
+
+
+def confirm_config(config: str, root_config_select: tk.Toplevel, json_dict: dict):
+    write_values_to_entries(json_dict, config)
+    root_config_select.destroy()
+    messagebox.showinfo("Config", "Configuration is loaded")
+
+    # frame
 interface_config = ttk.Frame(root_config)
 interface_config.pack(padx=10, pady=10, fill='x', expand=False)
 

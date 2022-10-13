@@ -1,5 +1,35 @@
 {
-    "pannel_config_args" : 
+    "pannel_config_args1" : 
+	{
+		"MQTT_username":"DefaultName",
+		"password":"DefaultPassword",
+		"broker_ip":"192.168.90.192",
+		"client_ip":"192.168.90.192",
+		"broker_port":"1883",
+		"topic0":"DefaultTopic1",
+		"topic1":"DefaultTopic2"
+	},
+	"pannel_config_args2" : 
+	{
+		"MQTT_username":"DefaultName",
+		"password":"DefaultPassword",
+		"broker_ip":"192.168.90.192",
+		"client_ip":"192.168.90.192",
+		"broker_port":"1883",
+		"topic0":"DefaultTopic1",
+		"topic1":"DefaultTopic2"
+	},
+	"pannel_config_args3" : 
+	{
+		"MQTT_username":"DefaultName",
+		"password":"DefaultPassword",
+		"broker_ip":"192.168.90.192",
+		"client_ip":"192.168.90.192",
+		"broker_port":"1883",
+		"topic0":"DefaultTopic1",
+		"topic1":"DefaultTopic2"
+	},
+	"pannel_config_args4" : 
 	{
 		"MQTT_username":"DefaultName",
 		"password":"DefaultPassword",
