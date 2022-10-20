@@ -9,7 +9,6 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
-from tkinter import Scrollbar
 import re
 import pathlib
 import os
@@ -360,12 +359,12 @@ path_button.pack(side=LEFT, pady=10)
 # Read button
 read_button = ttk.Button(interface_config, text="Read Config", command=Com_port_read, width=15)
 read_button.pack(side=RIGHT, pady=10)
+# place Canvas
 canvas.create_window(0, 0, anchor='nw', window=interface_config)
 canvas.update_idletasks()
 canvas.configure(scrollregion=canvas.bbox('all'),
                  yscrollcommand=scroll_y.set)
 canvas.pack(side='left', padx=10, pady=10)
-
 
 com_thread = threading.Thread(target=check_com_port, daemon=True)
 com_thread.start()

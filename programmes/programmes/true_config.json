@@ -1,7 +1,7 @@
 {
     "pannel_config_args1": {
         "MQTT_username": "pannel1",
-        "password": "itisnotagoodpasswordbutwhocarehaha1",
+        "password": "PaNnEl1itisnotagoodpasswordbutwhocarehaha1",
         "broker_ip": "169.254.36.196",
 		"client_ip": "169.254.36.197",
         "broker_port": "1883",
@@ -10,8 +10,8 @@
 		"topic2":"topic/potentiometer"
     },
 	"pannel_config_args2": {
-        "MQTT_username": "pannel1",
-        "password": "itisnotagoodpasswordbutwhocarehaha1",
+        "MQTT_username": "pannel2",
+        "password": "PaNnEl2itisnotagoodpasswordbutwhocarehaha1",
         "broker_ip": "169.254.36.196",
 		"client_ip": "169.254.36.198",
         "broker_port": "1883",
@@ -20,8 +20,8 @@
 		"topic2":"topic/potentiometer"
     },
 	"pannel_config_args3": {
-        "MQTT_username": "pannel1",
-        "password": "itisnotagoodpasswordbutwhocarehaha1",
+        "MQTT_username": "pannel3",
+        "password": "PaNnEl3itisnotagoodpasswordbutwhocarehaha1",
         "broker_ip": "169.254.36.196",
 		"client_ip": "169.254.36.199",
         "broker_port": "1883",
@@ -30,22 +30,13 @@
 		"topic2":"topic/potentiometer"
     },
 	"pannel_config_args4": {
-        "MQTT_username": "pannel1",
-        "password": "itisnotagoodpasswordbutwhocarehaha1",
+        "MQTT_username": "pannel4",
+        "password": "PaNnEl4itisnotagoodpasswordbutwhocarehaha1",
         "broker_ip": "169.254.36.196",
 		"client_ip": "169.254.36.200",
         "broker_port": "1883",
         "topic0": "topic/buttons",
         "topic1": "topic/leds",
-		"topic2":"topic/potentiometer",
-		"topic3": "topic/buttons",
-        "topic4": "topic/leds",
-		"topic5":"topic/potentiometer",
-		"topic6": "topic/buttons",
-        "topic7": "topic/leds",
-		"topic8":"topic/potentiometer",
-		"topic9": "topic/buttons",
-        "topic10": "topic/leds",
-		"topic11":"topic/potentiometer"
+		"topic2":"topic/potentiometer"
     }
 }

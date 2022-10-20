@@ -19,5 +19,6 @@
     },
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "C_Cpp.errorSquiggles": "Disabled",
-    "clang-format.executable":"D:/LLVM/bin/clang-format.exe"
+    "clang-format.executable": "D:/LLVM/bin/clang-format.exe",
+    "cmake.configureOnOpen": false
 }

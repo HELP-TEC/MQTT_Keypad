@@ -86,7 +86,7 @@ typedef struct MQTT_config_t
     char MQTT_username[MAX_STR_SIZE];
     char password[MAX_STR_SIZE];
     char ip[MAX_STR_SIZE];
-    uint16_t port; /*!< pin number that take the interrupt*/
+    uint16_t port;
     char *topic_bp;
     char *topic_del;
     char *topic_pot;
