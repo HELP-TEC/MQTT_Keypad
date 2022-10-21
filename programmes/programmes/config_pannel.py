@@ -117,6 +117,7 @@ def write_values_to_entries(jsondic: dict, arg: str):
     password_entry.delete(0, END)
     broker_ipadr_entry.delete(0, END)
     client_ipadr_entry.delete(0, END)
+    client_id_entry.delete(0, END)
     broker_port_entry.delete(0, END)
     username_entry.insert(0, jsondic[arg].get('MQTT_username'))
     password_entry.insert(0, jsondic[arg].get('password'))
@@ -211,7 +212,8 @@ def Com_port_read():
         ser.close()
         ser.open()
         ser.write(chr(1).encode('latin_1') + chr(0).encode('latin_1')+chr(0).encode('latin_1'))
-        esp_config = ser.read(1024)
+        size = ord(ser.read(1).decode('latin_1'))*255+ord(ser.read(1).decode('latin_1'))
+        esp_config = ser.read(size)
         esp_config = esp_config.decode('latin_1')
         if(esp_config != ''):
             esp_config = esp_config[0:len(esp_config)]
