@@ -25,7 +25,7 @@ RIGHT = "right"
 
 # root_config window
 root_config = tk.Tk()
-root_config.geometry("370x300")
+root_config.geometry("370x350")
 root_config.resizable(False, False)
 root_config.title('Pannel configuration')
 try:
@@ -39,6 +39,7 @@ username = tk.StringVar()
 password = tk.StringVar()
 broker_ipadr = tk.StringVar()
 client_ipadr = tk.StringVar()
+client_id = tk.StringVar()
 broker_port = tk.StringVar()
 topic_vars = []
 topic_label = []
@@ -121,6 +122,7 @@ def write_values_to_entries(jsondic: dict, arg: str):
     password_entry.insert(0, jsondic[arg].get('password'))
     broker_ipadr_entry.insert(0, jsondic[arg].get('broker_ip'))
     client_ipadr_entry.insert(0, jsondic[arg].get('client_ip'))
+    client_id_entry.insert(0, jsondic[arg].get('client_id'))
     broker_port_entry.insert(0, jsondic[arg].get('broker_port'))
     for i in range(len(topic_entry)):
         topic_entry[i].forget()
@@ -179,6 +181,7 @@ def start_transfert_config():
     pswd = password.get()
     bk_ip = broker_ipadr.get()
     clt_ip = client_ipadr.get()
+    clt_id = client_id.get()
     port = broker_port.get()
     topic_names = []
     for i in topic_vars:
@@ -186,11 +189,11 @@ def start_transfert_config():
     if (com_port_cb.get() == ""):
         messagebox.showerror("ERROR", "COM PORT isn't detected")
     else:
-        if((usr == '') | (pswd == '') | (clt_ip == '') | (bk_ip == '') | (port == '') | ('' in topic_names)):
+        if((usr == '') | (pswd == '') | (clt_ip == '') | (clt_id == '') | (bk_ip == '') | (port == '') | ('' in topic_names)):
             messagebox.showerror(
                 "ERROR", "Current configuration have atleast one blank entry")
         else:
-            Com_port_write(usr, pswd, bk_ip, clt_ip, port, topic_names)
+            Com_port_write(usr, pswd, bk_ip, clt_ip, clt_id, port, topic_names)
 
 
 def open_window_file_path():
@@ -215,7 +218,7 @@ def Com_port_read():
             current_config = open('current_config.json', 'w')
             jsondic = json.loads(esp_config)
             json.dump(jsondic, current_config, indent=4)
-            write_values_to_entries(jsondic)
+            write_values_to_entries(jsondic, JSON_ARGS+'1')
             messagebox.showinfo("Config", "Read config done")
         else:
             messagebox.showerror("Config", "Configuration empty")
@@ -224,7 +227,7 @@ def Com_port_read():
         messagebox.showerror("ERROR", "COM PORT isn't detected")
 
 
-def Com_port_write(usr: str, pswd: str, bk_ip: str, clt_ip: str, port: str, topic_names: list):
+def Com_port_write(usr: str, pswd: str, bk_ip: str, clt_ip: str, clt_id: str, port: str, topic_names: list):
     ser = serial.Serial(port=com_port_cb.get(), baudrate=115200, timeout=1)
     ser.close()
     ser.open()
@@ -232,6 +235,7 @@ def Com_port_write(usr: str, pswd: str, bk_ip: str, clt_ip: str, port: str, topi
                                     'password': pswd,
                                     'broker_ip': bk_ip,
                                     'client_ip': clt_ip,
+                                    'client_id': clt_id,
                                     'broker_port': port}}
     for i in range(len(topic_names)):
         dic_to_write[JSON_ARGS+'1']['topic'+str(i)] = topic_names[i]
@@ -326,6 +330,13 @@ ip_label.pack(fill='x', expand=True)
 client_ipadr_entry = ttk.Entry(interface_config, textvariable=client_ipadr, width=20)
 client_ipadr_entry.pack(fill='x', expand=True)
 
+# Client ID
+id_label = ttk.Label(interface_config, text="Client id:", width=10)
+id_label.pack(fill='x', expand=True)
+
+client_id_entry = ttk.Entry(interface_config, textvariable=client_id, width=20)
+client_id_entry.pack(fill='x', expand=True)
+
 # Broker port
 broker_port_label = ttk.Label(interface_config, text="Broker port:", width=10)
 broker_port_label.pack(fill='x', expand=True)
@@ -364,7 +375,7 @@ canvas.create_window(0, 0, anchor='nw', window=interface_config)
 canvas.update_idletasks()
 canvas.configure(scrollregion=canvas.bbox('all'),
                  yscrollcommand=scroll_y.set)
-canvas.pack(side='left', padx=10, pady=10)
+canvas.pack(side='left', padx=10, pady=10, fill='both')
 
 com_thread = threading.Thread(target=check_com_port, daemon=True)
 com_thread.start()

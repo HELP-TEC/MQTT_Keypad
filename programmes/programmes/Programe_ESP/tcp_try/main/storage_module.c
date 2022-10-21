@@ -144,6 +144,7 @@ void read_MQTT_config(MQTT_config_t *ConfigStruct)
     esp_err_t err = nvs_get_u16(my_handle, SIZE_ITEM, &size);
     if(err == ESP_OK)
     {
+        ESP_LOGI(TAG, "OPEN\n");
         data = (uint8_t *) malloc(size);
         nvs_get_str(my_handle, MQTT_CONFIG_STR_ITEM, (char *) data, (size_t *) &size);
         nvs_close(my_handle);
@@ -159,6 +160,11 @@ void read_MQTT_config(MQTT_config_t *ConfigStruct)
         else
         {
             cJSON *cfng = cJSON_GetObjectItem(config_json, JSON_ARGS);
+            ESP_LOGI(TAG, "NON NUL\n");
+            if(cfng == NULL)
+            {
+                ESP_LOGI(TAG, "NUL\n");
+            }
             if(strlen(cJSON_GetObjectItem(cfng, JSON_USERNAME)->valuestring) < MAX_STR_SIZE)
             {
                 strncpy(ConfigStruct->MQTT_username, cJSON_GetObjectItem(cfng, JSON_USERNAME)->valuestring,
@@ -173,6 +179,11 @@ void read_MQTT_config(MQTT_config_t *ConfigStruct)
             {
                 strncpy(ConfigStruct->ip, cJSON_GetObjectItem(cfng, JSON_BROKER_IP)->valuestring,
                         strlen(cJSON_GetObjectItem(cfng, JSON_BROKER_IP)->valuestring));
+            }
+            if(strlen(cJSON_GetObjectItem(cfng, JSON_CLIENT_ID)->valuestring) < MAX_STR_SIZE)
+            {
+                strncpy(ConfigStruct->id, cJSON_GetObjectItem(cfng, JSON_CLIENT_ID)->valuestring,
+                        strlen(cJSON_GetObjectItem(cfng, JSON_CLIENT_ID)->valuestring));
             }
             ConfigStruct->port = cJSON_GetObjectItem(cfng, JSON_PORT)->valueint;
             if(strlen(cJSON_GetObjectItem(cfng, JSON_TOPIC_BUTTON)->valuestring) < MAX_STR_SIZE)

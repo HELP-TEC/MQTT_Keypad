@@ -207,17 +207,16 @@ static void mqtt_app_start(void)
     MQTT_config_t Jsoncfng = {.MQTT_username = {""},
                               .password = {""},
                               .ip = {""},
+                              .id = {""},
                               .port = 0,
                               .topic_bp = topic_button,
                               .topic_del = topic_led,
                               .topic_pot = topic_potentiometer};
     read_MQTT_config(&Jsoncfng);
-    esp_mqtt_client_config_t mqtt_cfg = {//.uri = CONFIG_BROKER_URL,
-                                         .username = Jsoncfng.MQTT_username,
-                                         .password = Jsoncfng.password,
-                                         .port = Jsoncfng.port,
-                                         .transport = MQTT_TRANSPORT_OVER_TCP,
-                                         .host = Jsoncfng.ip};
+    esp_mqtt_client_config_t mqtt_cfg = {
+        //.uri = CONFIG_BROKER_URL,
+        .username = Jsoncfng.MQTT_username, .password = Jsoncfng.password,        .port = Jsoncfng.port,
+        .client_id = Jsoncfng.id,           .transport = MQTT_TRANSPORT_OVER_TCP, .host = Jsoncfng.ip};
     client = esp_mqtt_client_init(&mqtt_cfg);
     /* The last argument may be used to pass data to the event handler, in this example mqtt_event_handler */
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL);

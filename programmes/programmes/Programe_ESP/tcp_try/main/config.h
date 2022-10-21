@@ -66,6 +66,7 @@
 #define JSON_PASSWORD "password"
 #define JSON_BROKER_IP "broker_ip"
 #define JSON_CLIENT_IP "client_ip"
+#define JSON_CLIENT_ID "client_id"
 #define JSON_PORT "broker_port"
 #define JSON_TOPIC_BUTTON "topic0"
 #define JSON_TOPIC_LED "topic1"
@@ -86,6 +87,7 @@ typedef struct MQTT_config_t
     char MQTT_username[MAX_STR_SIZE];
     char password[MAX_STR_SIZE];
     char ip[MAX_STR_SIZE];
+    char id[MAX_STR_SIZE];
     uint16_t port;
     char *topic_bp;
     char *topic_del;
