@@ -2,45 +2,45 @@
     "pannel_config_args1": {
         "MQTT_username": "pannel1",
         "password": "PaNnEl1itisnotagoodpasswordbutwhocarehaha1",
-        "broker_ip": "169.254.36.196",
-		"client_ip": "169.254.36.197",
+        "broker_ip": "192.168.1.51",
+		"client_ip": "192.168.1.52",
 		"client_id": "PANNEL_1",
         "broker_port": "1883",
-        "topic0": "topic/buttons",
-        "topic1": "topic/leds",
-		"topic2":"topic/potentiometer"
+        "topic0": "topic/pannel1/buttons",
+        "topic1": "topic/pannel1/leds",
+		"topic2":"topic/pannel1/potentiometer"
     },
 	"pannel_config_args2": {
         "MQTT_username": "pannel2",
         "password": "PaNnEl2itisnotagoodpasswordbutwhocarehaha1",
-        "broker_ip": "169.254.36.196",
-		"client_ip": "169.254.36.198",
+        "broker_ip": "192.168.1.51",
+		"client_ip": "192.168.1.52",
 		"client_id": "PANNEL_2",
         "broker_port": "1883",
-        "topic0": "topic/buttons",
-        "topic1": "topic/leds",
-		"topic2":"topic/potentiometer"
+        "topic0": "topic/pannel2/buttons",
+        "topic1": "topic/pannel2/leds",
+		"topic2":"topic/pannel2/potentiometer"
     },
 	"pannel_config_args3": {
         "MQTT_username": "pannel3",
         "password": "PaNnEl3itisnotagoodpasswordbutwhocarehaha1",
-        "broker_ip": "169.254.36.196",
-		"client_ip": "169.254.36.199",
+        "broker_ip": "192.168.1.51",
+		"client_ip": "192.168.1.53",
 		"client_id": "PANNEL_3",
         "broker_port": "1883",
-        "topic0": "topic/buttons",
-        "topic1": "topic/leds",
-		"topic2":"topic/potentiometer"
+        "topic0": "topic/pannel3/buttons",
+        "topic1": "topic/pannel3/leds",
+		"topic2":"topic/pannel3/potentiometer"
     },
 	"pannel_config_args4": {
         "MQTT_username": "pannel4",
         "password": "PaNnEl4itisnotagoodpasswordbutwhocarehaha1",
-        "broker_ip": "169.254.36.196",
-		"client_ip": "169.254.36.200",
+        "broker_ip": "192.168.1.51",
+		"client_ip": "192.168.1.54",
 		"client_id": "PANNEL_4",
         "broker_port": "1883",
-        "topic0": "topic/buttons",
-        "topic1": "topic/leds",
-		"topic2":"topic/potentiometer"
+        "topic0": "topic/pannel4/buttons",
+        "topic1": "topic/pannel4/leds",
+		"topic2":"topic/pannel4/potentiometer"
     }
 }
