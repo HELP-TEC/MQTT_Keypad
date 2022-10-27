@@ -27,6 +27,8 @@
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "mqtt_client.h"
+#include "mqtt_module.h"
 #include "nvs.h"
 #include "nvs_flash.h"
 #include "sdkconfig.h"
@@ -66,6 +68,8 @@
 #define JSON_PASSWORD "password"
 #define JSON_BROKER_IP "broker_ip"
 #define JSON_CLIENT_IP "client_ip"
+#define JSON_GW_IP "gateway_ip"
+#define JSON_MASK "mask"
 #define JSON_CLIENT_ID "client_id"
 #define JSON_PORT "broker_port"
 #define JSON_TOPIC_BUTTON "topic0"
@@ -78,7 +82,7 @@
 // ETHERNET
 #define PIN_PHY_POWER GPIO_NUM_12
 #define ETHERNET_MASK_ADDR "255.255.255.00"
-#define ETHERNET_GW_ADDR "169.254.36.196"
+#define ETHERNET_GW_ADDR "169.254.36.255"
 //----------------------------------------------------------
 // Structure
 //----------------------------------------------------------
@@ -100,7 +104,7 @@ void NVS_RW_task(void *arg);
 void storage_init(void);
 void uart_init_config(void);
 void read_MQTT_config(MQTT_config_t *);
-void read_IP_value(char *);
+void read_IP_value(char *, char *, char *);
 void set_static_ip(esp_netif_t *);
 void ethernet_init();
 #endif /* MAIN_CONFIG_H_ */

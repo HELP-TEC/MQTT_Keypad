@@ -17,7 +17,9 @@ static const char *TAG = "ETHERNET EXAMPLE";
 void set_static_ip(esp_netif_t *eth_netif)
 {
     char static_ip[MAX_IP_SIZE] = "";
-    read_IP_value(static_ip);
+    char gateway_ip[MAX_IP_SIZE] = "";
+    char mask[MAX_IP_SIZE] = "";
+    read_IP_value(static_ip, mask, gateway_ip);
     if(esp_netif_dhcpc_stop(eth_netif) != ESP_OK)
     {
         ESP_LOGE(TAG, "Failed to stop dhcp client");

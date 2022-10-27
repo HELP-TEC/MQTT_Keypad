@@ -47,7 +47,7 @@ void NVS_RW_task(void *arg)
                     nvs_commit(my_handle);
                     nvs_close(my_handle);
                     free(data);
-                    esp_restart();
+                    assert(0); // force hardfault
                     break;
                 case READ_COMMAND :
                     size = (header[1] << 8) + (header[2]);
@@ -55,11 +55,13 @@ void NVS_RW_task(void *arg)
                     {
                         nvs_open(STORAGE_PARTITION, NVS_READWRITE, &my_handle);
                         esp_err_t err = nvs_get_u16(my_handle, SIZE_ITEM, &size);
+                        char temp_size[2] = {((size >> 8) & 0xFF), (size & 0xFF)};
                         if(err == ESP_OK)
                         {
                             data = (uint8_t *) malloc(size);
                             nvs_get_str(my_handle, MQTT_CONFIG_STR_ITEM, (char *) data, (size_t *) &size);
                             nvs_close(my_handle);
+                            uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) temp_size, 2);
                             uart_write_bytes(CONFIG_UART_PORT_NUM, (const char *) data, size - 1);
                             free(data);
                         }
@@ -215,7 +217,7 @@ void read_MQTT_config(MQTT_config_t *ConfigStruct)
  * @brief read json file to get to ip
  *
  */
-void read_IP_value(char *static_ip)
+void read_IP_value(char *static_ip, char *mask, char *gateway_ip)
 {
     nvs_handle_t my_handle;
     uint8_t *data = NULL;
@@ -244,6 +246,16 @@ void read_IP_value(char *static_ip)
                 strncpy(static_ip, cJSON_GetObjectItem(cfng, JSON_CLIENT_IP)->valuestring,
                         strlen(cJSON_GetObjectItem(cfng, JSON_CLIENT_IP)->valuestring));
             }
+            // if(strlen(cJSON_GetObjectItem(cfng, JSON_GW_IP)->valuestring) < MAX_IP_SIZE)
+            // {
+            //     strncpy(gateway_ip, cJSON_GetObjectItem(cfng, JSON_GW_IP)->valuestring,
+            //             strlen(cJSON_GetObjectItem(cfng, JSON_GW_IP)->valuestring));
+            // }
+            // if(strlen(cJSON_GetObjectItem(cfng, JSON_MASK)->valuestring) < MAX_IP_SIZE)
+            // {
+            //     strncpy(mask, cJSON_GetObjectItem(cfng, JSON_MASK)->valuestring,
+            //             strlen(cJSON_GetObjectItem(cfng, JSON_MASK)->valuestring));
+            // }
         }
         cJSON_Delete(config_json);
     }

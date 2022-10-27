@@ -5,7 +5,6 @@
  * Created on: 6 mai 2022
  * @author Thibault Sampiemon
  */
-#include "mqtt_module.h"
 #include "config.h"
 #include "driver/gpio.h"
 #include "esp_event.h"
@@ -21,7 +20,6 @@
 #include "lwip/dns.h"
 #include "lwip/netdb.h"
 #include "lwip/sockets.h"
-#include "mqtt_client.h"
 #include "nvs_flash.h"
 #include "protocol_examples_common.h"
 #include <stdbool.h>
@@ -101,7 +99,6 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
     ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%d", base, event_id);
 #endif
     esp_mqtt_event_handle_t event = event_data;
-    esp_mqtt_client_handle_t client = event->client;
     switch((esp_mqtt_event_id_t) event_id)
     {
         case MQTT_EVENT_CONNECTED :
@@ -154,7 +151,6 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
                 printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
                 printf("DATA=%.*s\r\n", event->data_len, event->data);
 #endif
-                char *endptr;
                 int temp = 0;
                 for(int u = 0; u < (event->data_len); u++)
                 {
