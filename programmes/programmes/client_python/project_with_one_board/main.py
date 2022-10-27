@@ -6,9 +6,9 @@ import time
 # broker_address = "169.254.36.196" #addr Helptec Gast
 broker_address = "192.168.1.51"  # addr locale
 # def des nom des topics
-topic_pannel_buttons = "topic/pannel/buttons"
-topic_pannel_potentiometer = "topic/pannel/potentiometer"
-topic_pannel_leds = "topic/pannel/leds"
+topic_pannel_buttons = "topic/pannel1/buttons"
+topic_pannel_potentiometer = "topic/pannel1/potentiometer"
+topic_pannel_leds = "topic/pannel1/leds"
 topic_keba_leds = "topic/keba/leds"
 topic_keba_buttons = "topic/keba/buttons"
 # autentification
@@ -40,8 +40,8 @@ def on_message(client, userdata, message):
     # si c'est la valeur du potentiomètre réécrire sur le plc sur output
     if (message.topic == topic_pannel_potentiometer):
         plc.write_by_name(var_potentiometer_plc, int(a))
-    # if (message.topic == topic_keba_buttons):
-    #     plc.write_by_name(var_keba_button_plc, int(a))
+    if (message.topic == topic_keba_buttons):
+        plc.write_by_name(var_keba_button_plc, str(a))
 
 
 # prévien lors d'une déconexion
@@ -57,8 +57,8 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(topic_pannel_buttons, qos=1)
     print("Subscribing to topic", topic_pannel_potentiometer)
     client.subscribe(topic_pannel_potentiometer, qos=1)
-    print("Subscribing to topic", topic_pannel_potentiometer)
-    client.subscribe(topic_pannel_potentiometer, qos=1)
+    print("Subscribing to topic", topic_keba_buttons)
+    client.subscribe(topic_keba_buttons, qos=1)
 # tread verifiant periodiquement la valeur des leds (si changement met à jour le topic sur le broker
 
 
