@@ -1,0 +1,13 @@
+{
+    "pannel_config_args1": {
+        "MQTT_username": "pannel3",
+        "password": "PaNnEl3itisnotagoodpasswordbutwhocarehaha1",
+        "broker_ip": "169.254.36.196",
+        "client_ip": "169.254.36.199",
+        "client_id": "PANNEL_3",
+        "broker_port": "1883",
+        "topic0": "topic/buttons",
+        "topic1": "topic/leds",
+        "topic2": "topic/potentiometer"
+    }
+}

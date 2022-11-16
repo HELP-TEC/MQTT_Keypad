@@ -27,3 +27,9 @@ fp-info-cache
 
 #kicad-pcb
 **\cartteFille-backups\*.*
+
+#build 
+programmes/programmes/Programe_ESP/tcp_try/build/*
+programmes/programmes/current_config.json
+programmes/programmes/Programe_ESP/tcp_try/sdkconfig.old
+programmes/programmes/current_config.json
